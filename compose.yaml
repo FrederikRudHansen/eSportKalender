@@ -5,20 +5,19 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - mariadb
-    ports:
-      - "8080:8080" # Map your Spring Boot app port to the host
+
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mariadb:3306/esportkalender
-      SPRING_DATASOURCE_USERNAME: grmia
-      SPRING_DATASOURCE_PASSWORD: userpassword
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: fanclub
 
   mariadb:
     image: mariadb:latest
     environment:
       MYSQL_ROOT_PASSWORD: fanclub
       MYSQL_DATABASE: esportkalender
-      MYSQL_USER: grmia
-      MYSQL_PASSWORD: userpassword
+      MYSQL_USER: root
+      MYSQL_PASSWORD: fanclub
     ports:
       - "3307:3306"
     volumes:
