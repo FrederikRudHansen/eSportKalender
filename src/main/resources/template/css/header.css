@@ -1,0 +1,95 @@
+body{
+    background: linear-gradient(to bottom, #333333, black);
+    margin: 0;
+    height: 55rem;
+
+    font-size: 1.8rem;
+    font-family: "Ubuntu", sans-serif;
+    color: white;
+}
+
+.header{
+    height: 5rem;
+    display: flex;
+    justify-content: left;
+
+    background-color: #282828;
+    box-shadow: 0 .3rem .5rem #fd5d56
+}
+
+.logocontainer{
+    background-color: blue;
+    width: 20rem;
+}
+
+.hejmsg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20rem;
+    background-color: #45a049;
+}
+
+.hlist{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.hlist ul {
+    list-style: none;
+    display: flex;
+}
+
+.hlist ul li{
+    margin-right: 5rem;
+}
+
+.hlist ul li:last-child{
+    margin-right: 10rem;
+}
+
+.dropdown {
+    display: inline-block;
+    position: absolute;
+    left: 90%;
+    top: 3%;
+}
+
+.dropbtn {
+    background-color: #fd5d56;
+    color: white;
+    padding: .8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 10rem;
+}
+
+.dropbtn:hover {
+    background-color: #f6342a;
+}
+
+.dropdown-content {
+    display: none;
+    background-color:#282828 ;
+    width: 100%;
+    z-index: 1;
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 1rem 1rem;
+    text-decoration: none;
+    display: block;
+    font-size: medium;
+}
+
+.dropdown-content a:hover {
+    background-color: #212121;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
