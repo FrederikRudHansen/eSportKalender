@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class player {
+public class coach {
 
     @Id
     int ID;
@@ -17,5 +17,4 @@ public class player {
     String resume;
     String billede;
     String nationalitet;
-    String rank;
 }
