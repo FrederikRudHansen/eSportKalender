@@ -1,31 +1,15 @@
-
-
-.logoadventure {
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-}
-
-.paintball {
-    height: 100vh;
-    width: 100%;
-    z-index: 1;
-}
-
 body {
-    margin : 0;
-    background-color: rgb(2, 0, 0);
-    width: auto;
-    height: 100%;
-    overflow-y: hidden;
-    overflow-x: hidden;
+        margin : 0;
+        background-color: orange;
+        width: auto;
+        height: 100%;
+        overflow-y: hidden;
+        overflow-x: hidden;
 }
-/* Stil containeren til at placere alt i en boks */
+
 form {
     position: absolute;
-    top: 70%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 300px;
@@ -38,7 +22,7 @@ form {
 }
 
 /* Stil inputfelterne til at stå under hinanden */
-input[type="text"],
+input[type="email"],
 input[type="password"] {
     width: 100%;
     padding: 10px;
@@ -63,13 +47,6 @@ input[type="submit"]:hover {
     background-color: #45a049; /* Ændrer baggrundsfarven */
 }
 
-
-/* Stil h1 for at centrere teksten */
-h1 {
-    text-align: center;
-    font-family: Arial, sans-serif;
-    color: #333;
-}
 #Tilbage {
     position: absolute;
     top: 8%;
