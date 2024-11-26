@@ -7,7 +7,7 @@ services:
       - mariadb
 
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mariadb:3306/esportkalender
+      SPRING_DATASOURCE_URL: jdbc:mysql://mariadb:3307/esportkalender
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: fanclub
 
