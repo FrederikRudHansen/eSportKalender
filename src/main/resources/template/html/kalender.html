@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/kalender.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <title>kalender</title>
+</head>
+<body>
+<div class="calendar">
+    <div class="header">
+        <div id="prev" class="btn"><i class="fa-solid fa-arrow-left"></i></div>
+        <div id="month-year"></div>
+        <div id="next" class="btn"><i class="fa-solid fa-arrow-right"></i></div>
+    </div>
+    <div class="weekdays">
+        <div>Sun</div>
+        <div>Mon</div>
+        <div>Tue</div>
+        <div>Wed</div>
+        <div>Thu</div>
+        <div>Fri</div>
+        <div>Sat</div>
+    </div>
+    <div class="days" id="days"></div>
+</div>
+<div id="event-modal" style="display: none;">
+    <div class="modal-content">
+        <h3>Tilføj begivenhed</h3>
+        <p id="selected-date"></p>
+        <input type="text" id="event-input" placeholder="Indtast begivenhed" />
+        <button id="save-event">Gem</button>
+        <button id="close-modal">Luk</button>
+    </div>
+</div>
+
+<script src="../../javascript/kalender.js"></script>
+</body>
+
+</html>
