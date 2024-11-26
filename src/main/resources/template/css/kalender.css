@@ -8,38 +8,39 @@ body {
 }
 .calendar {
     background-color: #111111;
-    border-radius: 10px;
-    box-shadow: 0 0 30px #222222;
+    border-radius: 3%;
+    box-shadow: 0 0 10% #222222;
     overflow: hidden;
-    width: 300px;
+    width: 80%; /* Dynamisk bredde */
+    max-width: 30%; /* Maksimal bredde */
     color: white;
-    padding: 20px;
+    padding: 5%;
 }
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 3%;
 }
 .btn {
     cursor: pointer;
 }
 #month-year {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 1.5em; /* Dynamisk fontstørrelse */
 }
 .weekdays, .days {
     display: flex;
     flex-wrap: wrap;
 }
 .days {
-    height: 240px;
+    height: 60%; /* Dynamisk højde */
 }
 .weekdays div, .days div {
-    width: 14.28%;
+    width: 14.28%; /* Procentbaseret bredde for 7 kolonner */
     text-align: center;
-    padding: 10px 0;
-    border-radius: 5px;
+    padding: 2% 0;
+    border-radius: 5%;
 }
 .days div {
     cursor: pointer;
@@ -55,4 +56,48 @@ body {
 }
 .days .fade {
     color: #555;
+}
+#event-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-content {
+    background: white;
+    padding: 5%;
+    border-radius: 2%;
+    text-align: center;
+    width: 80%;
+    max-width: 30%; /* Maksimal bredde for modal */
+}
+.modal-content input {
+    width: 100%;
+    padding: 3%;
+    margin-bottom: 3%;
+    border: 1px solid #ddd;
+    border-radius: 5%;
+}
+.modal-content button {
+    margin: 2%;
+    padding: 2% 5%;
+    border: none;
+    border-radius: 5%;
+    cursor: pointer;
+}
+.modal-content button:hover {
+    opacity: 0.9;
+}
+#save-event {
+    background: #007bff;
+    color: white;
+}
+#close-modal {
+    background: #f44336;
+    color: white;
 }
