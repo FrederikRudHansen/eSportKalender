@@ -9,7 +9,7 @@ body {
 .calendar {
     background-color: #111111;
     border-radius: 3%;
-    box-shadow: 0 0 10% #222222;
+    box-shadow: 0 0 10px #fe5db5;
     overflow: hidden;
     width: 80%; /* Dynamisk bredde */
     max-width: 30%; /* Maksimal bredde */
