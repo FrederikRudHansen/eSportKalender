@@ -1,7 +1,17 @@
 services:
-  esportkalender:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  mariadb:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: fanclub
+      MYSQL_DATABASE: esportkalender
+      MYSQL_USER: grmia
+      MYSQL_PASSWORD: userpassword
     ports:
-      - "8080:8080"
+      - "3307:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+volumes:
+  mariadb_data:
+
+
