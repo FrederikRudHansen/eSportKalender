@@ -6,6 +6,10 @@ body{
     font-size: 1.8rem;
     font-family: "Ubuntu", sans-serif;
     color: white;
+    overflow: auto;
+}
+body::-webkit-scrollbar {
+    display: none; /* Hides the scrollbar */
 }
 
 .kalender {
