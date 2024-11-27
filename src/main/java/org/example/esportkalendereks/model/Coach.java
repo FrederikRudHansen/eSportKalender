@@ -10,6 +10,7 @@ public class Coach {
     private int id;
 
     private String email;
+    private String password;
     private String spil;
     private String navn;
     private int alder;
@@ -96,5 +97,13 @@ public class Coach {
 
     public void setHold(Hold hold) {
         this.hold = hold;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

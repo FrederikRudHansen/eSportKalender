@@ -1,8 +1,6 @@
 package org.example.esportkalendereks.service;
 
 import org.example.esportkalendereks.model.Player;
-import org.example.esportkalendereks.model.Player;
-import org.example.esportkalendereks.repository.PlayerRepo;
 import org.example.esportkalendereks.repository.PlayerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,11 +9,11 @@ import org.springframework.stereotype.Service;
 public class PlayerService {
 
     @Autowired
-    private PlayerRepo playerRepository; // Dit repository, der kommunikerer med databasen
+    private PlayerRepo PlayerRepository; // Dit repository, der kommunikerer med databasen
 
     // Valider spilleren mod databasen
     public boolean validatePlayer(String email, String password) {
-        Player p = playerRepository.findByEmail(email); // Find spilleren i databasen med den givne email
+        Player p = PlayerRepository.findByEmail(email); // Find spilleren i databasen med den givne email
         if (p != null && p.getPassword().equals(password)) { // Tjek om adgangskoden matcher
             return true; // Spilleren findes og adgangskoden matcher
         }
@@ -24,11 +22,11 @@ public class PlayerService {
 
     // Metode til at tjekke om spilleren findes i databasen, som kan bruges ved registrering
     public boolean isPlayerExists(String email) {
-        return playerRepository.findByEmail(email) != null; // Returner true, hvis spilleren allerede findes
+        return PlayerRepository.findByEmail(email) != null; // Returner true, hvis spilleren allerede findes
     }
 
     // Gem en ny spiller
     public void savePlayer(Player newPlayer) {
-        playerRepository.save(newPlayer); // Gem spilleren i databasen
+        PlayerRepository.save(newPlayer); // Gem spilleren i databasen
     }
 }

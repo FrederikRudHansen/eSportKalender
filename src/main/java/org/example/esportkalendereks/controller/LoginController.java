@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class LoginController {
 
     @Autowired
-    private PlayerService playerService; // Service, der håndterer databasekald
+    private PlayerService PlayerService; // Service, der håndterer databasekald
 
     @PostMapping("/login")
     public String login(@RequestParam String email, @RequestParam String password, Model model) {
         // Tjek om spilleren findes i databasen med den angivne email og password
-        if (playerService.validatePlayer(email, password)) {
+        if (PlayerService.validatePlayer(email, password)) {
             // Hvis login er korrekt, omdiriger til forsiden
             return "redirect:/forside";
         } else {

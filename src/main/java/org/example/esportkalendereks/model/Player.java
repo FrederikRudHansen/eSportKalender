@@ -27,8 +27,6 @@ public class Player {
         return id;
     }
 
-
-
     public String getEmail() {
         return email;
     }
