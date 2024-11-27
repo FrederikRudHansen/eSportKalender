@@ -40,7 +40,7 @@ body {
     width: 14.28%; /* Procentbaseret bredde for 7 kolonner */
     text-align: center;
     padding: 2% 0;
-    border-radius: 5%;
+    border-radius: 20%;
 }
 .days div {
     cursor: pointer;
@@ -100,4 +100,66 @@ body {
 #close-modal {
     background: #f44336;
     color: white;
+}
+
+#gentag-box {
+    display: flex;
+    flex-direction: column;
+    margin: 1vh 0;
+}
+
+#gentag-box label {
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    color: #333;
+    margin-top: 10px;
+    margin-left: 19vh;
+}
+
+#gentag-box input[type="checkbox"] {
+    margin-left: 4vh; /* Skaber afstand mellem tekst og checkbox */
+    width: 1.5em;
+    height: 1.5em;
+    margin-top: 1.5vh;
+}
+
+
+#event-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    max-height: 100px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#event-list li {
+    padding: 5px;
+    margin: 5px 0;
+    background-color: #f4f4f4;
+    border-left: 5px solid; /* Farven sættes baseret på typen */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.event-type-Træningskamp {
+   color: blue;
+}
+
+.event-type-Pracc {
+    color: orange;
+}
+
+.event-type-Kamp {
+   color: red;
+}
+
+.event-type-Turnering {
+    color: green;
+}
+
+.event-type-Privatliv {
+    color: rebeccapurple;  /* RIP REBECCA */
 }
