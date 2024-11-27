@@ -93,11 +93,16 @@ body{
 
 .dropdown-content {
     display: none;
-    background-color:#282828 ;
-    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    background-color: #282828;
+    width: max-content;
     z-index: 1;
     overflow: hidden;
     border-radius: 1rem;
+    text-align: center;
 }
 
 .dropdown-content a {
@@ -114,6 +119,7 @@ body{
 
 .dropdown:hover .dropdown-content {
     display: block;
+    align-items: center;
 }
 
 .login-signup ul{
