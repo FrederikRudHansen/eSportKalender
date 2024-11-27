@@ -6,7 +6,7 @@ import jakarta.persistence.Id;
 import java.time.LocalDate;
 
 @Entity
-public class kalender {
+public class Kalender {
 
     @Id
     int id;

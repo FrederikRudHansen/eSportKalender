@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,24 +9,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/login.css">
+    <link th:href="@{/css/login.css}" rel="stylesheet">
 </head>
 <body>
 <header>
-        <img src="/billeder/solned.gif" alt="Gaming GIF" class="gaminggif">
-        <img src="/billeder/GameHive.png" alt="Logo" class="logo">
-
-
-    <button id="Tilbage" onclick="window.location.href='index.html'">Tilbage</button>
+    <img th:src="@{/billeder/solned.gif}" alt="Gaming GIF" class="gaminggif">
+    <img th:src="@{/billeder/GameHive.png}" alt="Logo" class="logo">
+    <button id="Tilbage" th:onclick="|window.history.back()|">Tilbage</button>
 </header>
 <div>
-    <form id="loginForm">
+    <!-- Login Form -->
+    <form id="loginForm" th:action="@{/login}" method="post">
         <input type="email" name="email" placeholder="Email" required>
         <input type="password" name="password" placeholder="Kodeord" required>
         <input type="submit" value="Login">
+
+        <!-- Opret Bruger -->
+        <input type="button" value="Opret Player"
+               th:onclick="|window.location.href='@{/register}'|">
     </form>
 </div>
-
-<script src="../static/javascript/login.js" async defer></script>
+<div th:if="${error}" class="error">
+    <p th:text="${error}"></p>
+</div>
+<script th:src="@{/javascript/login.js}" async defer></script>
 </body>
 </html>

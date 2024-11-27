@@ -4,14 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class hold {
+public class Spil {
 
     @Id
-    int holdID;
+    int id;
     String navn;
-    String rank;
-    String nationalitet;
-    int antal;
-
-    // MANGLER FK til coach, player og spil
+    String kategori;
 }

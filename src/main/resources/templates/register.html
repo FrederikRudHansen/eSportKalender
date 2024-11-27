@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Opret Bruger</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{/css/register.css}" rel="stylesheet">
+</head>
+<body>
+<header>
+    <h1>Opret Bruger</h1>
+    <img th:src="@{/billeder/solned.gif}" alt="Gaming GIF" class="gaminggif">
+    <img th:src="@{/billeder/GameHive.png}" alt="Logo" class="logo">
+    <button id="Tilbage" th:onclick="|window.history.back()|">Tilbage</button>
+</header>
+<main>
+    <form th:action="@{/register}" method="post">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Kodeord" required>
+        <input type="submit" value="Opret Player">
+    </form>
+    <div th:if="${error}" class="error">
+        <p th:text="${error}"></p>
+    </div>
+</main>
+</body>
+</html>
