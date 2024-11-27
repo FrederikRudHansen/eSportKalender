@@ -1,7 +1,9 @@
 package org.example.esportkalendereks.controller;
 
 import org.example.esportkalendereks.model.Begivenheder;
+import org.example.esportkalendereks.model.Hold;
 import org.example.esportkalendereks.service.BegivenhederService;
+import org.example.esportkalendereks.service.HoldService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,9 +13,11 @@ import java.util.List;
 public class BegivenhederController {
 
     private final BegivenhederService begivenhederService;
+    private final HoldService holdService;
 
-    public BegivenhederController(BegivenhederService begivenhederService) {
+    public BegivenhederController(BegivenhederService begivenhederService, HoldService holdService) {
         this.begivenhederService = begivenhederService;
+        this.holdService = holdService;
     }
 
     @PostMapping
@@ -23,7 +27,8 @@ public class BegivenhederController {
 
     @GetMapping("/hold/{holdId}")
     public List<Begivenheder> getBegivenhederForHold(@PathVariable int holdId) {
-        return begivenhederService.findByHoldId(holdId);
+        Hold hold = holdService.findById(holdId); // Find Hold by ID
+        return begivenhederService.findByHold(hold); // Find events for the specific hold
     }
 
     @DeleteMapping("/{id}")

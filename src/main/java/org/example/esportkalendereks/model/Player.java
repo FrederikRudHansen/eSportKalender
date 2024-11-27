@@ -7,26 +7,27 @@ public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    int id;
 
-    private String email;
-    private String spil;
-    private String navn;
-    private int alder;
-    private String præferencer;
-    private String resume;
-    private String billede;
-    private String nationalitet;
-    private String rank;
+    @Column(unique = true)
+    String email;
 
-    // Relation til Hold
-    @ManyToOne
-    @JoinColumn(name = "hold_id", nullable = false)
-    private Hold hold;
+    String password;
+    int holdID;
+    String spil;
+    String navn;
+    int alder;
+    String præferencer;
+    String resume;
+    String billede;
+    String nationalitet;
+    String rank;
 
-    public int getId() {
+    public int getID() {
         return id;
     }
+
+
 
     public String getEmail() {
         return email;
@@ -34,6 +35,14 @@ public class Player {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getHoldID() {
+        return holdID;
+    }
+
+    public void setHoldID(int holdID) {
+        this.holdID = holdID;
     }
 
     public String getSpil() {
@@ -100,11 +109,13 @@ public class Player {
         this.rank = rank;
     }
 
-    public Hold getHold() {
-        return hold;
+    public String getPassword() {
+        return password;
     }
 
-    public void setHold(Hold hold) {
-        this.hold = hold;
+    public void setPassword(String password) {
+        this.password = password;
     }
+
+
 }
