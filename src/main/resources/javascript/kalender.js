@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentDate = new Date();
     let today = new Date();
     const events = {}; // Gemmer begivenheder for hver dato
+    const recurringEvents = []; // En liste til gentagende begivenheder
 
     // Funktion til at åbne modal
     function openModal(date) {
@@ -51,35 +52,105 @@ document.addEventListener('DOMContentLoaded', function () {
         // Gem alle begivenheder
         document.getElementById("save-event").onclick = function () {
             const eventItems = Array.from(eventList.children);
+            const isRecurring = document.getElementById("gentag-ugentligt").checked;
+
+            // Gemmer engangsbegivenheder
             events[date] = eventItems.map(item => ({
                 text: item.querySelector(".event-text").textContent,
-                type: item.dataset.type
+                type: item.dataset.type,
+                recurringId: item.dataset.recurringId || null
             }));
+
+            // Tilføj til gentagende begivenheder, hvis checkbox er markeret
+            if (isRecurring) {
+                eventItems.forEach(item => {
+                    const eventText = item.querySelector(".event-text").textContent;
+                    const eventType = item.dataset.type;
+                    const recurringId = item.dataset.recurringId || `${Date.now()}-${Math.random()}`; // Generer unikt ID
+
+                    // Gem i recurringEvents, hvis det ikke allerede findes
+                    if (!item.dataset.recurringId) {
+                        recurringEvents.push({
+                            startDate: date,
+                            text: eventText,
+                            type: eventType,
+                            recurringId: recurringId
+                        });
+                        item.dataset.recurringId = recurringId; // Tilføj ID til listen
+                    }
+                });
+            }
+
             closeModal();
-            renderCalendar(currentDate); // Opdater kalender for at vise ændringer
+            renderCalendar(currentDate); // Opdater kalenderen
         };
     }
 
-    // Tilføj begivenhed til listen
-    function addEventToList(text, type, list) {
+        // Tilføj begivenhed til listen
+    function addEventToList(text, type, list, isRecurring = false, recurringId = null) {
         const li = document.createElement("li");
         li.dataset.type = type;
+        li.dataset.isRecurring = isRecurring;
+        if (recurringId) li.dataset.recurringId = recurringId; // Tilføj gentagende ID, hvis det er gentagende
         li.classList.add(`event-type-${type}`);
 
         const span = document.createElement("span");
         span.textContent = text;
         span.classList.add("event-text");
 
-        const removeBtn = document.createElement("button");
-        removeBtn.textContent = "Fjern";
-        removeBtn.onclick = function () {
-            li.remove();
+        const removeOnceBtn = document.createElement("button");
+        removeOnceBtn.textContent = "Fjern én gang";
+        removeOnceBtn.onclick = function () {
+            removeEvent(list, li, false); // Slet kun denne forekomst
         };
 
+        const removeAllBtn = document.createElement("button");
+        removeAllBtn.textContent = "Fjern alle";
+        if (isRecurring) {
+            removeAllBtn.onclick = function () {
+                removeEvent(list, li, true); // Fjern alle gentagelser
+            };
+            li.appendChild(removeAllBtn); // Tilføj "Fjern alle"-knap kun for gentagende events
+        }
+
         li.appendChild(span);
-        li.appendChild(removeBtn);
+        li.appendChild(removeOnceBtn);
         list.appendChild(li);
     }
+
+
+    function removeEvent(list, eventElement, removeAll) {
+        const date = document.getElementById("selected-date").textContent.split(": ")[1];
+        const eventText = eventElement.querySelector(".event-text").textContent;
+        const eventType = eventElement.dataset.type;
+        const isRecurring = eventElement.dataset.isRecurring === "true";
+        const recurringId = eventElement.dataset.recurringId;
+
+        if (removeAll && isRecurring) {
+            // Fjern alle gentagelser
+            // 1. Fjern fra recurringEvents
+            const reccuringIndex = recurringEvents.findIndex(event => event.recurringId === recurringId);
+            if (index !== -1) {
+                recurringEvents.splice(reccuringIndex, 1); // Fjern fra gentagende events
+            }
+
+            // 2. Fjern alle forekomster af dette gentagende event fra `events`
+            for (const key in events) {
+                events[key] = events[key].filter(event => event.recurringId !== recurringId); // Filtrer events, der matcher recurringId
+            }
+        } else {
+            // Fjern kun denne forekomst
+            events[date] = events[date].filter(event => event.text !== eventText || event.type !== eventType); // Fjern den valgte event
+        }
+
+        // Fjern fra den visuelle liste
+        eventElement.remove();
+
+        // Opdater kalenderen for at fjerne markeringen
+        renderCalendar(currentDate);
+    }
+
+
 
     // Funktion til at lukke modal
     function closeModal() {
@@ -90,6 +161,8 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("close-modal").addEventListener("click", closeModal);
 
     function renderCalendar(date) {
+        applyRecurringEvents(); // Opdater gentagende begivenheder
+
         const year = date.getFullYear();
         const month = date.getMonth();
         const firstDay = (new Date(year, month, 1).getDay() + 6) % 7; // Start på mandag
@@ -136,6 +209,39 @@ document.addEventListener('DOMContentLoaded', function () {
             dayDiv.classList.add('fade');
             daysContainer.appendChild(dayDiv);
         }
+    }
+
+    function applyRecurringEvents() {
+        const today = new Date();
+        const currentYear = today.getFullYear();
+        const currentMonth = today.getMonth();
+
+        recurringEvents.forEach(event => {
+            const { startDate, text, type } = event;
+            const [startYear, startMonth, startDay] = startDate.split('-').map(Number);
+
+            let date = new Date(startYear, startMonth - 1, startDay);
+
+            // Gå gennem hver uge, indtil vi når slutningen af den viste måned
+            while (date.getFullYear() <= currentYear || (date.getFullYear() === currentYear && date.getMonth() <= currentMonth)) {
+                const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+
+                // opretter datoen hvis den ikke findes
+                if (!events[formattedDate]) {
+                    events[formattedDate] = [];
+                }
+
+                // tjekker om begivnheden allerede er tilføjet
+                const isEventAlreadyAdded = events[formattedDate].some(e=> e.text === text && e.type === type);
+
+                if (!isEventAlreadyAdded) {
+                    events[formattedDate].push({text, type });
+                }
+
+                // Flyt til næste uge
+                date.setDate(date.getDate() + 7);
+            }
+        });
     }
 
     prevButton.addEventListener('click', function () {
