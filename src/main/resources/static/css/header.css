@@ -54,6 +54,7 @@
 .hlist ul a, .login-signup a{
     text-decoration: none;
     color: white;
+    transition: transform 0.45s ease, color 0.45s ease;
 }
 
 .hlist ul a:hover, .login-signup ul a:hover{

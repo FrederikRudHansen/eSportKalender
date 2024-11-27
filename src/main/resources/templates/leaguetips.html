@@ -9,7 +9,7 @@
     <title>GameHive - Hele Danmarks Gaming Platform!</title>
     <link rel="stylesheet" href="../css/body.css">
     <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/tips.css">
+    <link rel="stylesheet" href="../css/leaguetips.css">
 </head>
 <body>
     <header>
@@ -25,16 +25,17 @@
             <div class="hlist">
                 <ul>
                     <li><a th:href="@{/forside}">Forside</a></li>
-                    <li><a th:href="@{/tips}">Tips n' Tricks</a></li>
-                    <li><a th:href="@{/minprofil}">Min Profil</a></li>
+                    <li><a th:href="@{/PLACEHOLDER}">PLACEHOLDER</a></li>
+                    <li><a th:href="@{/PLACEHOLDER}">Min Profil</a></li>
                 </ul>
             </div>
             <div class="dropdown">
-                <button class="dropbtn">Spil</button>
+                <button class="dropbtn">Tips n' Tricks</button>
                 <div class="dropdown-content">
-                    <a href="#">League of Legends</a>
+                    <a th:href="@{/leaguetips}">League of Legends</a>
+                    <a th:href="@{/csgotips}">CSGO</a>
+                    <a th:href="@{/baldurstips}">Baldur's Gate III</a>
                     <a href="#">Valorant</a>
-                    <a href="#">CSGO</a>
                     <a href="#">Smite</a>
                     <a href="#">TFT</a>
                     <a href="#">Warhammer 40k Tacticus</a>
@@ -43,7 +44,7 @@
             <div class="login-signup">
                 <ul>
                     <li><a th:href="@{/login}">Login</a></li>
-                    <li><a th:href="@{/signup}">Signup</a></li>
+                    <li><a th:href="@{/register}">Signup</a></li>
                 </ul>
             </div>
         </div>
