@@ -1,6 +1,6 @@
 package org.example.esportkalendereks.controller;
 
-import org.example.esportkalendereks.service.playerService;
+import org.example.esportkalendereks.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class LoginController {
 
     @Autowired
-    private playerService playerService; // Service, der håndterer databasekald
+    private PlayerService playerService; // Service, der håndterer databasekald
 
     @PostMapping("/login")
     public String login(@RequestParam String email, @RequestParam String password, Model model) {

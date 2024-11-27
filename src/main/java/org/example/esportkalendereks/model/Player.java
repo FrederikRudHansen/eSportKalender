@@ -3,11 +3,11 @@ package org.example.esportkalendereks.model;
 import jakarta.persistence.*;
 
 @Entity
-public class player {
+public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int ID;
+    int id;
 
     @Column(unique = true)
     String email;
@@ -24,12 +24,10 @@ public class player {
     String rank;
 
     public int getID() {
-        return ID;
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
-    }
+
 
     public String getEmail() {
         return email;

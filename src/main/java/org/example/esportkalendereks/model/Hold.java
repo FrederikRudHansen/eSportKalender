@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class hold {
+public class Hold {
 
     @Id
     int holdID;

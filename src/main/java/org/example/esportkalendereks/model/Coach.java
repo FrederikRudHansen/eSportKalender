@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class coach {
+public class Coach {
 
     @Id
     int ID;

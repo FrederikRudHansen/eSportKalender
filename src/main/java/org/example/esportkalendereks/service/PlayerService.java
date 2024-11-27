@@ -1,12 +1,13 @@
 package org.example.esportkalendereks.service;
 
+import org.example.esportkalendereks.model.Player;
 import org.example.esportkalendereks.model.player;
 import org.example.esportkalendereks.repository.playerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class playerService {
+public class PlayerService {
 
     @Autowired
     private playerRepo playerRepository; // Dit repository, der kommunikerer med databasen
@@ -26,7 +27,7 @@ public class playerService {
     }
 
     // Gem en ny spiller
-    public void savePlayer(player newPlayer) {
+    public void savePlayer(Player newPlayer) {
         playerRepository.save(newPlayer); // Gem spilleren i databasen
     }
 }

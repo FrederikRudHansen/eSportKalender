@@ -1,7 +1,7 @@
 package org.example.esportkalendereks.controller;
 
-import org.example.esportkalendereks.model.player;
-import org.example.esportkalendereks.service.playerService;
+import org.example.esportkalendereks.model.Player;
+import org.example.esportkalendereks.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class RegisterController {
 
     @Autowired
-    private playerService playerService; // Service, der håndterer databasekald
+    private PlayerService playerService; // Service, der håndterer databasekald
 
     // GET metode til at vise registreringsformularen
     @GetMapping("/register")
@@ -30,7 +30,7 @@ public class RegisterController {
             return "register"; // Hvis emailen er registreret, vis fejl og forbliv på registreringssiden
         }
 
-        player newPlayer = new player();
+        Player newPlayer = new Player();
         newPlayer.setEmail(email);
         newPlayer.setPassword(password);
         playerService.savePlayer(newPlayer);  // Gem den nye spiller

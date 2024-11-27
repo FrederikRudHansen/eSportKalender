@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-public class begivenheder {
+public class Begivenheder {
 
     @Id
     int id;
