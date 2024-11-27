@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,9 +24,9 @@
             </div>
             <div class="hlist">
                 <ul>
-                    <li><a href="forside.html">Forside </a></li>
-                    <li><a href="tips.html">Tips n' Tricks</a></li>
-                    <li><a href="???">Min Profil</a></li>
+                    <li><a th:href="@{/forside}">Forside</a></li>
+                    <li><a th:href="@{/tips}">Tips n' Tricks</a></li>
+                    <li><a th:href="@{/minprofil}">Min Profil</a></li>
                 </ul>
             </div>
             <div class="dropdown">
@@ -42,8 +42,8 @@
             </div>
             <div class="login-signup">
                 <ul>
-                    <li><a href="login.html">Login </a></li>
-                    <li><a href="???">Sign Up</a></li>
+                    <li><a th:href="@{/login}">Login</a></li>
+                    <li><a th:href="@{/signup}">Signup</a></li>
                 </ul>
             </div>
         </div>

@@ -10,4 +10,14 @@ public class MyController {
     public String forside() {
         return "forside";
     }
+
+    @GetMapping("/tips") // This will now resolve to the forside.html template
+    public String tips() {
+        return "tips";
+    }
+
+    @GetMapping("/minprofil") // This will now resolve to the forside.html template
+    public String minprofil() {
+        return "minprofil";
+    }
 }
