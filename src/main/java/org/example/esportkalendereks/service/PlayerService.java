@@ -1,8 +1,9 @@
 package org.example.esportkalendereks.service;
 
 import org.example.esportkalendereks.model.Player;
-import org.example.esportkalendereks.model.player;
-import org.example.esportkalendereks.repository.playerRepo;
+import org.example.esportkalendereks.model.Player;
+import org.example.esportkalendereks.repository.PlayerRepo;
+import org.example.esportkalendereks.repository.PlayerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,11 +11,11 @@ import org.springframework.stereotype.Service;
 public class PlayerService {
 
     @Autowired
-    private playerRepo playerRepository; // Dit repository, der kommunikerer med databasen
+    private PlayerRepo playerRepository; // Dit repository, der kommunikerer med databasen
 
     // Valider spilleren mod databasen
     public boolean validatePlayer(String email, String password) {
-        player p = playerRepository.findByEmail(email); // Find spilleren i databasen med den givne email
+        Player p = playerRepository.findByEmail(email); // Find spilleren i databasen med den givne email
         if (p != null && p.getPassword().equals(password)) { // Tjek om adgangskoden matcher
             return true; // Spilleren findes og adgangskoden matcher
         }
