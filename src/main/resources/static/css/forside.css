@@ -1,19 +1,5 @@
-body{
-    background: linear-gradient(to bottom, #333333, black);
-    margin: 0;
-    height: 55rem;
-
-    font-size: 1.8rem;
-    font-family: "Ubuntu", sans-serif;
-    color: white;
-    overflow: auto;
-}
-body::-webkit-scrollbar {
-    display: none; /* Hides the scrollbar */
-}
-
 .kalender {
-    background-color: blue;
+    background-color: black;
 
     max-width: calc(100% - 10rem);
     height: 47%;
@@ -25,7 +11,7 @@ body::-webkit-scrollbar {
 }
 
 .stats {
-    background-color: blue;
+    background-color: black;
 
     max-width: calc(100% - 10rem);
     height: 30%;

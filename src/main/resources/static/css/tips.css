@@ -1,0 +1,12 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+.box {
+    background-color: red;
+    text-align: center;
+    padding: 1.5rem;
+    height: 15rem;
+    width: 10rem;
+}
