@@ -26,7 +26,7 @@ body{
     max-width: 100%;
 }
 
-.hejmsg, .hejmsg:hover{
+.hejmsg{
     display: flex;
     align-items: center;
     width: 10rem;
@@ -61,19 +61,19 @@ body{
     margin-left: -3rem;
 }
 
-.hlist ul a{
+.hlist ul a, .login-signup a{
     text-decoration: none;
     color: white;
 }
 
-.hlist ul a:hover{
+.hlist ul a:hover, .login-signup ul a:hover{
     color: #FFA16E; /*#fd5d56*/
 }
 
 .dropdown {
     display: inline-block;
     position: absolute;
-    left: 88%;
+    left: 85%;
     top: 2.5%;
 }
 
@@ -114,4 +114,20 @@ body{
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+.login-signup ul{
+    text-decoration: none;
+    list-style: none;
+    color: white;
+     font-size: medium;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    margin-left: -5.5rem;
+    margin-right: 1.5rem;
+    height: 3rem;
+    width: 3.5rem;
 }
