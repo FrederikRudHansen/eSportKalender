@@ -40,15 +40,15 @@
 }
 
 .hlist ul li{
-    margin-right: 4rem;
+    margin-right: 3.5rem;
 }
 
 .hlist ul li:last-child{
-    margin-right: 8rem;
+    margin-right: 9rem;
 }
 
 .hlist ul li:first-child{
-    margin-left: -3rem;
+    margin-left: -8rem;
 }
 
 .hlist ul a, .login-signup a{
@@ -64,7 +64,7 @@
 .dropdown {
     display: inline-block;
     position: absolute;
-    left: 85%;
+    left: 78%;
     top: 2.5%;
 }
 
