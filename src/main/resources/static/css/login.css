@@ -86,15 +86,29 @@ input[type="submit"]:hover {
 
 }
 
-/* Opret Bruger-knap */
+/* Tilføj styling til knapcontaineren */
+.button-container {
+    display: flex; /* Placer elementerne på en linje */
+    justify-content: space-between; /* Gør mellemrum mellem knapperne */
+    gap: 10px; /* Tilføj mellemrum mellem knapperne */
+    margin-top: 10px;
+}
+
+/* Stil knapperne */
 input[type="button"] {
     background-color: #007BFF;
     color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    flex: 1; /* Gør dem lige store */
 }
 
 input[type="button"]:hover {
     background-color: #0056b3;
 }
+
 
 .error {
     color: red;
