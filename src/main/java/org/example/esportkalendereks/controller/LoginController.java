@@ -1,5 +1,6 @@
 package org.example.esportkalendereks.controller;
 
+import jakarta.servlet.http.HttpSession;
 import org.example.esportkalendereks.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +16,7 @@ public class LoginController {
     private PlayerService PlayerService; // Service, der håndterer databasekald
 
     @PostMapping("/login")
-    public String login(@RequestParam String email, @RequestParam String password, Model model) {
+    public String login(@RequestParam String email, @RequestParam String password, Model model, HttpSession session) {
         // Tjek om spilleren findes i databasen med den angivne email og password
         if (PlayerService.validatePlayer(email, password)) {
             // Hvis login er korrekt, omdiriger til forsiden
@@ -31,4 +32,11 @@ public class LoginController {
     public String loginForm() {
         return "login"; // Returner login-siden, hvis der er en GET-anmodning
     }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/login"; // Gå tilbage til login-siden
+    }
+
 }
