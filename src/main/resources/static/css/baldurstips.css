@@ -1,0 +1,15 @@
+body{
+    height: 40rem;
+}
+.piccontainer{
+    width: 100%;
+    margin-top: 3%;
+    display: flex;
+    justify-content:center;
+    height: 30rem;
+}
+
+#bg3pic{
+    width: 90%;
+    height: auto;
+}
