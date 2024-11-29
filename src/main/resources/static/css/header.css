@@ -8,12 +8,14 @@
 }
 
 .logocontainer{
-    width: 25rem;
-    margin-left: 2rem;
+    width: 20rem;
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
 }
 
 #logo{
-    max-width: 100%;
+    max-width: 115%;
 }
 
 .hejmsg{
