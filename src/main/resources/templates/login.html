@@ -20,17 +20,19 @@
 <div>
     <!-- Login Form -->
     <div class="form-og-knapper">
-        <form id="loginform" th:action="@{/login}" method="post">
+        <!-- Login Form -->
+        <form id="loginForm" th:action="@{/login}" method="post">
             <input type="email" name="email" placeholder="Email" required>
             <input type="password" name="password" placeholder="Kodeord" required>
             <input type="submit" value="Login">
+
+            <!-- Knapper i container -->
+            <div class="button-container">
+                <!-- Opret Player -->
+                <input type="button" value="Opret Bruger"
+                       th:onclick="|window.location.href='@{/register}'|">
+            </div>
         </form>
-        <div class="knapcontainer">
-            <input type="button" class="regknap" value="Opret Player"
-                   th:onclick="|window.location.href='@{/register}'|">
-            <input type="button" class="regknap" value="Opret Coach"
-                   th:onclick="|window.location.href='@{/registerCoach}'|">
-        </div>
     </div>
 </div>
 <div th:if="${error}" class="error">

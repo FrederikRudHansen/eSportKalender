@@ -18,7 +18,7 @@
     <form th:action="@{/register}" method="post">
         <input type="email" name="email" placeholder="Email" required>
         <input type="password" name="password" placeholder="Kodeord" required>
-        <input type="submit" value="Opret Player">
+        <input type="submit" value="Opret Bruger">
     </form>
     <div th:if="${error}" class="error">
         <p th:text="${error}"></p>
