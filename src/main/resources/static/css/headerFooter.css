@@ -53,13 +53,13 @@
     margin-left: -8rem;
 }
 
-.hlist ul a, .login-signup a{
+.hlist ul a, .login-signup a, .container1 a{
     text-decoration: none;
     color: white;
     transition: transform 0.45s ease, color 0.45s ease;
 }
 
-.hlist ul a:hover, .login-signup ul a:hover{
+.hlist ul a:hover, .login-signup ul a:hover, .container1 ul a:hover{
     text-decoration: underline;
     color: #FFA16E;
 }
@@ -120,7 +120,7 @@
     text-decoration: none;
     list-style: none;
     color: white;
-     font-size: medium;
+    font-size: medium;
 
     display: flex;
     flex-direction: column;
@@ -156,15 +156,5 @@
     align-items:flex-start;
     gap: 1.5rem;
     list-style: none;
-}
-
-.container1 ul a{
-    text-decoration: none;
     color: white;
-    transition: transform 0.45s ease, color 0.45s ease;
 }
-
-.container1 ul a:hover{
-    color: #FFA16E
-}
-
