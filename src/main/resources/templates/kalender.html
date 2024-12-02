@@ -2,39 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar App Vanilla JS</title>
+    <link th:href="@{/css/kalender.css}" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/kalender.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <title>kalender</title>
 </head>
 <body>
-<div class="calendar">
-    <div class="header">
-        <div id="prev" class="btn"><i class="fa-solid fa-arrow-left"></i></div>
-        <div id="month-year"></div>
-        <div id="next" class="btn"><i class="fa-solid fa-arrow-right"></i></div>
+
+<div id="container">
+    <div id="header">
+        <div id="monthDisplay"></div>
+        <div>
+            <button id="backButton">Back</button>
+            <button id="nextButton">Next</button>
+        </div>
     </div>
-    <div class="weekdays">
-        <div>Man</div>
-        <div>Tir</div>
-        <div>Ons</div>
-        <div>Tor</div>
-        <div>Fre</div>
-        <div>Lør</div>
-        <div>Søn</div>
+
+    <div id="weekdays">
+        <div>Sunday</div>
+        <div>Monday</div>
+        <div>Tuesday</div>
+        <div>Wednesday</div>
+        <div>Thursday</div>
+        <div>Friday</div>
+        <div>Saturday</div>
     </div>
-    <div class="days" id="days"></div>
+
+    <div id="calendar"></div>
 </div>
-<div id="event-modal" style="display: none;">
-    <div class="modal-content">
-        <h3>Tilføj begivenhed</h3>
-        <p id="selected-date"></p>
-        <input type="text" id="event-input" placeholder="Indtast begivenhed" />
-        <button id="save-event">Gem</button>
-        <button id="close-modal">Luk</button>
-    </div>
+
+<div id="newEventModal">
+    <h2>New Event</h2>
+
+    <input id="eventTitleInput" placeholder="Event Title" />
+
+    <label>
+        Gentag ugentligt:
+        <input type="checkbox" id="repeatCheckbox">
+    </label>
+
+    <button id="saveButton">Save</button>
+    <button id="cancelButton">Cancel</button>
 </div>
+
+<div id="deleteEventModal">
+    <h2>Event</h2>
+
+    <p id="eventText"></p>
+
+    <button id="deleteButton">Delete</button>
+    <button id="closeButton">Close</button>
+</div>
+
+<div id="modalBackDrop"></div>
 
 <script src="../static/javascript/kalender.js"></script>
+<script th:src="@{/javascript/kalender.js}" async defer></script>
 </body>
-
 </html>
