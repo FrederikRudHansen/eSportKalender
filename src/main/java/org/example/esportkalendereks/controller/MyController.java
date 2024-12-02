@@ -32,4 +32,16 @@ public class MyController {
         return "baldurstips";
     }
 
+    @GetMapping("/support")
+    public String support() {
+        return "support";
+    }
+
+    @GetMapping("/privatlivspolitik")
+    public String privatlivspolitik() {
+        return "privatlivspolitik";
+    }
+
+
+
 }
