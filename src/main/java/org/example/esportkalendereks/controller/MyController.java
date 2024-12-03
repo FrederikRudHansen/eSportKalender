@@ -42,6 +42,11 @@ public class MyController {
         return "privatlivspolitik";
     }
 
+    @GetMapping("/admin")
+    public String admin() {
+        return "admin";
+    }
+
 
 
 }

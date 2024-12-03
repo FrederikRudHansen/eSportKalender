@@ -17,6 +17,12 @@ public class LoginController {
 
     @PostMapping("/login")
     public String login(@RequestParam String email, @RequestParam String password, Model model, HttpSession session) {
+
+        if ("admin@admin".equals(email) && "admin".equals(password)) {
+            session.setAttribute("userRole", "admin");
+            return "redirect:/admin"; // Omdiriger til admin-dashboard
+        }
+
         // Tjek om spilleren findes i databasen med den angivne email og password
         if (PlayerService.validatePlayer(email, password)) {
             // Hvis login er korrekt, omdiriger til forsiden
