@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vis Profiler</title>
+    <link rel="stylesheet" href="../static/css/body.css">
+    <link rel="stylesheet" href="../static/css/header.css">
+    <link rel="stylesheet" href="../static/css/forside.css">
+    <link rel="stylesheet" href="../static/css/profil.css">
+    <link rel="stylesheet" href="../static/css/visProfiler.css">
+    <link th:href="@{/css/header.css}" rel="stylesheet">
+    <link th:href="@{/css/forside.css}" rel="stylesheet">
+    <link th:href="@{/css/body.css}" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="header">
+        <div class="logocontainer">
+            <a href="forside.html">
+                <img id="logo" src="../billeder/logo.png" alt="Logo">
+            </a>
+        </div>
+        <div class="hejmsg">Gamernes Platform!</div>
+        <div class="hlist">
+            <ul>
+                <li><a href="forside.html">Forside</a></li>
+                <li><a href="#">Samme</a></li>
+                <li><a href="profil.html">Min Profil</a></li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Tips n' Tricks</button>
+            <div class="dropdown-content">
+                <a href="#">League of Legends</a>
+                <a href="#">CSGO</a>
+                <a href="#">Baldur's Gate III</a>
+                <a href="#">Valorant</a>
+                <a href="#">Smite</a>
+                <a href="#">TFT</a>
+                <a href="#">Warhammer 40k Tacticus</a>
+            </div>
+        </div>
+        <div class="login-signup">
+            <ul>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Signup</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="saved-profiles">
+        <h1>Gemte Profiler</h1>
+        <div id="profile-container" class="profile-container"></div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer">
+        <p>© 2023 Gamernes Platform. Alle rettigheder forbeholdes.</p>
+    </div>
+</footer>
+
+<script src="../static/javascript/visProfiler.js"></script>
+<script th:src="@{/javascript/visProfiler.js}" async defer></script>
+</body>
+</html>
