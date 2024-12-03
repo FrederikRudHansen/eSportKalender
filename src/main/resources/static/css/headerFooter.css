@@ -1,0 +1,132 @@
+.header{
+    height: 5rem;
+    display: flex;
+    justify-content: left;
+
+    background-color: #282828;
+    box-shadow: 0 .3rem .5rem #fd5d56 /*#FBA074*/
+}
+
+.logocontainer{
+    width: 20rem;
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+#logo{
+    max-width: 115%;
+}
+
+.hejmsg{
+    display: flex;
+    align-items: center;
+    width: 10rem;
+    margin-left: 3rem;
+    background: linear-gradient(to bottom, #FDD446, #FE7996);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: default;
+}
+
+.hlist{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.hlist ul {
+    list-style: none;
+    display: flex;
+}
+
+.hlist ul li{
+    margin-right: 3.5rem;
+}
+
+.hlist ul li:last-child{
+    margin-right: 9rem;
+}
+
+.hlist ul li:first-child{
+    margin-left: -8rem;
+}
+
+.hlist ul a, .login-signup a{
+    text-decoration: none;
+    color: white;
+    transition: transform 0.45s ease, color 0.45s ease;
+}
+
+.hlist ul a:hover, .login-signup ul a:hover{
+    color: #FFA16E; /*#fd5d56*/
+}
+
+.dropdown {
+    display: inline-block;
+    position: absolute;
+    left: 78%;
+    top: 2.5%;
+}
+
+.dropbtn {
+    background-color: #fd5d56;
+    color: white;
+    padding: .7rem 1.4rem;
+    font-size: 1.2rem;
+    border-radius: 10rem;
+    border-style: outset;
+    border-width: .25rem;
+}
+
+.dropbtn:hover {
+    background-color: #f6342a;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    background-color: #282828;
+    width: max-content;
+    z-index: 1;
+    overflow: hidden;
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 1rem 1rem;
+    text-decoration: none;
+    display: block;
+    font-size: medium;
+}
+
+.dropdown-content a:hover {
+    background-color: #212121;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    align-items: center;
+}
+
+.login-signup ul{
+    text-decoration: none;
+    list-style: none;
+    color: white;
+     font-size: medium;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    margin-left: -5.5rem;
+    margin-right: 1.5rem;
+    height: 3rem;
+    width: 3.5rem;
+}

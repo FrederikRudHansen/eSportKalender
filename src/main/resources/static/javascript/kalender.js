@@ -7,12 +7,13 @@ const newEventModal = document.getElementById('newEventModal');
 const deleteEventModal = document.getElementById('deleteEventModal');
 const backDrop = document.getElementById('modalBackDrop');
 const eventTitleInput = document.getElementById('eventTitleInput');
+const repeatCheckbox = document.getElementById('repeatCheckbox'); // Checkbox for gentagelser
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 function openModal(date) {
     clicked = date;
 
-    const eventForDay = events.find(e => e.date === clicked);
+    const eventForDay = events.find(e => e.date === clicked || (e.repeat && isRepeatedEvent(e, clicked)));
 
     if (eventForDay) {
         document.getElementById('eventText').innerText = eventForDay.title;
@@ -22,6 +23,14 @@ function openModal(date) {
     }
 
     backDrop.style.display = 'block';
+}
+
+function isRepeatedEvent(event, date) {
+    const eventDate = new Date(event.date);
+    const checkDate = new Date(date);
+    const diffDays = Math.floor((checkDate - eventDate) / (1000 * 60 * 60 * 24));
+    // Kontroller, om datoen ligger præcis et multiplum af 7 dage fra startdatoen
+    return event.repeat && diffDays % 7 === 0 && diffDays >= 0;
 }
 
 function load() {
@@ -51,7 +60,7 @@ function load() {
 
     calendar.innerHTML = '';
 
-    for(let i = 1; i <= paddingDays + daysInMonth; i++) {
+    for (let i = 1; i <= paddingDays + daysInMonth; i++) {
         const daySquare = document.createElement('div');
         daySquare.classList.add('day');
 
@@ -59,7 +68,8 @@ function load() {
 
         if (i > paddingDays) {
             daySquare.innerText = i - paddingDays;
-            const eventForDay = events.find(e => e.date === dayString);
+
+            const eventForDay = events.find(e => e.date === dayString || (e.repeat && isRepeatedEvent(e, dayString)));
 
             if (i - paddingDays === day && nav === 0) {
                 daySquare.id = 'currentDay';
@@ -83,6 +93,7 @@ function load() {
 
 function closeModal() {
     eventTitleInput.classList.remove('error');
+    repeatCheckbox.checked = false;
     newEventModal.style.display = 'none';
     deleteEventModal.style.display = 'none';
     backDrop.style.display = 'none';
@@ -95,10 +106,28 @@ function saveEvent() {
     if (eventTitleInput.value) {
         eventTitleInput.classList.remove('error');
 
-        events.push({
+        // Tilføj event og håndter gentagelse
+        const newEvent = {
             date: clicked,
             title: eventTitleInput.value,
-        });
+            repeat: repeatCheckbox.checked,
+        };
+
+        events.push(newEvent);
+
+        // Hvis gentagelse, tilføj events hver 7. dag
+        if (repeatCheckbox.checked) {
+            let startDate = new Date(clicked);
+            const endDate = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0); // Slut på måneden
+            while (startDate <= endDate) {
+                startDate.setDate(startDate.getDate() + 7);
+                const repeatDate = startDate.toLocaleDateString('en-us');
+                events.push({
+                    ...newEvent,
+                    date: repeatDate,
+                });
+            }
+        }
 
         localStorage.setItem('events', JSON.stringify(events));
         closeModal();
@@ -108,10 +137,19 @@ function saveEvent() {
 }
 
 function deleteEvent() {
-    events = events.filter(e => e.date !== clicked);
-    localStorage.setItem('events', JSON.stringify(events));
+    // Find eventet for den aktuelle dato
+    const eventForDay = events.find(e => e.date === clicked || (e.repeat && isRepeatedEvent(e, clicked)));
+
+    if (eventForDay) {
+        // Filtrer events baseret på titel og slet alle med samme titel
+        const eventTitleToDelete = eventForDay.title;
+        events = events.filter(e => e.title !== eventTitleToDelete);
+        localStorage.setItem('events', JSON.stringify(events));
+    }
+
     closeModal();
 }
+
 
 function initButtons() {
     document.getElementById('nextButton').addEventListener('click', () => {
