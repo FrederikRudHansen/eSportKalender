@@ -1,7 +1,6 @@
 package org.example.esportkalendereks.service;
 
 import org.example.esportkalendereks.model.Begivenheder;
-import org.example.esportkalendereks.model.Hold;
 import org.example.esportkalendereks.repository.BegivenhederRepository;
 import org.springframework.stereotype.Service;
 
@@ -16,12 +15,13 @@ public class BegivenhederService {
         this.begivenhederRepository = begivenhederRepository;
     }
 
-    public Begivenheder opretBegivenhed(Begivenheder begivenhed) {
-        return begivenhederRepository.save(begivenhed);
+    // Find begivenheder baseret på holdId
+    public List<Begivenheder> findByHoldId(Long holdId) {
+        return begivenhederRepository.findByHold_HoldID(holdId);
     }
 
-    public List<Begivenheder> findByHold(Hold hold) {
-        return begivenhederRepository.findByHold(hold);
+    public Begivenheder opretBegivenhed(Begivenheder begivenhed) {
+        return begivenhederRepository.save(begivenhed);
     }
 
     public void sletBegivenhed(int id) {

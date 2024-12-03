@@ -1,41 +1,65 @@
-let nav = 0;
-let clicked = null;
-let events = localStorage.getItem('events') ? JSON.parse(localStorage.getItem('events')) : [];
+const API_URL = '/api/calendar'; // Base URL til din back-end API
+
+let nav = 0; // Holder styr på månedsskift (0 = denne måned)
+let clicked = null; // Holder styr på den valgte dag
+let events = []; // Gemmer hentede events
 
 const calendar = document.getElementById('calendar');
+const monthDisplay = document.getElementById('monthDisplay');
 const newEventModal = document.getElementById('newEventModal');
 const deleteEventModal = document.getElementById('deleteEventModal');
 const backDrop = document.getElementById('modalBackDrop');
 const eventTitleInput = document.getElementById('eventTitleInput');
-const repeatCheckbox = document.getElementById('repeatCheckbox'); // Checkbox for gentagelser
+const repeatCheckbox = document.getElementById('repeatCheckbox');
+
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
+// Hent events fra back-end
+async function fetchEvents(teamId, month, year) {
+    try {
+        const response = await fetch(`${API_URL}/${teamId}?month=${month + 1}&year=${year}`);
+        events = await response.json();
+        loadCalendar();
+    } catch (error) {
+        console.error('Error fetching events:', error);
+    }
+}
+
+// Luk modal
+function closeModal() {
+    eventTitleInput.classList.remove('error');
+    newEventModal.style.display = 'none';
+    deleteEventModal.style.display = 'none';
+    backDrop.style.display = 'none';
+    eventTitleInput.value = '';
+    repeatCheckbox.checked = false;
+    clicked = null;
+    loadCalendar();
+}
+
+// Åben modal til ny event
 function openModal(date) {
     clicked = date;
-
-    const eventForDay = events.find(e => e.date === clicked || (e.repeat && isRepeatedEvent(e, clicked)));
-
-    if (eventForDay) {
-        document.getElementById('eventText').innerText = eventForDay.title;
-        deleteEventModal.style.display = 'block';
-    } else {
-        newEventModal.style.display = 'block';
-    }
-
+    newEventModal.style.display = 'block';
     backDrop.style.display = 'block';
 }
 
-function isRepeatedEvent(event, date) {
-    const eventDate = new Date(event.date);
-    const checkDate = new Date(date);
-    const diffDays = Math.floor((checkDate - eventDate) / (1000 * 60 * 60 * 24));
-    // Kontroller, om datoen ligger præcis et multiplum af 7 dage fra startdatoen
-    return event.repeat && diffDays % 7 === 0 && diffDays >= 0;
+// Åben modal til sletning af event
+function openDeleteModal(event) {
+    document.getElementById('eventText').innerText = event.title;
+    deleteEventModal.style.display = 'block';
+    backDrop.style.display = 'block';
+
+    document.getElementById('deleteButton').onclick = async function () {
+        await fetch(`${API_URL}/${event.id}`, { method: 'DELETE' });
+        events = events.filter(e => e.id !== event.id);
+        closeModal();
+    };
 }
 
-function load() {
+// Render kalenderen
+function loadCalendar() {
     const dt = new Date();
-
     if (nav !== 0) {
         dt.setMonth(new Date().getMonth() + nav);
     }
@@ -46,17 +70,10 @@ function load() {
 
     const firstDayOfMonth = new Date(year, month, 1);
     const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-    const dateString = firstDayOfMonth.toLocaleDateString('en-us', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'numeric',
-        day: 'numeric',
-    });
+    const dateString = firstDayOfMonth.toLocaleDateString('en-us', { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' });
     const paddingDays = weekdays.indexOf(dateString.split(', ')[0]);
 
-    document.getElementById('monthDisplay').innerText =
-        `${dt.toLocaleDateString('en-us', { month: 'long' })} ${year}`;
+    monthDisplay.innerText = `${dt.toLocaleDateString('en-us', { month: 'long' })} ${year}`;
 
     calendar.innerHTML = '';
 
@@ -64,22 +81,24 @@ function load() {
         const daySquare = document.createElement('div');
         daySquare.classList.add('day');
 
-        const dayString = `${month + 1}/${i - paddingDays}/${year}`;
+        const dayString = `${year}-${month + 1}-${i - paddingDays}`;
 
         if (i > paddingDays) {
             daySquare.innerText = i - paddingDays;
 
-            const eventForDay = events.find(e => e.date === dayString || (e.repeat && isRepeatedEvent(e, dayString)));
-
+            const dayEvents = events.filter(e => e.date === dayString);
             if (i - paddingDays === day && nav === 0) {
                 daySquare.id = 'currentDay';
             }
 
-            if (eventForDay) {
-                const eventDiv = document.createElement('div');
-                eventDiv.classList.add('event');
-                eventDiv.innerText = eventForDay.title;
-                daySquare.appendChild(eventDiv);
+            if (dayEvents.length > 0) {
+                dayEvents.forEach(event => {
+                    const eventDiv = document.createElement('div');
+                    eventDiv.classList.add('event');
+                    eventDiv.innerText = event.title;
+                    eventDiv.onclick = () => openDeleteModal(event);
+                    daySquare.appendChild(eventDiv);
+                });
             }
 
             daySquare.addEventListener('click', () => openModal(dayString));
@@ -91,82 +110,44 @@ function load() {
     }
 }
 
-function closeModal() {
-    eventTitleInput.classList.remove('error');
-    repeatCheckbox.checked = false;
-    newEventModal.style.display = 'none';
-    deleteEventModal.style.display = 'none';
-    backDrop.style.display = 'none';
-    eventTitleInput.value = '';
-    clicked = null;
-    load();
-}
-
-function saveEvent() {
+// Gem nyt event
+document.getElementById('saveButton').addEventListener('click', async () => {
     if (eventTitleInput.value) {
         eventTitleInput.classList.remove('error');
 
-        // Tilføj event og håndter gentagelse
         const newEvent = {
-            date: clicked,
             title: eventTitleInput.value,
-            repeat: repeatCheckbox.checked,
+            date: clicked,
+            repeatWeekly: repeatCheckbox.checked,
         };
 
+        await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newEvent),
+        });
+
         events.push(newEvent);
-
-        // Hvis gentagelse, tilføj events hver 7. dag
-        if (repeatCheckbox.checked) {
-            let startDate = new Date(clicked);
-            const endDate = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0); // Slut på måneden
-            while (startDate <= endDate) {
-                startDate.setDate(startDate.getDate() + 7);
-                const repeatDate = startDate.toLocaleDateString('en-us');
-                events.push({
-                    ...newEvent,
-                    date: repeatDate,
-                });
-            }
-        }
-
-        localStorage.setItem('events', JSON.stringify(events));
         closeModal();
     } else {
         eventTitleInput.classList.add('error');
     }
-}
+});
 
-function deleteEvent() {
-    // Find eventet for den aktuelle dato
-    const eventForDay = events.find(e => e.date === clicked || (e.repeat && isRepeatedEvent(e, clicked)));
+// Luk modal ved annullering
+document.getElementById('cancelButton').addEventListener('click', closeModal);
+document.getElementById('closeButton').addEventListener('click', closeModal);
+backDrop.addEventListener('click', closeModal);
 
-    if (eventForDay) {
-        // Filtrer events baseret på titel og slet alle med samme titel
-        const eventTitleToDelete = eventForDay.title;
-        events = events.filter(e => e.title !== eventTitleToDelete);
-        localStorage.setItem('events', JSON.stringify(events));
-    }
+// Håndter månedsskift
+document.getElementById('backButton').addEventListener('click', () => {
+    nav--;
+    fetchEvents(1, new Date().getMonth() + nav, new Date().getFullYear());
+});
+document.getElementById('nextButton').addEventListener('click', () => {
+    nav++;
+    fetchEvents(1, new Date().getMonth() + nav, new Date().getFullYear());
+});
 
-    closeModal();
-}
-
-
-function initButtons() {
-    document.getElementById('nextButton').addEventListener('click', () => {
-        nav++;
-        load();
-    });
-
-    document.getElementById('backButton').addEventListener('click', () => {
-        nav--;
-        load();
-    });
-
-    document.getElementById('saveButton').addEventListener('click', saveEvent);
-    document.getElementById('cancelButton').addEventListener('click', closeModal);
-    document.getElementById('deleteButton').addEventListener('click', deleteEvent);
-    document.getElementById('closeButton').addEventListener('click', closeModal);
-}
-
-initButtons();
-load();
+// Indlæs kalender ved start
+fetchEvents(1, new Date().getMonth(), new Date().getFullYear());
