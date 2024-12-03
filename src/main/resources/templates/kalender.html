@@ -1,62 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendar App Vanilla JS</title>
     <link th:href="@{/css/kalender.css}" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/kalender.css">
+    <link th:href="@{/css/header.css}" rel="stylesheet">
+    <link th:href="@{/css/footer.css}" rel="stylesheet">
+    <link th:href="@{/css/forside.css}" rel="stylesheet">
 </head>
 <body>
-
-<div id="container">
-    <div id="header">
-        <div id="monthDisplay"></div>
-        <div>
-            <button id="backButton">Back</button>
-            <button id="nextButton">Next</button>
+<header class="header">
+        <div class="logocontainer">
+            <a href="forside.html">
+                <img id="logo" src="../static/billeder/logo.png" alt="Logo">
+            </a>
         </div>
+        <div class="hejmsg">Gamernes Platform!</div>
+        <div class="hlist">
+            <ul>
+                <li><a href="forside.html">Forside</a></li>
+                <li><a href="#">Samme</a></li>
+                <li><a href="profil.html">Min Profil</a></li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Tips n' Tricks</button>
+            <div class="dropdown-content">
+                <a href="#">League of Legends</a>
+                <a href="#">CSGO</a>
+                <a href="#">Baldur's Gate III</a>
+                <a href="#">Valorant</a>
+                <a href="#">Smite</a>
+                <a href="#">TFT</a>
+                <a href="#">Warhammer 40k Tacticus</a>
+            </div>
+        </div>
+        <div class="login-signup">
+            <ul>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Signup</a></li>
+            </ul>
+        </div>
+</header>
+
+
+<main>
+    <div id="container">
+        <div id="header">
+            <div id="monthDisplay"></div>
+            <div>
+                <button id="backButton">Back</button>
+                <button id="nextButton">Next</button>
+            </div>
+        </div>
+
+        <div id="weekdays">
+            <div>Sunday</div>
+            <div>Monday</div>
+            <div>Tuesday</div>
+            <div>Wednesday</div>
+            <div>Thursday</div>
+            <div>Friday</div>
+            <div>Saturday</div>
+        </div>
+
+        <div id="calendar"></div>
     </div>
 
-    <div id="weekdays">
-        <div>Sunday</div>
-        <div>Monday</div>
-        <div>Tuesday</div>
-        <div>Wednesday</div>
-        <div>Thursday</div>
-        <div>Friday</div>
-        <div>Saturday</div>
+    <div id="newEventModal">
+        <h2>New Event</h2>
+        <input id="eventTitleInput" placeholder="Event Title" />
+        <label>
+            Gentag ugentligt:
+            <input type="checkbox" id="repeatCheckbox">
+        </label>
+        <button id="saveButton">Save</button>
+        <button id="cancelButton">Cancel</button>
     </div>
 
-    <div id="calendar"></div>
-</div>
-
-<div id="newEventModal">
-    <h2>New Event</h2>
-
-    <input id="eventTitleInput" placeholder="Event Title" />
-
-    <label>
-        Gentag ugentligt:
-        <input type="checkbox" id="repeatCheckbox">
-    </label>
-
-    <button id="saveButton">Save</button>
-    <button id="cancelButton">Cancel</button>
-</div>
-
-<div id="deleteEventModal">
-    <h2>Event</h2>
-
-    <p id="eventText"></p>
-
-    <button id="deleteButton">Delete</button>
-    <button id="closeButton">Close</button>
-</div>
-
-<div id="modalBackDrop"></div>
-
-<script src="../static/javascript/kalender.js"></script>
-<script th:src="@{/javascript/kalender.js}" async defer></script>
+    <div id="deleteEventModal">
+        <h2>Event</h2>
+        <p id="eventText"></p>
+        <button id="deleteButton">Delete</button>
+        <button id="closeButton">Close</button>
+    </div>
+    <div id="modalBackDrop"></div>
+</main>
+<script th:src="@{/javascript/kalender.js}"></script>
 </body>
 </html>
