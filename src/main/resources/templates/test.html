@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forside - Gamernes Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Retro baggrundsgradient */
+        body {
+            background: linear-gradient(to bottom, #20003a, #330045) no-repeat;
+            font-family: sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Skjuler inputfeltet som standard */
+        .search-input {
+            display: none;
+            transform: scaleX(0);
+            transform-origin: top right;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        /* Når søgefeltet er aktivt */
+        .search-active .search-input {
+            display: block;
+            transform: scaleX(1);
+            margin-right: 5px;
+        }
+
+        .search-input input {
+            width: 0;
+            padding-left: 16px;
+            padding-right: 16px;
+            transition: width 0.3s ease-in-out;
+        }
+
+        /* Når inputfeltet er synligt */
+        .search-active .search-input input {
+            width: 200px; /* Søgefeltet bliver bredere */
+        }
+
+        /* Sørger for knapperne er godt adskilt */
+        .search-container {
+            margin-left: 20px; /* Øger afstanden mellem søgefelt og knapper */
+        }
+
+        /* Afstand mellem navbar elementer */
+        .navbar-container {
+            margin-left: 5px; /* Mere afstand på venstre side */
+            margin-right: 5px; /* Mere afstand på højre side */
+        }
+
+        .navbar-buttons {
+            margin-left: 100px; /* Afstand mellem knapper */
+        }
+
+        .nav-link {
+            padding-left: 5px;
+            padding-right: 50px;
+        }
+
+        /* Calendar Styles */
+        #calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .day {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            height: 100px;
+            box-sizing: border-box;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .day:hover {
+            background-color: #3e3e3e;
+        }
+
+        .day.current {
+            background-color: #4a90e2;
+            color: white;
+        }
+
+        .event {
+            font-size: 10px;
+            padding: 3px;
+            background-color: #f39c12;
+            color: white;
+            border-radius: 5px;
+            max-height: 55px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .day.empty {
+            background-color: transparent;
+            cursor: default;
+        }
+
+        #header {
+            padding: 10px;
+            color: #d36c6c;
+            font-size: 26px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #container {
+            width: 100%; /* Make the container fill the available width */
+            max-width: 1200px; /* Limit the maximum width */
+            background-color: #1c1c1c;
+            box-shadow: 0px 0rem 3rem #fd5d56;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 0 auto; /* Center the container */
+        }
+
+        #weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            background-color: #333;
+            color: #9b9b9b;
+            font-weight: bold;
+        }
+
+        #weekdays div {
+            padding: 10px;
+            text-align: center;
+        }
+
+        #newEventModal, #deleteEventModal {
+            display: none;
+            padding: 25px;
+            background-color: #f8f8f8;
+            box-shadow: 0px 0px 3px black;
+            border-radius: 5px;
+            width: 350px;
+            top: 100px;
+            left: calc(50% - 175px);
+            position: absolute;
+            font-family: sans-serif;
+            color: #333;
+        }
+
+        #eventTitleInput {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 25px;
+            border-radius: 3px;
+            outline: none;
+            border: 1px solid #ddd;
+        }
+
+        #cancelButton, #deleteButton {
+            background-color: #d36c6c;
+            color: white;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        #saveButton, #closeButton {
+            background-color: #4a90e2;
+            color: white;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #modalBackDrop {
+            display: none;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="bg-transparent border-b-4 border-pink-500 p-6">
+    <div class="container mx-auto flex justify-between items-center navbar-container">
+        <div class="text-yellow-400 text-xl font-bold">Logo</div>
+        <div class="flex space-x-8">
+            <a href="#" class="hover:text-pink-400 nav-link">Forside</a>
+            <a href="#" class="hover:text-pink-400 nav-link">Samme</a>
+            <a href="#" class="hover:text-pink-400 nav-link">Min Profil</a>
+        </div>
+        <div class="flex items-center navbar-buttons">
+            <a href="#" class="bg-pink-500 hover:bg-pink-400 text-white py-2 px-6 rounded-lg">Tips n' Tricks</a>
+            <div class="relative search-container flex items-center space-x-4">
+                <div class="search-icon cursor-pointer">
+                    <img src="https://your-image-url.com/your-image.png" alt="Søg" class="h-6 w-6">
+                </div>
+                <form action="#" method="GET" class="search-input flex justify-center items-center space-x-4">
+                    <input type="text" placeholder="Søg efter aktiviteter..." class="w-[0] px-4 py-2 rounded-md text-black focus:outline-none focus:ring focus:ring-pink-500" />
+                    <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-md">Søg</button>
+                </form>
+            </div>
+            <div class="space-x-4">
+                <a href="#" class="hover:text-pink-400 nav-link">Login</a>
+                <a href="#" class="hover:text-pink-400 nav-link">Signup</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero section -->
+<div class="container mx-auto mt-20 text-center">
+    <div class="relative bg-cover bg-center h-[400px] w-full mb-12" style="background-image: url('https://www.hyperplexed.com/images/tutorials/cool-mountains.svg');">
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="h-[200px] w-[200px] bg-gradient-to-b from-pink-600 to-transparent rounded-full"></div>
+        </div>
+    </div>
+
+    <div class="bg-black border-4 border-pink-500 mt-12 p-16 text-center">
+        <h1 class="text-xl text-yellow-400">KALENDER</h1>
+        <!-- Calendar -->
+        <div id="container">
+            <div id="header">
+                <div id="monthDisplay"></div>
+                <div>
+                    <button id="backButton">Back</button>
+                    <button id="nextButton">Next</button>
+                </div>
+            </div>
+            <div id="weekdays">
+                <div>Sunday</div>
+                <div>Monday</div>
+                <div>Tuesday</div>
+                <div>Wednesday</div>
+                <div>Thursday</div>
+                <div>Friday</div>
+                <div>Saturday</div>
+            </div>
+            <div id="calendar"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="newEventModal">
+    <h2>New Event</h2>
+    <input id="eventTitleInput" placeholder="Event Title" />
+    <button id="saveButton">Save</button>
+    <button id="cancelButton">Cancel</button>
+</div>
+
+<div id="deleteEventModal">
+    <h2>Event</h2>
+    <p id="eventText"></p>
+    <button id="deleteButton">Delete</button>
+    <button id="closeButton">Close</button>
+</div>
+
+<div id="modalBackDrop"></div>
+
+<script src="../static/javascript/kalender.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+/* Mit Hold-specifik styling */
+.team-section {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.team-section h1 {
+    color: #bf1d1d;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.team-section p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* Holdkort */
+.teams {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.team-card {
+    background-color: #1f1f1f;
+    border-radius: 8px;
+    padding: 15px;
+    width: 300px;
+    box-sizing: border-box;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.team-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.team-card h2 {
+    font-size: 18px;
+    color: #ffffff;
+    margin: 10px 0;
+}
+
+.team-card p {
+    font-size: 14px;
+    color: #bdbdbd;
+    margin: 10px 0;
+}
+
+.team-card button {
+    background-color: #bf1d1d;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.team-card button:hover {
+    background-color: #ff4d4d;
+}
