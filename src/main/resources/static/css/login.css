@@ -17,12 +17,12 @@ form {
     flex-direction: column;
     align-items: center;
     width: 300px;
+
 }
 
 /* Transparent input fields */
 input[type="email"],
 input[type="password"] {
-    border: none;
     border-bottom: 2px solid #ccc;
     background: transparent;
     outline: none;
@@ -32,6 +32,9 @@ input[type="password"] {
     margin: 10px 0;
     padding: 5px;
     box-sizing: border-box;
+    backdrop-filter: blur(30px);
+    box-shadow: 0px 0px 30px rgba(227, 228, 237, 0.37);
+    border: 2px solid rgba(255, 255, 255, 0.18);
 }
 
 /* Focus effect for input fields */
@@ -44,35 +47,42 @@ input[type="password"]:focus {
 input[type="submit"] {
     width: 100%;
     padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
     border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
     margin-top: 10px;
+    background: transparent;
+    backdrop-filter: blur(30px);
+    box-shadow: 0px 0px 30px rgba(227, 228, 237, 0.37);
+    border: 2px solid rgba(255, 255, 255, 0.18);
+
 }
 
 input[type="submit"]:hover {
-    background-color: #45a049;
+    backdrop-filter: blur(30px);
+    box-shadow: 0px 0px 30px rgba(227, 61, 148, 37);
+    border: 2px solid rgba(227, 61, 148, .18);;
 }
 
 /* Button styling */
 input[type="button"] {
     width: 100%;
     padding: 10px;
-    background-color: #007BFF;
+    background: transparent;
     color: white;
-    border: none;
     border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
     margin-top: 10px;
+    backdrop-filter: blur(30px);
+    box-shadow: 0px 0px 30px rgba(227, 228, 237, 0.37);
+    border: 2px solid rgba(255, 255, 255, 0.18);
 }
 
 input[type="button"]:hover {
-    background-color: #0056b3;
-}
+    backdrop-filter: blur(30px);
+    box-shadow: 0px 0px 30px rgba(227, 61, 148, 37);
+    border: 2px solid rgba(227, 61, 148, .18);;}
 
 /* Tilbage button */
 #Tilbage {
@@ -80,18 +90,21 @@ input[type="button"]:hover {
     top: 20px;
     right: 20px;
     color: white;
-    border: 0.15rem solid rgba(252,202,21,255);
-    background-color: black;
-    border-radius: 50%;
+    border-radius: 50% 10% 50% 10% / 10% 50% 10% 50%;
     padding: 0.8rem;
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
+    background: transparent;
+    backdrop-filter: blur(30px);
+    box-shadow: 0px 0px 30px rgba(227, 228, 237, 0.37);
+    border: 2px solid rgba(255, 255, 255, 0.18);
 }
 
 #Tilbage:hover {
-    background-color: rgba(252,202,21,255);
-    color: black;
+    backdrop-filter: blur(30px);
+    box-shadow: 0px 0px 30px rgba(227, 61, 148, 37);
+    border: 2px solid rgba(227, 61, 148, .18);;
 }
 
 /* Background and logo */
@@ -111,6 +124,7 @@ input[type="button"]:hover {
     transform: translateX(-50%);
     width: 200px;
     z-index: -1;
+    filter: drop-shadow(10px 7px 10px orange);
 }
 
 /* Error message styling */
@@ -120,3 +134,4 @@ input[type="button"]:hover {
     text-align: center;
     margin-top: 10px;
 }
+
