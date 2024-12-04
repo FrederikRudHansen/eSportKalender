@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+  <meta charset="UTF-8">
+  <title>GameHive - Hele Danmarks Gaming Platform!</title>
+  <link th:href="@{/css/body.css}" rel="stylesheet">
+  <link th:href="@{/css/headerFooter.css}" rel="stylesheet">
+  <link th:href="@{/css/tipsntricks.css}" rel="stylesheet">
+    <link href="../static/css/body.css" rel="stylesheet">
+    <link href="../static/css/headerFooter.css" rel="stylesheet">
+    <link href="../static/css/tipsntricks.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+      <div class="header">
+            <div class="logocontainer">
+                <a href="forside.html">
+                    <img id="logo" src="../static/billeder/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="hejmsg">
+              Gamernes Platform!
+            </div>
+          <div class="hlist">
+              <ul>
+                  <li><a th:href="@{/forside}">Forside</a></li>
+                  <li><a th:href="@{/tipsntricks}">Tips n' Tricks</a></li>
+                  <li><a th:href="@{/PLACEHOLDER}">Min Profil</a></li>
+              </ul>
+          </div>
+          <div class="dropdown">
+              <button class="dropbtn">Vælg Spil</button>
+              <div class="dropdown-content">
+                <a th:href="@{/leaguetips}">League of Legends</a>
+                <a th:href="@{/csgotips}">CSGO</a>
+                <a th:href="@{/baldurstips}">Baldur's Gate III</a>
+                <a href="#">Valorant</a>
+                <a href="#">Smite</a>
+                <a href="#">TFT</a>
+                <a href="#">Warhammer 40k Tacticus</a>
+              </div>
+          </div>
+          <div class="login-signup">
+              <ul>
+                <li><a th:href="@{/login}">Login</a></li>
+                <li><a th:href="@{/register}">Signup</a></li>
+              </ul>
+          </div>
+      </div>
+  </header>
+  <div class="cont1">
+      <div class="grid-container">
+          <div class="outline">
+              <div class="grid-item"><span class="overskrift1">CS2</span>
+                  <a href="../templates/cstips.html">
+                      <img class="pic" src="../static/tipspics/cs2.jpg" alt="CSGOPIC">
+                  </a>
+              </div>
+          </div>
+          <div class="outline">
+              <div class="grid-item"><span class="overskrift1">League of Legends</span>
+                  <a><img class="pic" src="../static/tipspics/lol.png" alt="LOLPIC"></a>
+              </div>
+          </div>
+          <div class="outline">
+              <div class="grid-item"><span class="overskrift1">TFT</span>
+                  <a><img class="pic" src="../static/tipspics/TFT.png" alt="TFTPIC"></a>
+              </div>
+          </div>
+          <div class="outline">
+              <div class="grid-item"><span class="overskrift1">Baldur's Gate III</span>
+                  <a><img class="pic" src="../static/tipspics/baldur.png" alt="BALDURSPIC"></a>
+              </div>
+          </div>
+          <div class="outline">
+              <div class="grid-item"><span class="overskrift2">Valorant</span>
+                  <a><img class="pic" src="../static/tipspics/valo.png" alt="VALOPIC"></a>
+              </div>
+          </div>
+          <div class="outline">
+              <div class="grid-item"><span class="overskrift2">Warhammer 40,000</span>
+                  <a><img class="pic" src="../static/tipspics/warhammer.png" alt="WARHAMMERPIC"></a>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <footer>
+      <div class="footercontainer">
+        <div class="container1">
+          <ul>
+            <li><a th:href="@{/support}">Support</a></li>
+            <li><a th:href="@{/privatlivspolitik}">Privatlivspolitik</a></li>
+          </ul>
+        </div>
+        <div class="container2">
+          GameHive™
+        </div>
+      </div>
+  </footer>
+</body>
+</html>
