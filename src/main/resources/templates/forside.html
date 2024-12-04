@@ -44,10 +44,21 @@
             </div>
             <div class="login-signup">
                 <ul>
-                    <li><a th:href="@{/login}">Login</a></li>
-                    <li><a th:href="@{/register}">Signup</a></li>
+                    <!-- Hvis brugeren er logget ind -->
+                    <li th:if="${session.userRole != null}">
+                        <a th:href="@{/logout}">Logout</a>
+                    </li>
+
+                    <!-- Hvis brugeren ikke er logget ind -->
+                    <li th:if="${session.userRole == null}">
+                        <a th:href="@{/login}">Login</a>
+                    </li>
+                    <li th:if="${session.userRole == null}">
+                        <a th:href="@{/register}">Signup</a>
+                    </li>
                 </ul>
             </div>
+
         </div>
     </header>
     <div class="kalender">
@@ -55,6 +66,9 @@
     </div>
     <div class="stats">
         STATS PLACEHOLDER??
+    </div>
+    <div id="loading-screen" class="loading-screen" style="display: none;">
+        <div class="spinner"></div>
     </div>
     <footer>
         <div class="footercontainer">
@@ -69,5 +83,22 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const logoutLink = document.querySelector('a[href="/logout"]');
+
+    if (logoutLink) {
+    logoutLink.addEventListener('click', function (event) {
+    event.preventDefault();
+    const loadingScreen = document.getElementById('loading-screen');
+    loadingScreen.style.display = 'flex';
+
+    setTimeout(() => {
+    window.location.href = logoutLink.href;
+    }, 2000);
+    });
+    }
+    });
+    </script>
 </body>
 </html>

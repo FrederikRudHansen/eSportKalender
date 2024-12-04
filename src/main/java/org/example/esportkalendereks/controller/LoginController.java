@@ -13,36 +13,34 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class LoginController {
 
     @Autowired
-    private PlayerService PlayerService; // Service, der håndterer databasekald
+    private PlayerService playerService;
 
     @PostMapping("/login")
     public String login(@RequestParam String email, @RequestParam String password, Model model, HttpSession session) {
 
+        // Admin-login
         if ("admin@admin".equals(email) && "admin".equals(password)) {
             session.setAttribute("userRole", "admin");
-            return "redirect:/admin"; // Omdiriger til admin-dashboard
+            return "redirect:/admin";
         }
 
-        // Tjek om spilleren findes i databasen med den angivne email og password
-        if (PlayerService.validatePlayer(email, password)) {
-            // Hvis login er korrekt, omdiriger til forsiden
+        if (playerService.validatePlayer(email, password)) {
+            session.setAttribute("userRole", "user");
             return "redirect:/forside";
         } else {
-            // Hvis login ikke er korrekt, vis fejlmeddelelse og bliv på login-siden
             model.addAttribute("error", "Ugyldigt login. Prøv igen.");
-            return "login"; // Vis login-siden igen
+            return "login";
         }
     }
 
     @GetMapping("/login")
     public String loginForm() {
-        return "login"; // Returner login-siden, hvis der er en GET-anmodning
+        return "login";
     }
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:/login"; // Gå tilbage til login-siden
+        return "redirect:/forside";
     }
-
 }
