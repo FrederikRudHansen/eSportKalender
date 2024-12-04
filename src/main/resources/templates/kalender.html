@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar App Vanilla JS</title>
+    <title>Calendar App</title>
     <link th:href="@{/css/headerFooter.css}" rel="stylesheet">
     <link th:href="@{/css/body.css}" rel="stylesheet">
     <link th:href="@{/css/kalender.css}" rel="stylesheet">
@@ -16,9 +16,7 @@
                 <img id="logo" src="../static/billeder/bogo.png" alt="Logo">
             </a>
         </div>
-        <div class="hejmsg">
-            Gamernes Platform!
-        </div>
+        <div class="hejmsg">Gamernes Platform!</div>
         <div class="hlist">
             <ul>
                 <li><a th:href="@{/forside}">Forside</a></li>
@@ -47,10 +45,10 @@
     </div>
 </header>
 
-<div id="kalender" class="kalender">
+<div id="kalender">
     <div id="header-kalender">
-        <div id="monthDisplay"></div>
-        <div>
+        <h2 id="monthDisplay">December 2024</h2>
+        <div class="navigation">
             <button id="backButton">Back</button>
             <button id="nextButton">Next</button>
         </div>
@@ -69,30 +67,25 @@
     <div id="calendar"></div>
 </div>
 
-<div id="newEventModal">
+<div id="newEventModal" style="display: none;">
     <h2>New Event</h2>
-
     <input id="eventTitleInput" placeholder="Event Title" />
-
     <label>
-        Gentag ugentligt:
+        Repeat Weekly:
         <input type="checkbox" id="repeatCheckbox">
     </label>
-
     <button id="saveButton">Save</button>
     <button id="cancelButton">Cancel</button>
 </div>
 
-<div id="deleteEventModal">
+<div id="deleteEventModal" style="display: none;">
     <h2>Event</h2>
-
     <p id="eventText"></p>
-
     <button id="deleteButton">Delete</button>
     <button id="closeButton">Close</button>
 </div>
 
-<div id="modalBackDrop"></div>
+<div id="modalBackDrop" style="display: none;"></div>
 
 <footer>
     <div class="footercontainer">
@@ -102,13 +95,9 @@
                 <li><a th:href="@{/privatlivspolitik}">Privatlivspolitik</a></li>
             </ul>
         </div>
-        <div class="container2">
-            GameHive™
-        </div>
+        <div class="container2">GameHive™</div>
     </div>
 </footer>
+<script th:src="@{/javascript/kalender.js}" defer></script>
 </body>
-
-<script th:src="@{/javascript/kalender.js}"></script>
-
 </html>
