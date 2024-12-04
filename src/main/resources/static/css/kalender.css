@@ -1,111 +1,90 @@
-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000; /* Sørg for, at headeren altid er over andre elementer */
-}
-/* Placer container under header og centrér det */
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centrér horisontalt */
-    background-color: black;
-    margin: 0;
-    padding: 0;
-}
-
-/* Placer container under header */
-#container {
-    margin-top: 6rem; /* Plads under headeren */
-    width: 80%;
-    max-width: 90vw;
-    background-color: black;
-    box-shadow: 0 0 3vh #fd5d56;
-    margin-bottom: 5vh; /* Ekstra mellemrum i bunden */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Sørg for centrering */
+#kalender {
+    width: 90%; /* Makes the calendar responsive */
+    max-width: 90%; /* Prevents it from growing too large on wide screens */
+    margin: 5vh auto; /* Centers the calendar with vertical spacing */
+    padding: 2%; /* Adds internal spacing */
+    border: 0.2vh solid #555; /* Subtle border matching theme */
+    border-radius: 1.5vh; /* Rounded corners */
+    background-color: #282828; /* Dark background for calendar */
+    color: white; /* Text color for readability */
+    box-shadow: 0 1vh 2vh rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    font-family: "Ubuntu", sans-serif; /* Ensure consistent font across site */
+    text-align: center; /* Centers the content */
 }
 
-#weekdays {
-    display: flex;
-    justify-content: space-between;
-    color: #247BA0;
-    padding: 1vh;
+/* Header */
+#kalender h2 {
+    font-size: 3vh; /* Dynamic font size for header */
+    margin-bottom: 3vh; /* Margin below header */
+    color: #FDD446; /* Accent color */
 }
 
-#weekdays div {
-    flex: 1;
-    text-align: center;
-}
-
-#calendar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.day {
-    flex: 1 0 12%;
-    margin: 1%;
-    height: 12vh;
-    cursor: pointer;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-shadow: 0 0 0.3vh #CBD4C2;
-}
-
-.day:hover {
-    background-color: #e8faed;
-}
-
-.event {
-    font-size: 1.5vh;
-    padding: 0.5vh;
-    background-color: #58bae4;
+/* Table (Calendar grid) */
+#kalender table {
+    width: 100%; /* Full width */
+    border-collapse: collapse; /* Remove space between cells */
+    margin-top: 2vh;
+    font-size: 1.8vh; /* Responsive font size */
     color: white;
-    border-radius: 0.5vh;
-    max-height: 50%;
-    overflow: hidden;
 }
 
-.padding {
-    background-color: #FFFCFF !important;
+/* Table cells styling */
+#kalender table th,
+#kalender table td {
+    border: 0.2vh solid #555; /* Subtle cell borders */
+    padding: 1.5vh; /* Inner cell padding */
+    text-align: center;
+    background-color: #333;
 }
 
-#newEventModal, #deleteEventModal {
-    display: none;
-    z-index: 20;
-    padding: 2vh;
-    background-color: #e8f4fa;
-    box-shadow: 0 0 3vh black;
-    border-radius: 1vh;
-    width: 40%;
-    position: fixed;
-    top: 20vh;
-    left: 30vw;
-    font-family: sans-serif;
+#kalender table th {
+    font-weight: bold;
+    background-color: #444; /* Darker color for header cells */
+    color: #FDD446; /* Accent color for header */
+    font-size: 2vh; /* Larger font for header */
 }
 
-#eventTitleInput {
-    padding: 1vh;
-    width: 100%;
-    margin-bottom: 2vh;
-    border-radius: 0.5vh;
+/* Hover effect for cells */
+#kalender table td:hover {
+    background-color: #4CAF50; /* Green highlight */
+    cursor: pointer;
+}
+
+/* Buttons */
+#kalender button {
+    margin-top: 3vh;
+    padding: 2vh 4%; /* Responsive padding */
+    background-color: #fd5d56; /* Accent color */
+    color: white;
     border: none;
-    box-shadow: 0 0 0.3vh gray;
+    border-radius: 1vh;
+    font-size: 2vh;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-#modalBackDrop {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0,0,0,0.8);
+#kalender button:hover {
+    background-color: #f6342a; /* Darker red on hover */
 }
 
+/* Navigation buttons */
+#kalender .navigation {
+    display: flex;
+    justify-content: space-between; /* Distribute navigation buttons */
+    margin-top: 3vh;
+}
 
+#kalender .navigation button {
+    padding: 1.5vh 4%;
+    background-color: #333;
+    color: white;
+    border: 0.2vh solid #555;
+    border-radius: 1vh;
+    font-size: 1.8vh;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#kalender .navigation button:hover {
+    background-color: #4CAF50; /* Green hover effect */
+}

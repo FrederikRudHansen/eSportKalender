@@ -1,57 +1,81 @@
-.profil-indstillinger {
-    width: 80%;
-    max-width: 600px;
-    margin: 5vh auto;
-    padding: 5%;
-    border: 0.2vh solid #ccc;
-    border-radius: 2vh;
-    font-family: 'Lato', sans-serif;
-    background-color: black;
-    box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.1);
+.profile-settings {
+    width: 80%; /* Form width relative to screen */
+    max-width: 60%; /* Prevents it from stretching too wide */
+    margin: 5vh auto; /* Centers the section vertically and horizontally */
+    padding: 5%; /* Inner padding proportional to container size */
+    border: 0.3vh solid #444; /* Matches header styling */
+    border-radius: 2vh; /* Rounded edges for a modern look */
+    background-color: #282828; /* Dark theme */
+    color: white; /* Text color for readability */
+    box-shadow: 0 1vh 2vh rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    font-family: "Ubuntu", sans-serif;
 }
 
-.profil-indstillinger h2 {
+.profile-settings h1 {
     text-align: center;
-    margin-bottom: 4vh;
-    font-size: 2.5vh;
-    color: rebeccapurple;
+    margin-bottom: 5vh; /* Space below the title */
+    font-size: 3vh; /* Dynamic font size */
+    color: #FDD446; /* Accent color matching the header */
 }
 
-.profil-indstillinger label {
+.profile-settings label {
     display: block;
-    margin-top: 2vh;
+    margin-top: 3vh; /* Space above each label */
     font-weight: bold;
-    font-size: 2vh;
+    font-size: 2vh; /* Dynamic font size for labels */
+    color: #ffa16e; /* Soft orange for labels */
 }
 
-.profil-indstillinger input,
-.profil-indstillinger select,
-.profil-indstillinger textarea {
-    width: 100%;
-    padding: 1.5vh;
-    margin-top: 1vh;
-    margin-bottom: 2vh;
-    border: 0.2vh solid #ccc;
-    border-radius: 1vh;
-    font-size: 1.8vh;
+.profile-settings input,
+.profile-settings select,
+.profile-settings textarea {
+    width: 100%; /* Input spans full width of container */
+    padding: 1.5vh; /* Inner padding for inputs */
+    margin-top: 1vh; /* Space above inputs */
+    margin-bottom: 2vh; /* Space below inputs */
+    border: 0.2vh solid #555; /* Subtle border for inputs */
+    border-radius: 1vh; /* Rounded edges for input fields */
+    font-size: 1.8vh; /* Responsive input font size */
+    background-color: #333; /* Matches dark theme */
+    color: white; /* Input text color */
+    box-sizing: border-box;
 }
 
-.profil-indstillinger textarea {
-    resize: none;
+.profile-settings input::placeholder,
+.profile-settings textarea::placeholder {
+    color: #aaa; /* Placeholder text color */
 }
 
-.profil-indstillinger button {
+.profile-settings textarea {
+    resize: vertical; /* Allow resizing only vertically */
+    min-height: 15vh; /* Minimum height for textarea */
+}
+
+.profile-settings button {
     display: block;
-    width: 100%;
-    padding: 2vh;
-    background-color: #4CAF50;
+    width: 100%; /* Full-width button */
+    padding: 2vh; /* Dynamic padding */
+    background-color: #fd5d56; /* Accent color for button */
     color: white;
     border: none;
-    border-radius: 1vh;
-    font-size: 2vh;
+    border-radius: 1vh; /* Rounded button corners */
+    font-size: 2vh; /* Responsive button font size */
+    font-weight: bold;
     cursor: pointer;
+    margin-top: 2vh; /* Space above button */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
 }
 
-.profil-indstillinger button:hover {
-    background-color: #45a049;
+.profile-settings button:hover {
+    background-color: #f6342a; /* Slightly darker red on hover */
+}
+
+.profile-settings select {
+    background-color: #333; /* Matches the dark inputs */
+    color: white;
+}
+
+.profile-settings select option {
+    background-color: #333; /* Dropdown options match the theme */
+    color: white;
 }

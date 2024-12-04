@@ -1,16 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendar App Vanilla JS</title>
+    <link th:href="@{/css/headerFooter.css}" rel="stylesheet">
+    <link th:href="@{/css/body.css}" rel="stylesheet">
     <link th:href="@{/css/kalender.css}" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/kalender.css">
 </head>
 <body>
+<header>
+    <div class="header">
+        <div class="logocontainer">
+            <a href="forside.html">
+                <img id="logo" src="../static/billeder/bogo.png" alt="Logo">
+            </a>
+        </div>
+        <div class="hejmsg">
+            Gamernes Platform!
+        </div>
+        <div class="hlist">
+            <ul>
+                <li><a th:href="@{/forside}">Forside</a></li>
+                <li><a th:href="@{/PLACEHOLDER}">Samme</a></li>
+                <li><a th:href="@{/PLACEHOLDER}">Min Profil</a></li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Tips n' Tricks</button>
+            <div class="dropdown-content">
+                <a th:href="@{/leaguetips}">League of Legends</a>
+                <a th:href="@{/csgotips}">CSGO</a>
+                <a th:href="@{/baldurstips}">Baldur's Gate III</a>
+                <a href="#">Valorant</a>
+                <a href="#">Smite</a>
+                <a href="#">TFT</a>
+                <a href="#">Warhammer 40k Tacticus</a>
+            </div>
+        </div>
+        <div class="login-signup">
+            <ul>
+                <li><a th:href="@{/login}">Login</a></li>
+                <li><a th:href="@{/register}">Signup</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
 
-<div id="container">
-    <div id="header">
+<div id="kalender" class="kalender">
+    <div id="header-kalender">
         <div id="monthDisplay"></div>
         <div>
             <button id="backButton">Back</button>
@@ -55,9 +93,6 @@
 </div>
 
 <div id="modalBackDrop"></div>
-
-<script src="../static/javascript/kalender.js"></script>
-<script th:src="@{/javascript/kalender.js}" async defer></script>
 <footer>
     <div class="footercontainer">
         <div class="container1">
@@ -71,7 +106,7 @@
         </div>
     </div>
 </footer>
+</body>
 <script th:src="@{/javascript/kalender.js}"></script>
 
-</body>
 </html>
