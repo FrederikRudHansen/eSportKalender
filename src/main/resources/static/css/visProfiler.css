@@ -1,0 +1,38 @@
+body {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.profile-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 2vh;
+    width: 90%;
+}
+
+.profile-box {
+    width: 30%;
+    background: #fff;
+    border: 0.2vh solid #ddd;
+    border-radius: 1vh;
+    box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.1);
+    padding: 2vh;
+    text-align: left;
+}
+.profile-box h3 {
+    margin-top: 0;
+    font-size: 2vh;
+    color: #333;
+}
+.profile-box p {
+    font-size: 1.8vh;
+    margin: 1vh 0;
+    color: #555;
+}

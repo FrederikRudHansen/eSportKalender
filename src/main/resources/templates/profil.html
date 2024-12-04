@@ -6,10 +6,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
     <meta charset="UTF-8">
-    <title>profil</title>
-    <link rel="stylesheet" href="../css/body.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/forside.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil</title>
+    <link rel="stylesheet" href="../static/css/body.css">
+    <link rel="stylesheet" href="../static/css/header.css">
+    <link rel="stylesheet" href="../static/css/forside.css">
+    <link rel="stylesheet" href="../static/css/profil.css">
+    <link th:href="@{/css/header.css}" rel="stylesheet">
+    <link th:href="@{/css/forside.css}" rel="stylesheet">
+    <link th:href="@{/css/body.css}" rel="stylesheet">
 </head>
 <body>
 <header>
@@ -49,6 +54,57 @@
         </div>
     </div>
 </header>
+
+<main>
+    <section class="profile-settings">
+        <h1>Profilindstillinger</h1>
+        <form id="profile-form">
+            <label for="name">Navn:</label>
+            <input type="text" id="name" placeholder="Indtast navn" />
+
+            <label for="gender">Køn:</label>
+            <select id="gender">
+                <option value="">Vælg køn</option>
+                <option value="Mand">Mand</option>
+                <option value="Kvinde">Kvinde</option>
+                <option value="Andet">Andet</option>
+            </select>
+
+            <label for="birthday">Fødselsdato:</label>
+            <input type="date" id="birthday" />
+
+            <label for="nationality">Nationalitet:</label>
+            <input type="text" id="nationality" placeholder="Indtast nationalitet" />
+
+            <label for="language">Sprog:</label>
+            <input type="text" id="language" placeholder="Indtast sprog" />
+
+            <label for="steam-account">Steam Account:</label>
+            <input type="text" id="steam-account" placeholder="Indtast Steam URL" />
+
+            <label for="faceit-account">Faceit Account:</label>
+            <input type="text" id="faceit-account" placeholder="Indtast Faceit URL" />
+
+            <label for="role">Rolle:</label>
+            <select id="role">
+                <option value="">Vælg rolle</option>
+                <option value="AWPer">AWPer</option>
+                <option value="Riffler">Riffler</option>
+                <option value="IGL">IGL</option>
+                <option value="Support">Support</option>
+                <option value="Anchor">Anchor</option>
+                <option value="Lurker">Lurker</option>
+                <option value="Coach">Coach</option>
+            </select>
+
+            <label for="resume">Resume:</label>
+            <textarea id="resume" placeholder="Skriv dit resume her..."></textarea>
+
+            <button type="button" id="save-profile">Gem Profil</button>
+        </form>
+    </section>
+</main>
+
 <div class="kalender">
     KALENDER PLACEHOLDER
 </div>
@@ -68,5 +124,8 @@
         </div>
     </div>
 </footer>
+
+<script src="../static/javascript/profil.js"></script>
+<script th:src="@{/javascript/profil.js}" async defer></script>
 </body>
 </html>
