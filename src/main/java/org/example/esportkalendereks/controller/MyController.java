@@ -47,6 +47,8 @@ public class MyController {
         return "tipsntricks";
     }
 
-
-
+    @GetMapping("/admin")
+    public String admin() {
+        return "admin";
+    }
 }
