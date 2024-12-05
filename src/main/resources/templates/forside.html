@@ -17,7 +17,7 @@
         <div class="header">
             <div class="logocontainer">
                 <a href="forside.html">
-                    <img id="logo" src="../billeder/Logo.png" alt="Logo">
+                    <img id="logo" src="../billeder/logo.png" alt="logo">
                 </a>
             </div>
             <div class="hejmsg">
@@ -26,12 +26,12 @@
             <div class="hlist">
                 <ul>
                     <li><a th:href="@{/forside}">Forside</a></li>
-                    <li><a th:href="@{/PLACEHOLDER}">Samme</a></li>
+                    <li><a th:href="@{/tipsntricks}">Tips n' Tricks</a></li>
                     <li><a th:href="@{/PLACEHOLDER}">Min Profil</a></li>
                 </ul>
             </div>
             <div class="dropdown">
-                <button class="dropbtn">Tips n' Tricks</button>
+                <button class="dropbtn">Vælg Spil</button>
                 <div class="dropdown-content">
                     <a th:href="@{/leaguetips}">League of Legends</a>
                     <a th:href="@{/csgotips}">CSGO</a>
@@ -44,10 +44,21 @@
             </div>
             <div class="login-signup">
                 <ul>
-                    <li><a th:href="@{/login}">Login</a></li>
-                    <li><a th:href="@{/register}">Signup</a></li>
+                    <!-- Hvis brugeren er logget ind -->
+                    <li th:if="${session.userRole != null}">
+                        <a th:href="@{/logout}">Logout</a>
+                    </li>
+
+                    <!-- Hvis brugeren ikke er logget ind -->
+                    <li th:if="${session.userRole == null}">
+                        <a th:href="@{/login}">Login</a>
+                    </li>
+                    <li th:if="${session.userRole == null}">
+                        <a th:href="@{/register}">Signup</a>
+                    </li>
                 </ul>
             </div>
+
         </div>
     </header>
     <div class="kalender">
@@ -55,6 +66,9 @@
     </div>
     <div class="stats">
         STATS PLACEHOLDER??
+    </div>
+    <div id="loading-screen" class="loading-screen" style="display: none;">
+        <div class="spinner"></div>
     </div>
     <footer>
         <div class="footercontainer">
@@ -69,5 +83,22 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const logoutLink = document.querySelector('a[href="/logout"]');
+
+    if (logoutLink) {
+    logoutLink.addEventListener('click', function (event) {
+    event.preventDefault();
+    const loadingScreen = document.getElementById('loading-screen');
+    loadingScreen.style.display = 'flex';
+
+    setTimeout(() => {
+    window.location.href = logoutLink.href;
+    }, 2000);
+    });
+    }
+    });
+    </script>
 </body>
 </html>

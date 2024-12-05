@@ -24,7 +24,7 @@ public class MyController {
 
     @GetMapping("/csgotips")
     public String csgotips() {
-        return "csgotips";
+        return "cstips";
     }
 
     @GetMapping("/baldurstips")
@@ -42,6 +42,13 @@ public class MyController {
         return "privatlivspolitik";
     }
 
+    @GetMapping("/tipsntricks")
+    public String tipsntricks() {
+        return "tipsntricks";
+    }
 
-
+    @GetMapping("/admin")
+    public String admin() {
+        return "admin";
+    }
 }
