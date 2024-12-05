@@ -50,7 +50,6 @@
     transform: scale(1.1);
 }
 
-
 .grid-item1, .grid-item2, .grid-item3, .grid-item4, .grid-item5, .grid-item6{
     display: flex;
     align-items: center;
@@ -70,25 +69,30 @@
 }
 
 .grid-item1{
-    background-image: url("../tipspics/cs2.jpg");
+    background-image: url("../tipspics/dust2.jpg");
 }
 
 .grid-item2{
-    background-image: url("../tipspics/lol.png");
+    background-image: url("../tipspics/vertigo.jpg");
 }
 
 .grid-item3{
-    background-image: url("../tipspics/TFT.jpg");
+    background-image: url("../tipspics/mirage.jpg");
 }
 
 .grid-item4{
-    background-image: url("../tipspics/baldur.png");
+    background-image: url("../tipspics/inferno.png");
 }
 
 .grid-item5{
-    background-image: url("../tipspics/valo.png");
+    background-image: url("../tipspics/nuke.jpeg");
 }
 
 .grid-item6{
-    background-image: url("../tipspics/warhammer.png");
+    background-image: url("../tipspics/ancient.jpg");
 }
+
+
+
+
+
