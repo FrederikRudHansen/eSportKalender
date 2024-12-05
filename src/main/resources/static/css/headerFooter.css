@@ -46,17 +46,18 @@
 }
 
 .hlist ul li:last-child{
-    margin-right: 9rem;
+    margin-right: 3rem;
 }
 
 .hlist ul li:first-child{
-    margin-left: -8rem;
+    margin-left: 0rem;
 }
 
 .hlist ul a, .login-signup a, .container1 a{
     text-decoration: none;
     color: white;
     transition: transform 0.45s ease, color 0.45s ease;
+    cursor: pointer;
 }
 
 .hlist ul a:hover, .login-signup ul a:hover, .container1 ul a:hover{
@@ -121,7 +122,6 @@
     list-style: none;
     color: white;
     font-size: medium;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -158,3 +158,67 @@
     list-style: none;
     color: white;
 }
+
+/* Søgefelt Start */
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    position: relative;
+    margin-right: 310px;
+}
+
+.input {
+    border-style: none;
+    height: 40px;
+    width: 60px;
+    padding: 10px;
+    outline: none;
+    border-radius: 50%;
+    transition: 0.5s ease-in-out;
+    background-color: #660001;
+    box-shadow: 0px 0px 3px #ce000d;
+    padding-right: 40px;
+    color: #fff;
+}
+
+.input::placeholder,
+.input {
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+    font-size: 17px;
+}
+
+.input::placeholder {
+    color: #8f8f8f;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0px;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    outline: none;
+    border-style: none;
+    border-radius: 50%;
+    pointer-events: painted;
+    background-color: transparent;
+    transition: 0.2s linear;
+}
+
+.icon:focus ~ .input,
+.input:focus {
+    box-shadow: none;
+    width: 250px;
+    border-radius: 0px;
+    background-color: transparent;
+    border-bottom: 3px solid #660001;
+    transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}
+/* Søgefelt slut css*/
+

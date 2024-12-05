@@ -23,7 +23,6 @@ form {
 /* Transparent input fields */
 input[type="email"],
 input[type="password"] {
-    border-bottom: 2px solid #ccc;
     background: transparent;
     outline: none;
     color: white;
@@ -33,19 +32,28 @@ input[type="password"] {
     padding: 5px;
     box-sizing: border-box;
     backdrop-filter: blur(30px);
-    box-shadow: 0px 0px 30px rgba(227, 228, 237, 0.37);
+    box-shadow: 0px 0px 3px black;
     border: 2px solid rgba(255, 255, 255, 0.18);
 }
 
 /* Focus effect for input fields */
 input[type="email"]:focus,
 input[type="password"]:focus {
+    color: white;
     border-bottom: 2px solid #4CAF50;
 }
+/* Placeholder styling */
+input[type="email"]::placeholder,
+input[type="password"]::placeholder {
+    color: white; /* Ændrer farven på placeholder-teksten */
+    opacity: 1;   /* Sikrer, at teksten er fuldt synlig */
+}
+
 
 /* Submit button */
 input[type="submit"] {
     width: 100%;
+    color: white;
     padding: 10px;
     border-radius: 5px;
     font-size: 1rem;
@@ -124,7 +132,7 @@ input[type="button"]:hover {
     transform: translateX(-50%);
     width: 200px;
     z-index: -1;
-    filter: drop-shadow(10px 7px 10px orange);
+    filter: drop-shadow(10px 7px 10px black);
 }
 
 /* Error message styling */
