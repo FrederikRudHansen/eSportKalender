@@ -17,11 +17,6 @@ public class MyController {
         return "minprofil";
     }
 
-    @GetMapping("/leaguetips")
-    public String leaguetips() {
-        return "leaguetips";
-    }
-
     @GetMapping("/csgotips")
     public String csgotips() {
         return "cstips";
