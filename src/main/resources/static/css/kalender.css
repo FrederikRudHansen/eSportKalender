@@ -1,111 +1,126 @@
-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000; /* Sørg for, at headeren altid er over andre elementer */
-}
-/* Placer container under header og centrér det */
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centrér horisontalt */
-    background-color: black;
-    margin: 0;
-    padding: 0;
+#kalender {
+    width: 80%;
+    margin: 2rem auto;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
-/* Placer container under header */
-#container {
-    margin-top: 6rem; /* Plads under headeren */
-    width: 80%;
-    max-width: 90vw;
-    background-color: black;
-    box-shadow: 0 0 3vh #fd5d56;
-    margin-bottom: 5vh; /* Ekstra mellemrum i bunden */
+#header-kalender {
     display: flex;
-    flex-direction: column;
-    align-items: center; /* Sørg for centrering */
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+#header-kalender h2 {
+    color: #fdd446;
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+#header-kalender .navigation button {
+    background-color: #fd5d56;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#header-kalender .navigation button:hover {
+    background-color: #f6342a;
 }
 
 #weekdays {
-    display: flex;
-    justify-content: space-between;
-    color: #247BA0;
-    padding: 1vh;
-}
-
-#weekdays div {
-    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
     text-align: center;
+    font-weight: bold;
+    color: #ffa16e;
+    margin-bottom: 1rem;
 }
 
 #calendar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
 }
 
-.day {
-    flex: 1 0 12%;
-    margin: 1%;
-    height: 12vh;
-    cursor: pointer;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-shadow: 0 0 0.3vh #CBD4C2;
-}
-
-.day:hover {
-    background-color: #e8faed;
-}
-
-.event {
-    font-size: 1.5vh;
-    padding: 0.5vh;
-    background-color: #58bae4;
+#calendar .day {
+    background-color: #2d2d2d;
     color: white;
-    border-radius: 0.5vh;
-    max-height: 50%;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#calendar .day:hover {
+    background-color: #444;
+}
+
+#calendar .day#currentDay {
+    background-color: #fd5d56;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #fdd446;
+}
+
+/* Event text size in calendar */
+#calendar .event {
+    font-size: 0.8rem; /* Mindre tekststørrelse for begivenheder */
+    color: #ffa16e; /* Lys orange farve */
+    margin-top: 0.2rem; /* Plads mellem dato og eventtekst */
+    display: block;
     overflow: hidden;
+    text-overflow: ellipsis; /* Tilføjer "..." hvis teksten er for lang */
+    white-space: nowrap; /* Undgår linjeskift */
 }
 
-.padding {
-    background-color: #FFFCFF !important;
-}
-
+/* Modal styling */
 #newEventModal, #deleteEventModal {
-    display: none;
-    z-index: 20;
-    padding: 2vh;
-    background-color: #e8f4fa;
-    box-shadow: 0 0 3vh black;
-    border-radius: 1vh;
-    width: 40%;
-    position: fixed;
-    top: 20vh;
-    left: 30vw;
-    font-family: sans-serif;
+    position: fixed; /* Fixer modal på skærmen */
+    top: 50%; /* Midt på skærmen */
+    left: 50%; /* Midt på skærmen */
+    transform: translate(-50%, -50%); /* Centrerer modal */
+    background-color: #1e1e1e; /* Mørk baggrundsfarve */
+    color: white; /* Hvid tekst */
+    border-radius: 10px; /* Runde hjørner */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Blød skygge */
+    padding: 2rem; /* Indvendig afstand */
+    z-index: 1000; /* Sørger for, at modal er øverst */
+    display: none; /* Skjult som standard */
+    width: 50%; /* Tilpasset bredde */
+    max-width: 600px; /* Maksimal bredde */
+    text-align: center; /* Centertekst */
 }
 
-#eventTitleInput {
-    padding: 1vh;
-    width: 100%;
-    margin-bottom: 2vh;
-    border-radius: 0.5vh;
-    border: none;
-    box-shadow: 0 0 0.3vh gray;
+/* Input box inside modal */
+#newEventModal input#eventTitleInput {
+    width: 100%; /* Gør input-boksen bredere */
+    height: 3rem; /* Gør input-boksen højere */
+    font-size: 1.2rem; /* Større skrift */
+    padding: 0.5rem; /* Indvendig margin */
+    margin-bottom: 1rem; /* Plads under input-feltet */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #2d2d2d; /* Mørk baggrund */
+    color: white;
 }
 
+/* Backdrop styling */
 #modalBackDrop {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 10;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0,0,0,0.8);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Halvgennemsigtig sort baggrund */
+    z-index: 999; /* Bag modalet */
+    display: none; /* Skjult som standard */
 }
-
-
