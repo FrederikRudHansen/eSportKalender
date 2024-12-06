@@ -59,7 +59,7 @@
                     <div class="modal-content">
                         <span class="close">&times;<br></span>
                         <div class="modal-video">
-                            <iframe id="modal-video" src="" frameborder="0" allowfullscreen></iframe>
+                            <video id="modal-video" autoplay muted controls></video>
                         </div>
                     </div>
                 </div>
@@ -127,15 +127,15 @@
         };
 
         function convertToEmbedUrl(url) {
-            const videoIdMatch = url.match(/v=([a-zA-Z0-9_-]{11})/);
-            return videoIdMatch ? `https://www.youtube.com/embed/${videoIdMatch[1]}?autoplay=1&mute=1` : url;
+            return url;
         }
 
         document.querySelectorAll('.cirkel').forEach(circle => {
             circle.addEventListener('click', () => {
                 const id = circle.classList[1];
                 if (circleData[id]) {
-                    modalVideo.src = convertToEmbedUrl(circleData[id].video); // Konverterer til embed-URL
+                    modalVideo.src = circleData[id].video;
+                    modalVideo.load();
                     modalDescription.textContent = circleData[id].description;
                     modal.style.display = 'block';
                 }
@@ -144,16 +144,17 @@
 
         closeModal.addEventListener('click', () => {
             modal.style.display = 'none';
-            modalVideo.src = ""; // Stop videoafspilning
+            modalVideo.src = ""; // Stop video
         });
 
         window.addEventListener('click', (event) => {
-            if (event.target === modal) {
+            if (event.target === modal || event.target.classList.contains('close')) {
                 modal.style.display = 'none';
-                modalVideo.src = "";
+                modalVideo.src = ""; // Stop video
             }
         });
     });
+
 </script>
 </body>
 </html>
