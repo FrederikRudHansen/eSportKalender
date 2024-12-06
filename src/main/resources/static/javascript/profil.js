@@ -42,6 +42,8 @@ document.getElementById('save-profile').addEventListener('click', function () {
 
     // Bekræftelse til brugeren
     alert('Profil gemt!');
+    window.location.href = '/minProfil';
+
 
     // Ryd formularen
     document.getElementById('profile-form').reset();
