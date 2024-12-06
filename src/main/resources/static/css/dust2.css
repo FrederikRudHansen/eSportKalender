@@ -38,6 +38,8 @@
 .cirkelct1:hover, .cirkelct2:hover, .cirkelct3:hover, .cirkelt1:hover, .cirkelt2:hover, .cirkelt3:hover{
     transition: transform 0.3s ease;
     transform: scale(1.7);
+    cursor: pointer;
+    z-index: 10; /* Sørg for, at de ligger øverst */
 }
 
 .cirkelt1{
@@ -106,3 +108,47 @@
     margin-top: -15%;
 }
 
+.modal {
+    display: none;
+    z-index: 10000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Mørk baggrund */
+}
+
+.modal-content {
+    position: relative;
+    width: 80%;
+    background: #fff;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.modal-video iframe {
+    width: 100%;
+    height: 300px;
+}
+
+.modal-description {
+    margin-top: 1rem;
+    color: black;
+    font-family: "Lato", sans-serif;
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

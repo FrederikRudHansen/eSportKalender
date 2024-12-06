@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <title>GameHive - Hele Danmarks Gaming Platform!</title>
+    <link th:href="@{/css/body.css}" rel="stylesheet">
+    <link th:href="@{/css/headerFooter.css}" rel="stylesheet">
+    <link th:href="@{/css/dust2.css}" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/body.css">
+    <link rel="stylesheet" href="../static/css/headerFooter.css">
+    <link rel="stylesheet" href="../static/css/dust2.css">
+</head>
+<body>
+<header>
+    <div class="header">
+        <div class="logocontainer">
+            <a href="forside.html">
+                <img id="logo" src="../billeder/logo.png" alt="Logo">
+            </a>
+        </div>
+        <div class="hejmsg">
+            Gamernes Platform!
+        </div>
+        <div class="hlist">
+            <ul>
+                <li><a th:href="@{/forside}">Forside</a></li>
+                <li><a th:href="@{/PLACEHOLDER}">placeholder</a></li>
+                <li><a th:href="@{/PLACEHOLDER}">Min Profil</a></li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Tips n' Tricks</button>
+            <div class="dropdown-content">
+                <a th:href="@{/leaguetips}">League of Legends</a>
+                <a th:href="@{/csgotips}">CSGO</a>
+                <a th:href="@{/baldurstips}">Baldur's Gate III</a>
+                <a href="#">Valorant</a>
+                <a href="#">Smite</a>
+                <a href="#">TFT</a>
+                <a href="#">Warhammer 40k Tacticus</a>
+            </div>
+        </div>
+        <div class="login-signup">
+            <ul>
+                <li><a th:href="@{/login}">Login</a></li>
+                <li><a th:href="@{/register}">Signup</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+    <div class="container">
+        <div class="videocont">
+            <div class="video">
+                <div id="modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <div class="modal-video">
+                            <iframe id="modal-video" src="" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="modal-description">
+                            <p id="modal-description">Beskrivelse kommer her...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="beskrivelse">
+                BESKRIVELSE PLACEHOLDER
+            </div>
+        </div>
+        <div class="map">
+            <div class="cirkel cirkelt1"></div>
+            <div class="cirkel cirkelt2"></div>
+            <div class="cirkel cirkelt3"></div>
+            <div class="cirkel cirkelct1"></div>
+            <div class="cirkel cirkelct2"></div>
+            <div class="cirkel cirkelct3"></div>
+        </div>
+    </div>
+<footer>
+    <div class="footercontainer">
+        <div class="container1">
+            <ul>
+                <li><a th:href="@{/support}">Support</a></li>
+                <li><a th:href="@{/privatlivspolitik}">Privatlivspolitik</a></li>
+            </ul>
+        </div>
+        <div class="container2">
+            GameHive™
+        </div>
+    </div>
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('modal');
+        const modalVideo = document.getElementById('modal-video');
+        const modalDescription = document.getElementById('modal-description');
+        const closeModal = document.querySelector('.close');
+
+        const circleData = {
+            cirkelt1: {
+                video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley",
+                description: "Beskrivelse for T1-position."
+            },
+            cirkelt2: {
+                video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley",
+                description: "Beskrivelse for T2-position."
+            },
+            cirkelt3: {
+                video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley",
+                description: "Beskrivelse for T3-position."
+            },
+            cirkelct1: {
+                video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley",
+                description: "Beskrivelse for CT1-position."
+            },
+            cirkelct2: {
+                video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley",
+                description: "Beskrivelse for CT2-position."
+            },
+            cirkelct3: {
+                video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley",
+                description: "Beskrivelse for CT3-position."
+            },
+        };
+
+        function convertToEmbedUrl(url) {
+            const videoIdMatch = url.match(/v=([a-zA-Z0-9_-]{11})/);
+            return videoIdMatch ? `https://www.youtube.com/embed/${videoIdMatch[1]}` : url;
+        }
+
+        document.querySelectorAll('.cirkel').forEach(circle => {
+            circle.addEventListener('click', () => {
+                const id = circle.classList[1];
+                if (circleData[id]) {
+                    modalVideo.src = convertToEmbedUrl(circleData[id].video); // Konverterer til embed-URL
+                    modalDescription.textContent = circleData[id].description;
+                    modal.style.display = 'block';
+                }
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+            modalVideo.src = ""; // Stop videoafspilning
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+                modalVideo.src = "";
+            }
+        });
+    });
+</script>
+</body>
+</html>
