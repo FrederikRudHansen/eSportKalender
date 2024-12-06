@@ -46,17 +46,18 @@
 }
 
 .hlist ul li:last-child{
-    margin-right: 9rem;
+    margin-right: 3rem;
 }
 
 .hlist ul li:first-child{
-    margin-left: -8rem;
+    margin-left: 0rem;
 }
 
 .hlist ul a, .login-signup a, .container1 a{
     text-decoration: none;
     color: white;
     transition: transform 0.45s ease, color 0.45s ease;
+    cursor: pointer;
 }
 
 .hlist ul a:hover, .login-signup ul a:hover, .container1 ul a:hover{
@@ -116,21 +117,34 @@
     align-items: center;
 }
 
-.login-signup ul{
+.login-signup {
+    position: absolute;
+    top: 5%;
+    right: 1rem;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-signup ul {
     text-decoration: none;
     list-style: none;
     color: white;
     font-size: medium;
-
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: 1rem;
-    margin-left: -5.5rem;
-    margin-right: 1.5rem;
-    height: 3rem;
-    width: 3.5rem;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
+
+.login-signup ul li {
+    margin: 0;
+}
+
 
 .footercontainer{
     width: 100%;
@@ -158,3 +172,87 @@
     list-style: none;
     color: white;
 }
+
+/* Søgefelt Start */
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    margin-right: 380px;
+}
+
+.input {
+    border-style: none;
+    height: 40px;
+    width: 60px;
+    padding: 10px;
+    outline: none;
+    border-radius: 50%;
+    transition: 0.5s ease-in-out;
+    background-color: #660001;
+    box-shadow: 0px 0px 3px #ce000d;
+    padding-right: 40px;
+    color: #fff;
+}
+
+.input::placeholder,
+.input {
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+    font-size: 17px;
+}
+
+.input::placeholder {
+    color: #8f8f8f;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0px;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    outline: none;
+    border-style: none;
+    border-radius: 50%;
+    pointer-events: painted;
+    background-color: transparent;
+    transition: 0.2s linear;
+}
+
+.icon:focus ~ .input,
+.input:focus {
+    box-shadow: none;
+    width: 250px;
+    border-radius: 0px;
+    background-color: transparent;
+    border-bottom: 3px solid #660001;
+    transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}
+
+.search-results {
+    margin-top: 10px;
+    background-color: #282828;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 300px;
+    overflow: auto;
+}
+
+.search-result {
+    padding: 5px;
+    border-bottom: 1px solid #444;
+}
+
+.search-result:last-child {
+    border-bottom: none;
+}
+
+/* Søgefelt slut css*/
+
