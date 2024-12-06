@@ -1,5 +1,5 @@
 body{
-    height: 40rem;
+    height: 80rem;
 }
 .piccontainer{
     width: 100%;
@@ -11,5 +11,22 @@ body{
 
 #bg3pic{
     width: 90%;
-    height: auto;
+    height: 50rem;
+}
+
+.shlink{
+    display: flex;
+    justify-content: center;
+    margin-top: 25rem;
+}
+
+.shlink a{
+    text-decoration: none;
+    color: white;
+}
+
+.shlink a:hover{
+    transition: transform 0.3s ease;
+    transform: scale(1.1);
+    color: #FFA16E;
 }

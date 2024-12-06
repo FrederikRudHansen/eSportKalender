@@ -37,7 +37,6 @@
 
 .outline {
     position: relative;
-    background-color: darkred;
     border-radius: 10%;
     height: 105%;
     width: 102%;
@@ -48,6 +47,7 @@
 
 .outline:hover {
     transform: scale(1.1);
+    background-color: darkred;
 }
 
 .grid-item1, .grid-item2, .grid-item3, .grid-item4, .grid-item5, .grid-item6{
@@ -68,28 +68,45 @@
     background-size: cover;
 }
 
+.grid-item1:hover, .grid-item2:hover,.grid-item3:hover, .grid-item4:hover, .grid-item5:hover, .grid-item6:hover{
+    filter: grayscale(0);
+    box-shadow: 0rem .5rem  5rem darkred;
+}
+
 .grid-item1{
     background-image: url("../tipspics/dust2.jpg");
+    filter: grayscale(100%);
+    transition: filter .5s ease;
 }
 
 .grid-item2{
     background-image: url("../tipspics/vertigo.jpg");
+    filter: grayscale(100%);
+    transition: filter .5s ease;
 }
 
 .grid-item3{
     background-image: url("../tipspics/mirage.jpg");
+    filter: grayscale(100%);
+    transition: filter .5s ease;
 }
 
 .grid-item4{
     background-image: url("../tipspics/inferno.png");
+    filter: grayscale(100%);
+    transition: filter .5s ease;
 }
 
 .grid-item5{
     background-image: url("../tipspics/nuke.jpeg");
+    filter: grayscale(100%);
+    transition: filter .5s ease;
 }
 
 .grid-item6{
     background-image: url("../tipspics/ancient.jpg");
+    filter: grayscale(100%);
+    transition: filter .5s ease;
 }
 
 
