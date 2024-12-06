@@ -1,8 +1,14 @@
+// visProfiler.js
+
+// Hent profiler fra localStorage
 const profiles = localStorage.getItem('profiles') ? JSON.parse(localStorage.getItem('profiles')) : [];
 const profileContainer = document.getElementById('profile-container');
 
 function renderProfiles() {
+    // Ryd containeren
     profileContainer.innerHTML = '';
+
+    // Gennemgå hver profil og tilføj den til DOM'en
     profiles.forEach(profile => {
         const profileBox = document.createElement('div');
         profileBox.classList.add('profile-box');
@@ -23,4 +29,5 @@ function renderProfiles() {
     });
 }
 
+// Render profilerne ved siden indlæsning
 renderProfiles();

@@ -1,6 +1,7 @@
-let profiles = localStorage.getItem('profiles') ? JSON.parse(localStorage.getItem('profiles')) : [];
+// profil.js
 
-document.getElementById('save-profile').addEventListener('click', () => {
+document.getElementById('save-profile').addEventListener('click', function () {
+    // Hent værdier fra formularfelterne
     const name = document.getElementById('name').value;
     const gender = document.getElementById('gender').value;
     const birthday = document.getElementById('birthday').value;
@@ -11,13 +12,14 @@ document.getElementById('save-profile').addEventListener('click', () => {
     const role = document.getElementById('role').value;
     const resume = document.getElementById('resume').value;
 
-    if (!name) {
-        alert("Navn er påkrævet!");
+    // Valider, at mindst navn og køn er udfyldt
+    if (!name || !gender) {
+        alert('Navn og Køn skal udfyldes!');
         return;
     }
 
+    // Opret en profil som et objekt
     const profile = {
-        id: Date.now(),
         name,
         gender,
         birthday,
@@ -26,10 +28,21 @@ document.getElementById('save-profile').addEventListener('click', () => {
         steamAccount,
         faceitAccount,
         role,
-        resume
+        resume,
     };
 
+    // Hent eksisterende profiler fra localStorage
+    const profiles = localStorage.getItem('profiles') ? JSON.parse(localStorage.getItem('profiles')) : [];
+
+    // Tilføj den nye profil til listen
     profiles.push(profile);
+
+    // Gem listen tilbage i localStorage
     localStorage.setItem('profiles', JSON.stringify(profiles));
-    alert("Profil gemt!");
+
+    // Bekræftelse til brugeren
+    alert('Profil gemt!');
+
+    // Ryd formularen
+    document.getElementById('profile-form').reset();
 });
