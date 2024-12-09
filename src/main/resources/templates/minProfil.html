@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Min Profil</title>
@@ -7,10 +7,7 @@
     <link th:href="@{/css/body.css}" rel="stylesheet">
     <link th:href="@{/css/headerFooter.css}" rel="stylesheet">
     <link th:href="@{/css/minProfil.css}" rel="stylesheet">
-    <link href="../static/css/forside.css" rel="stylesheet">
-    <link href="../static/css/body.css" rel="stylesheet">
-    <link href="../static/css/headerFooter.css" rel="stylesheet">
-    <link href="../static/css/minProfil.css" rel="stylesheet">
+
 </head>
 <body>
 <header>
@@ -92,8 +89,10 @@
     </section>
 
     <section class="profile-right">
-        <a href="profil.html" class="settings-button">Gå til Profilindstillinger</a>
+        <a href="profil" class="settings-button">Gå til Profilindstillinger</a>
+        <a href="opretHold" class="opretHold-button">Gå til Opret Hold</a>
     </section>
+
 </main>
 
 

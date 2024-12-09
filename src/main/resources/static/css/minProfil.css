@@ -36,18 +36,22 @@
     color: #FDD446;
 }
 
-.settings-button {
+.settings-button, opretHold-button {
     display: block;
     background-color: #fd5d56;
     color: white;
     text-align: center;
     padding: 1rem;
-    border-radius: 5px;
+    border-radius: 50px;
     text-decoration: none;
     font-size: 1.2rem;
     margin-top: 2rem;
 }
 
-.settings-button:hover {
+.settings-button:hover, .opretHold-button:hover {
     background-color: #f6342a;
 }
+
+
+
+
