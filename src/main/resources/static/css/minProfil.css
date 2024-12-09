@@ -35,23 +35,20 @@
     margin-bottom: 1rem;
     color: #FDD446;
 }
-
-.settings-button, opretHold-button {
+/* Samlet styling til begge knapper */
+.settings-button, .opretHold-button {
     display: block;
     background-color: #fd5d56;
     color: white;
     text-align: center;
     padding: 1rem;
-    border-radius: 50px;
+    border-radius: 5px;
     text-decoration: none;
     font-size: 1.2rem;
     margin-top: 2rem;
 }
 
+/* Hover-effekt for begge knapper */
 .settings-button:hover, .opretHold-button:hover {
     background-color: #f6342a;
 }
-
-
-
-
