@@ -24,13 +24,14 @@
 }
 
 .map{
-    margin-top: 4rem;
-    height: 55%;
+    margin-top: 3rem;
+    height: 70%;
     width: 50%;
     background-image: url("../tipspics/dust2map.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    position: relative;
 }
 
 .cirkelct1:hover, .cirkelct2:hover, .cirkelct3:hover, .cirkelt1:hover, .cirkelt2:hover, .cirkelt3:hover{
@@ -40,70 +41,50 @@
     z-index: 10; /* Sørg for, at de ligger øverst */
 }
 
-.cirkelt1{
+.cirkelt1, .cirkelt2, .cirkelt3, .cirkelct1, .cirkelct2, .cirkelct3{
     height: 5%;
     width: 5%;
-    background-image: url("../tipspics/cirkelt.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    margin-left: 31%;
-    margin-top: 5.6%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.cirkelt1{
+    background-image: url("../tipspics/cirkelt.png");
+    top: 12%;
+    left: 29%;
 }
 
 .cirkelt2{
-    height: 5%;
-    width: 5%;
     background-image: url("../tipspics/cirkelt.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    margin-left: 48%;
-    margin-top: 5.5%;
+    top: 24%;
+    left: 50%;
 }
 
 .cirkelt3{
-    height: 5%;
-    width: 5%;
     background-image: url("../tipspics/cirkelt.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    margin-left: 46.5%;
-    margin-top: 6.5%;
+    top: 40%;
+    left: 48.5%;
 }
 
 .cirkelct1{
-    height: 5%;
-    width: 5%;
     background-image: url("../tipspics/cirkelct.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    margin-left: 60.3%;
-    margin-top: 7%;
+    top: 55%;
+    left: 66%;
 }
 
 .cirkelct2{
-    height: 5%;
-    width: 5%;
     background-image: url("../tipspics/cirkelct.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    margin-left: 26%;
-    margin-top: -4.5%;
+    top: 40%;
+    left: 16.5%;
 }
 
 .cirkelct3{
-    height: 5%;
-    width: 5%;
     background-image: url("../tipspics/cirkelct.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    margin-left: 21%;
-    margin-top: -15%;
+    top: 31%;
+    left: 16.5%;
 }
 
 .modal {
