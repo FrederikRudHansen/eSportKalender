@@ -117,20 +117,34 @@
     align-items: center;
 }
 
-.login-signup ul{
+.login-signup {
+    position: absolute;
+    top: 5%;
+    right: 1rem;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-signup ul {
     text-decoration: none;
     list-style: none;
     color: white;
     font-size: medium;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: 1rem;
-    margin-left: -5.5rem;
-    margin-right: 1.5rem;
-    height: 3rem;
-    width: 3.5rem;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
+
+.login-signup ul li {
+    margin: 0;
+}
+
 
 .footercontainer{
     width: 100%;
@@ -164,9 +178,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: 10px;
     position: relative;
-    margin-right: 310px;
+    margin-right: 380px;
 }
 
 .input {
