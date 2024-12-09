@@ -16,4 +16,8 @@ public class HoldService {
     public Hold findById(int id) {
         return holdRepository.findById(id).orElseThrow(() -> new RuntimeException("Hold not found"));
     }
+
+    public void saveHold(Hold hold) {
+        holdRepository.save(hold);
+    }
 }

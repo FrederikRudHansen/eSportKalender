@@ -12,7 +12,105 @@
     <link th:href="@{/css/body.css}" href="../static/css/body.css" rel="stylesheet">
     <link th:href="@{/css/opretHold.css}" href="../static/css/opretHold.css" rel="stylesheet">
 </head>
+<header>
+    <div class="header">
+        <div class="logocontainer">
+            <a href="forside.html">
+                <img id="logo" src="../static/billeder/logo.png" alt="logo">
+            </a>
+        </div>
+        <div class="hlist">
+            <ul>
+                <li><a th:href="@{/forside}">Forside</a></li>
+                <li><a th:href="@{/tipsntricks}">Tips n' Tricks</a></li>
+                <li><a th:href="@{/PLACEHOLDER}">Min Profil</a></li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Vælg Spil</button>
+            <div class="dropdown-content">
+                <a th:href="@{/leaguetips}">League of Legends</a>
+                <a th:href="@{/csgotips}">CSGO</a>
+                <a th:href="@{/baldurstips}">Baldur's Gate III</a>
+            </div>
+        </div>
+        <div class="input-wrapper">
+            <button class="icon">
+                <svg
+                        width="25px"
+                        height="25px"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                            d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
+                            stroke="#fff"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                    ></path>
+                    <path
+                            d="M22 22L20 20"
+                            stroke="#fff"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                    ></path>
+                </svg>
+            </button>
+            <input type="text" name="text" class="input" placeholder="search.." />
+        </div>
+    </div>
+</header>
+<div class="search-results"></div>
+<div class="login-signup">
+    <ul>
+        <li><a th:href="@{/login}">Login</a></li>
+        <li><a th:href="@{/register}">Signup</a></li>
+    </ul>
+</div>
 <body>
-
+<div class="form-container">
+    <h2>Opret Nyt Hold</h2>
+    <form action="/oprethold" method="post">
+        <div class="form-group">
+            <label for="navn">Hold Navn:</label>
+            <input type="text" id="navn" name="navn" required>
+        </div>
+        <div class="form-group">
+            <label for="rank">Rank:</label>
+            <input type="text" id="rank" name="rank" required>
+        </div>
+        <div class="form-group">
+            <label for="nationalitet">Nationalitet:</label>
+            <input type="text" id="nationalitet" name="nationalitet" required>
+        </div>
+        <div class="form-group">
+            <label for="antal">Antal Spillere:</label>
+            <input type="number" id="antal" name="antal" required>
+        </div>
+        <div class="form-group">
+            <label for="resume">Hold Resume:</label>
+            <textarea id="resume" name="resume" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit">Opret Hold</button>
+        </div>
+    </form>
+    </div>
 </body>
+<footer>
+    <div class="footercontainer">
+        <div class="container1">
+            <ul>
+                <li><a th:href="@{/support}">Support</a></li>
+                <li><a th:href="@{/privatlivspolitik}">Privatlivspolitik</a></li>
+            </ul>
+        </div>
+        <div class="container2">
+            GameHive™
+        </div>
+    </div>
+</footer>
 </html>

@@ -14,6 +14,7 @@ public class Hold {
     private String rank;
     private String nationalitet;
     private int antal;
+    private String Resume;
 
     // Relation til Coach
     @OneToOne
@@ -74,5 +75,13 @@ public class Hold {
 
     public void setBegivenheder(List<Begivenheder> begivenheder) {
         this.begivenheder = begivenheder;
+    }
+
+    public String getResume() {
+        return Resume;
+    }
+
+    public void setResume(String resume) {
+        Resume = resume;
     }
 }
