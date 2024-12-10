@@ -17,16 +17,6 @@ public class MyController {
         return "minprofil";
     }
 
-    @GetMapping("/csgotips")
-    public String csgotips() {
-        return "cstips";
-    }
-
-    @GetMapping("/baldurstips")
-    public String baldurstips() {
-        return "baldurstips";
-    }
-
     @GetMapping("/support")
     public String support() {
         return "support";
@@ -35,11 +25,6 @@ public class MyController {
     @GetMapping("/privatlivspolitik")
     public String privatlivspolitik() {
         return "privatlivspolitik";
-    }
-
-    @GetMapping("/tipsntricks")
-    public String tipsntricks() {
-        return "tipsntricks";
     }
 
     @GetMapping("/admin")
