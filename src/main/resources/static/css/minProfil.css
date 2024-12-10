@@ -35,8 +35,8 @@
     margin-bottom: 1rem;
     color: #FDD446;
 }
-/* Samlet styling til begge knapper */
-.settings-button, .opretHold-button {
+
+.settings-button, .opretHold-button, .visProfiler-button {
     display: block;
     background-color: #fd5d56;
     color: white;
@@ -48,7 +48,7 @@
     margin-top: 2rem;
 }
 
-/* Hover-effekt for begge knapper */
-.settings-button:hover, .opretHold-button:hover {
+
+.settings-button:hover, .opretHold-button:hover, .visProfiler-button:hover {
     background-color: #f6342a;
 }
