@@ -19,9 +19,14 @@
     z-index: 1;
     background-image: url("../billeder/statistik.png");
     background-repeat: no-repeat;
-    background-color: blue;
-    min-height: 65vh;
+    background-size: cover;
+    background-position: center;
+    background-color: inherit;
+    min-height: 73vh;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 
 
 .loading-screen {
@@ -55,3 +60,9 @@
         transform: rotate(360deg);
     }
 }
+
+.forside .footercontainer {
+    position: absolute;
+    top: 85rem;
+}
+
