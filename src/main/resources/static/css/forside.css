@@ -9,17 +9,18 @@
     justify-content: center;
     align-items: center;
 }
-
 .stats {
-    background-color: black;
-
     max-width: calc(100% - 10rem);
-    height: 30%;
-    margin: 2rem auto;
-
+    margin: 2rem auto 0;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.stats img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 .loading-screen {
