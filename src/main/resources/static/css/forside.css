@@ -2,7 +2,7 @@
     background-color: black;
 
     max-width: calc(100% - 10rem);
-    height: 47%;
+    height: 100%;
     margin: 2rem auto 0;
 
     display: flex;

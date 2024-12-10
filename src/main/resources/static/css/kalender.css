@@ -5,6 +5,7 @@
     border-radius: 10px;
     padding: 2rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    height: 75svh;
 }
 
 #header-kalender {
@@ -48,6 +49,7 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 5px;
+    height: 60svh;
 }
 
 #calendar .day {
@@ -119,7 +121,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100svh;
     background-color: rgba(0, 0, 0, 0.7); /* Halvgennemsigtig sort baggrund */
     z-index: 999; /* Bag modalet */
     display: none; /* Skjult som standard */

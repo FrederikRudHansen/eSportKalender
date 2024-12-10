@@ -4,15 +4,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameHive - Hele Danmarks Gaming Platform!</title>
-    <link th:href="@{/css/forside.css}" rel="stylesheet">
-    <link th:href="@{/css/body.css}" rel="stylesheet">
-    <link th:href="@{/css/headerFooter.css}" rel="stylesheet">
-    <link href="../static/css/forside.css" rel="stylesheet">
-    <link href="../static/css/body.css" rel="stylesheet">
-    <link href="../static/css/headerFooter.css" rel="stylesheet">
+    <link th:href="@{/css/forside.css}" href="../static/css/forside.css" rel="stylesheet">
+    <link th:href="@{/css/body.css}" href="../static/css/body.css" rel="stylesheet">
+    <link th:href="@{/css/headerFooter.css}" href="../static/css/headerFooter.css" rel="stylesheet">
+    <link th:href="@{/css/kalender.css}" href="../static/css/kalender.css" rel="stylesheet">
 </head>
 <body>
 <header>
@@ -36,45 +34,61 @@
                 <a th:href="@{/csgotips}">CSGO</a>
                 <a th:href="@{/baldurstips}">Baldur's Gate III</a>
             </div>
-
         </div>
-
         <div class="input-wrapper">
             <button class="icon">
-                <svg
-                        width="25px"
-                        height="25px"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                            d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
-                            stroke="#fff"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                    ></path>
-                    <path
-                            d="M22 22L20 20"
-                            stroke="#fff"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                    ></path>
+                <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M22 22L20 20" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
             </button>
             <input type="text" name="text" class="input" placeholder="search.." />
         </div>
     </div>
 </header>
-<div class="search-results"></div>
-<div class="login-signup">
-    <ul>
-        <li><a th:href="@{/login}">Login</a></li>
-        <li><a th:href="@{/register}">Signup</a></li>
-    </ul>
+
+<div id="kalender">
+    <div id="header-kalender">
+        <h2 id="monthDisplay">December 2024</h2>
+        <div class="navigation">
+            <button id="backButton">Back</button>
+            <button id="nextButton">Next</button>
+        </div>
+    </div>
+    <div id="weekdays">
+        <div>Sunday</div>
+        <div>Monday</div>
+        <div>Tuesday</div>
+        <div>Wednesday</div>
+        <div>Thursday</div>
+        <div>Friday</div>
+        <div>Saturday</div>
+    </div>
+    <div id="calendar"></div>
 </div>
+
+<div id="newEventModal" style="display: none;">
+    <h2>New Event</h2>
+    <input id="eventTitleInput" placeholder="Event Title" />
+    <label>
+        Repeat Weekly:
+        <input type="checkbox" id="repeatCheckbox">
+        <input type="checkbox" id="Turnering">
+        <input type="checkbox" id="Træning">
+    </label>
+    <button id="saveButton">Save</button>
+    <button id="cancelButton">Cancel</button>
+</div>
+
+<div id="deleteEventModal" style="display: none;">
+    <h2>Event</h2>
+    <p id="eventText"></p>
+    <button id="deleteButton">Delete</button>
+    <button id="closeButton">Close</button>
+</div>
+
+<div id="modalBackDrop" style="display: none;"></div>
+
 <footer>
     <div class="footercontainer">
         <div class="container1">
@@ -88,6 +102,7 @@
         </div>
     </div>
 </footer>
+<script th:src="@{/javascript/kalender.js}" src="../static/javascript/kalender.js" defer></script>
 <script src="../static/javascript/search.js"></script>
 </body>
 </html>
