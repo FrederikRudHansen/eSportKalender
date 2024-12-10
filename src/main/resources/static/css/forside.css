@@ -15,12 +15,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    z-index: 1;
 }
 
 .stats img {
     max-width: 100%;
     height: auto;
     display: block;
+    z-index: 2;
+    position: relative;
 }
 
 .loading-screen {
