@@ -1,0 +1,141 @@
+.container{
+    margin-top: 2rem;
+    width: 100%;
+    height: 75%;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.videocont{
+    height: 100%;
+    width: 60%;
+}
+
+.video{
+    margin-left: 10%;
+    height: 50%;
+}
+
+.beskrivelse{
+    margin-left: 10%;
+    height: 50%;
+    background-color: green;
+    color: white;
+}
+
+.map{
+    margin-top: 3rem;
+    height: 70%;
+    width: 50%;
+    background-image: url("../tipspics/dust2map.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    position: relative;
+}
+
+.cirkelct1:hover, .cirkelct2:hover, .cirkelct3:hover, .cirkelt1:hover, .cirkelt2:hover, .cirkelt3:hover{
+    transition: transform 0.3s ease;
+    transform: scale(1.7);
+    cursor: pointer;
+    z-index: 10;
+}
+
+.cirkelt1, .cirkelt2, .cirkelt3, .cirkelct1, .cirkelct2, .cirkelct3{
+    height: 5%;
+    width: 5%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    position: absolute;
+}
+
+.cirkelt1{
+    background-image: url("../tipspics/cirkelt.png");
+    top: 10%;
+    left: 26%;
+}
+
+.cirkelt2{
+    background-image: url("../tipspics/cirkelt.png");
+    top: 22%;
+    left: 47%;
+}
+
+.cirkelt3{
+    background-image: url("../tipspics/cirkelt.png");
+    top: 37.5%;
+    left: 46%;
+}
+
+.cirkelct1{
+    background-image: url("../tipspics/cirkelct.png");
+    top: 53%;
+    left: 64%;
+}
+
+.cirkelct2{
+    background-image: url("../tipspics/cirkelct.png");
+    top: 38%;
+    left: 14%;
+}
+
+.cirkelct3{
+    background-image: url("../tipspics/cirkelct.png");
+    top: 30%;
+    left: 14%;
+}
+
+.modal {
+    display: none;
+    z-index: 10000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Mørk baggrund */
+}
+
+.modal-content {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    height: 100%;
+}
+
+.modal-video {
+    width: 100%;
+    height: 100%;
+}
+
+#modal-video {
+    width: 100%;
+    height: 100%;
+}
+
+.modal-description {
+    margin-top: 1rem;
+    color: black;
+    text-align: center;
+}
+
+.close {
+    width: 2%;
+    position: absolute;
+    z-index: 10000000;
+    right:0;
+    top: -.5%;
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+    cursor: pointer;
+    border-radius: 10%;
+    border: solid #2e2e2e;
+    background-color: #2e2e2e;
+}
+
+.close:hover,
+.close:focus {
+    color: #FFA16E;
+    text-decoration: none;
+    cursor: pointer;
+}

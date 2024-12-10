@@ -97,7 +97,7 @@
             <label for="resume">Resume:</label>
             <textarea id="resume" placeholder="Skriv dit resume her..."></textarea>
 
-            <button type="button" id="save-profile">Gem Profil</button>
+            <button type="button" id="save-profile" th:onclick="'window.location.href=\'' + @{/minProfil} + '\''">Gem Profil</button>
         </form>
     </section>
 </main>
