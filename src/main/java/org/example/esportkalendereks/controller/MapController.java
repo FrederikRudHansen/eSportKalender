@@ -8,6 +8,6 @@ public class MapController {
 
     @GetMapping("dust2")
     public String dust2() {
-        return "dust2";
+        return "tipsntrickshtmler/dust2";
     }
 }

@@ -9,18 +9,23 @@
     justify-content: center;
     align-items: center;
 }
-
 .stats {
-    background-color: black;
-
-    max-width: calc(100% - 10rem);
-    height: 30%;
-    margin: 2rem auto;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+     max-width: calc(100% - 10rem);
+     margin: 2rem auto 0;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     position: relative;
+     z-index: 1;
+     background-image: url("../billeder/statistik.png");
+     background-repeat: no-repeat;
+     background-size: contain;
+     background-position: center;
+     background-color: inherit;
+     min-height: 50vh;
+     border-radius: 10px;
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+ }
 
 .loading-screen {
     position: fixed;
@@ -53,3 +58,5 @@
         transform: rotate(360deg);
     }
 }
+
+
