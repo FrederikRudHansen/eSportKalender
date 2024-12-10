@@ -70,12 +70,21 @@
 <div id="newEventModal" style="display: none;">
     <h2>New Event</h2>
     <input id="eventTitleInput" placeholder="Event Title" />
-    <label>
+    <label class="fontCheck">
         Repeat Weekly:
-        <input type="checkbox" id="repeatCheckbox">
-        <input type="checkbox" id="Turnering">
-        <input type="checkbox" id="Træning">
+        <input type="checkbox" id="repeatCheckbox"><br>
     </label>
+
+    <label class="fontCheck">
+        Turnering:
+        <input type="checkbox" class="Turnering"><br>
+    </label>
+
+    <label class="fontCheck">
+        Træning:
+        <input type="checkbox" id="Træning"><br>
+    </label>
+
     <button id="saveButton">Save</button>
     <button id="cancelButton">Cancel</button>
 </div>
