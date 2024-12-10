@@ -19,20 +19,26 @@
 
 .beskrivelse{
     margin-left: 10%;
-    height: 50%;
+    height: 10%;
     background-color: green;
     color: white;
 }
 
-.map{
-    margin-top: 3rem;
-    height: 70%;
+.mapcontainer{
+    position: relative;
     width: 50%;
+    height: 65%;
+    aspect-ratio: 16/9;
+}
+
+.map{
+    height: 100%;
+    width: 100%;
+    display: block;
     background-image: url("../tipspics/dust2map.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    position: relative;
 }
 
 .cirkelct1:hover, .cirkelct2:hover, .cirkelct3:hover, .cirkelt1:hover, .cirkelt2:hover, .cirkelt3:hover{
@@ -50,41 +56,47 @@
     background-size: contain;
     position: absolute;
 }
-
 .cirkelt1{
     background-image: url("../tipspics/cirkelt.png");
-    top: 10%;
-    left: 26%;
+    /*margin-left: 23%;*/
+    /*margin-top: 13%;*/
+
+    /*top: 10%;*/
+    /*left: 23%;*/
+
+    top: 3.8rem;
+    left: 9.4rem;
 }
+
 
 .cirkelt2{
     background-image: url("../tipspics/cirkelt.png");
-    top: 22%;
+    top: 19%;
     left: 47%;
 }
 
 .cirkelt3{
     background-image: url("../tipspics/cirkelt.png");
-    top: 37.5%;
+    top: 28%;
     left: 46%;
 }
 
 .cirkelct1{
     background-image: url("../tipspics/cirkelct.png");
-    top: 53%;
-    left: 64%;
+    top: 37%;
+    left: 66.5%;
 }
 
 .cirkelct2{
     background-image: url("../tipspics/cirkelct.png");
-    top: 38%;
-    left: 14%;
+    top: 18%;
+    left: 8.5%;
 }
 
 .cirkelct3{
     background-image: url("../tipspics/cirkelct.png");
-    top: 30%;
-    left: 14%;
+    top: 6%;
+    left:8.5%;
 }
 
 .modal {
@@ -113,7 +125,6 @@
 }
 
 .modal-description {
-    margin-top: 1rem;
     color: black;
     text-align: center;
 }
