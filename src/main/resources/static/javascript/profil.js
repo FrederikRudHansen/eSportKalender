@@ -1,8 +1,6 @@
-// profil.js
-
 document.getElementById('save-profile').addEventListener('click', function () {
     // Hent værdier fra formularfelterne
-    const name = document.getElementById('name').value;
+    const name = document.getElementById('name').value.trim();
     const gender = document.getElementById('gender').value;
     const birthday = document.getElementById('birthday').value;
     const nationality = document.getElementById('nationality').value;
@@ -19,7 +17,7 @@ document.getElementById('save-profile').addEventListener('click', function () {
     }
 
     // Opret en profil som et objekt
-    const profile = {
+    const newProfile = {
         name,
         gender,
         birthday,
@@ -32,19 +30,35 @@ document.getElementById('save-profile').addEventListener('click', function () {
     };
 
     // Hent eksisterende profiler fra localStorage
-    const profiles = localStorage.getItem('profiles') ? JSON.parse(localStorage.getItem('profiles')) : [];
+    let profiles = localStorage.getItem('profiles') ? JSON.parse(localStorage.getItem('profiles')) : [];
 
-    // Tilføj den nye profil til listen
-    profiles.push(profile);
+    // Tjek om profilen allerede eksisterer
+    const existingProfileIndex = profiles.findIndex(profile => profile.name.toLowerCase() === name.toLowerCase());
+
+    if (existingProfileIndex !== -1) {
+        // Profil findes allerede
+        const overwrite = confirm(`En profil med navnet "${name}" findes allerede. Vil du overskrive den?`);
+        if (overwrite) {
+            // Overskriv eksisterende profil
+            profiles[existingProfileIndex] = newProfile;
+            alert('Profil overskrevet!');
+        } else {
+            // Annullér handlingen
+            alert('Profil ikke gemt. Vælg et andet navn.');
+            return;
+        }
+    } else {
+        // Tilføj ny profil
+        profiles.push(newProfile);
+        alert('Profil gemt!');
+    }
 
     // Gem listen tilbage i localStorage
     localStorage.setItem('profiles', JSON.stringify(profiles));
 
-    // Bekræftelse til brugeren
-    alert('Profil gemt!');
-    window.location.href = '/minProfil';
-
-
     // Ryd formularen
     document.getElementById('profile-form').reset();
+
+    // Omdiriger til profilsiden
+    window.location.href = '/minProfil';
 });
