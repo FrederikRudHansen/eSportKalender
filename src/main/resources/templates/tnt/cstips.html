@@ -7,16 +7,16 @@
 
     <meta charset="UTF-8">
     <title>CS 2 Tips n' Tricks!</title>
-    <link href="../../static/css/body.css" rel="stylesheet">
-    <link href="../../static/css/headerFooter.css" rel="stylesheet">
-    <link href="../../static/css/cstips.css" rel="stylesheet">
+    <link href="../../static/css/body.css" th:href="@{/css/body.css}" rel="stylesheet">
+    <link href="../../static/css/headerFooter.css" th:href="@{/css/headerFooter.css}" rel="stylesheet">
+    <link href="../../static/css/cstips.css" th:href="@{/css/cstips.css}" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="header">
             <div class="logocontainer">
-                <a href="../forside.html">
-                    <img id="logo" src="../../static/billeder/logo.png" alt="Logo">
+                <a href="/forside">
+                    <img id="logo" src="../../static/billeder/logo.png" th:src="@{/billeder/logo.png}" alt="Logo">
                 </a>
             </div>
             <div class="hejmsg">
@@ -52,7 +52,7 @@
 
     <div class="cont1">
         <div class="grid-container">
-            <a href="dust2.html">
+            <a href="dust2">
                 <div class="outline">
                     <div class="griditem">
                         <div class="grid-item1">

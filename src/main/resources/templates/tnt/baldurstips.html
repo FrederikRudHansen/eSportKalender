@@ -7,21 +7,19 @@
 
     <meta charset="UTF-8">
     <title>GameHive - Hele Danmarks Gaming Platform!</title>
-    <link rel="stylesheet" href="../../static/css/body.css">
-    <link rel="stylesheet" href="../../static/css/headerFooter.css">
-    <link rel="stylesheet" href="../../static/css/baldurstips.css">
+    <link rel="stylesheet" href="../../static/css/body.css" th:href="@{/css/body.css}">
+    <link rel="stylesheet" href="../../static/css/headerFooter.css" th:href="@{/css/headerFooter.css}">
+    <link rel="stylesheet" href="../../static/css/baldurstips.css" th:href="@{/css/baldurstips.css}">
 </head>
 <body>
     <header>
         <div class="header">
             <div class="logocontainer">
-                <a href="../forside.html">
-                    <img id="logo" src="../billeder/logo.png" alt="Logo">
+                <a href="forside">
+                    <img id="logo" src="../billeder/logo.png" th:src="@{/billeder/logo.png}" alt="Logo">
                 </a>
             </div>
-            <div class="hejmsg">
-                Gamernes Platform!
-            </div>
+
             <div class="hlist">
                 <ul>
                     <li><a th:href="@{/forside}">Forside</a></li>
@@ -29,17 +27,7 @@
                     <li><a th:href="@{/PLACEHOLDER}">Min Profil</a></li>
                 </ul>
             </div>
-            <div class="dropdown">
-                <button class="dropbtn">Tips n' Tricks</button>
-                <div class="dropdown-content">
-                    <a th:href="@{/leaguetips}">League of Legends</a>
-                    <a th:href="@{/csgotips}">CSGO</a>
-                    <a th:href="@{/baldurstips}">Baldur's Gate III</a>
-                    <a href="#">Valorant</a>
-                    <a href="#">Smite</a>
-                    <a href="#">TFT</a>
-                    <a href="#">Warhammer 40k Tacticus</a>
-                </div>
+
             </div>
             <div class="login-signup">
                 <ul>
@@ -50,10 +38,10 @@
         </div>
     </header>
     <div class="piccontainer">
-        <img id="bg3pic" src="../../static/billeder/bg3pic.png" alt="bg3pic">
+        <img id="bg3pic" src="../../static/billeder/bg3pic.png" th:src="@{/billeder/bg3pic.png}" alt="bg3pic">
     </div>
     <div class="shlink">
-        <a href="https://www.google.com/search?q=rick+roll+&sca_esv=09d50bc19946cdf1&sxsrf=ADLYWIKx5mCGBNAUC-3_stlqPOzcLau8jg%3A1733399269433&ei=5ZJRZ9mIGvmFxc8P08KQwAo&ved=0ahUKEwiZj9W9x5CKAxX5QvEDHVMhBKgQ4dUDCA8&uact=5&oq=rick+roll+&gs_lp=Egxnd3Mtd2l6LXNlcnAiCnJpY2sgcm9sbCAyChAAGIAEGEMYigUyBRAAGIAEMgUQABiABDIIEC4YgAQYywEyCBAAGIAEGMsBMgUQABiABDIFEAAYgAQyBRAAGIAEMggQABiABBjLATIFEAAYgARIgARQtANYtANwAXgBkAEAmAE_oAE_qgEBMbgBA8gBAPgBAZgCAqACR8ICChAAGLADGNYEGEfCAg0QABiABBiwAxhDGIoFmAMAiAYBkAYKkgcBMqAHxAc&sclient=gws-wiz-serp#fpstate=ive&vld=cid:d7b50f1f,vid:dQw4w9WgXcQ,st:0">Klik her for Shadowheart nudes!!!1!</a>
+        <a href="https://www.google.com/search?q=rick+roll+&sca_esv=09d50bc19946cdf1&sxsrf=ADLYWIKx5mCGBNAUC-3_stlqPOzcLau8jg%3A1733399269433&ei=5ZJRZ9mIGvmFxc8P08KQwAo&ved=0ahUKEwiZj9W9x5CKAxX5QvEDHVMhBKgQ4dUDCA8&uact=5&oq=rick+roll+&gs_lp=Egxnd3Mtd2l6LXNlcnAiCnJpY2sgcm9sbCAyChAAGIAEGEMYigUyBRAAGIAEMgUQABiABDIIEC4YgAQYywEyCBAAGIAEGMsBMgUQABiABDIFEAAYgAQyBRAAGIAEMggQABiABBjLATIFEAAYgARIgARQtANYtANwAXgBkAEAmAE_oAE_qgEBMbgBA8gBAPgBAZgCAqACR8ICChAAGLADGNYEGEfCAg0QABiABBiwAxhDGIoFmAMAiAYBkAYKkgcBMqAHxAc&sclient=gws-wiz-serp#fpstate=ive&vld=cid:d7b50f1f,vid:dQw4w9WgXcQ,st:0">Klik her for Shadowheart tips ;)</a>
     </div>
     <footer>
         <div class="footercontainer">
