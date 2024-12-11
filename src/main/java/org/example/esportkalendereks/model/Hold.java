@@ -15,6 +15,7 @@ public class Hold {
     private String nationalitet;
     private int antal;
     private String Resume;
+    private String spil;
 
     // Relation til Coach
     @OneToOne
@@ -83,5 +84,13 @@ public class Hold {
 
     public void setResume(String resume) {
         Resume = resume;
+    }
+
+    public String getSpil() {
+        return spil;
+    }
+
+    public void setSpil(String spil) {
+        this.spil = spil;
     }
 }
