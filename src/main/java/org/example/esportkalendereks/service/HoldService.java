@@ -4,6 +4,8 @@ import org.example.esportkalendereks.model.Hold;
 import org.example.esportkalendereks.repository.HoldRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class HoldService {
 
@@ -19,5 +21,9 @@ public class HoldService {
 
     public void saveHold(Hold hold) {
         holdRepository.save(hold);
+    }
+
+    public List<Hold> findAll() {
+        return holdRepository.findAll();
     }
 }

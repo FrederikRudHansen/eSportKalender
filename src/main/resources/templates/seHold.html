@@ -64,17 +64,34 @@
     </div>
 </header>
 <body>
-<section class="profile-center">
-    <h2>Profiloplysninger</h2>
-    <p><strong>Køn:</strong> <span id="profile-gender">Indlæser...</span></p>
-    <p><strong>Fødselsdato:</strong> <span id="profile-birthday">Indlæser...</span></p>
-    <p><strong>Nationalitet:</strong> <span id="profile-nationality">Indlæser...</span></p>
-    <p><strong>Sprog:</strong> <span id="profile-language">Indlæser...</span></p>
-    <p><strong>Steam:</strong> <a id="profile-steam" href="#" target="_blank">Indlæser...</a></p>
-    <p><strong>Faceit:</strong> <a id="profile-faceit" href="#" target="_blank">Indlæser...</a></p>
-    <p><strong>Rolle:</strong> <span id="profile-role">Indlæser...</span></p>
-    <p><strong>Resume:</strong> <span id="profile-resume">Indlæser...</span></p>
+<body>
+<section class="hold-liste">
+    <h2>Alle Hold</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Hold Navn</th>
+            <th>Rank</th>
+            <th>Nationalitet</th>
+            <th>Antal Spillere</th>
+            <th>Spil</th>
+            <th>Resume</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="hold : ${holdListe}">
+            <td th:text="${hold.navn}"></td>
+            <td th:text="${hold.rank}"></td>
+            <td th:text="${hold.nationalitet}"></td>
+            <td th:text="${hold.antal}"></td>
+            <td th:text="${hold.spil}"></td>
+            <td th:text="${hold.resume}"></td>
+        </tr>
+        </tbody>
+    </table>
 </section>
+</body>
+
 </body>
 <footer>
     <div class="footercontainer">
@@ -88,6 +105,5 @@
             GameHive™
         </div>
     </div>
-    <img src="../static/billeder/profil.png" class="minprofilbillede">
 </footer>
 </html>

@@ -6,7 +6,7 @@ body {
 .form-container {
     width: 50%;
     margin-left: 23%;
-    margin-top: 8%;
+    margin-top: 4%;
     padding: 2%;
     background: #fff;
     border-radius: 3%;
@@ -54,4 +54,11 @@ body {
 
 .form-group button:hover {
     background: #0056b3;
+}
+
+.checkbox-group {
+    display: flex;
+    gap: 2%;
+    margin-top: 4%;
+    font-size: 16px;
 }

@@ -63,7 +63,6 @@
         </div>
     </div>
 </header>
-<div class="search-results"></div>
 <div class="login-signup">
     <ul>
         <li><a th:href="@{/login}">Login</a></li>
@@ -89,6 +88,16 @@
         <div class="form-group">
             <label for="antal">Antal Spillere:</label>
             <input type="number" id="antal" name="antal" required>
+        </div>
+        <div class="form-group">
+            <label>Vælg Spil:</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="spil" value="League of Legends"> League of Legends</label>
+                <label><input type="checkbox" name="spil" value="CSGO"> CSGO</label>
+                <label><input type="checkbox" name="spil" value="Baldur's Gate III"> Baldur's Gate III</label>
+                <label><input type="checkbox" name="spil" value="Valorant"> Valorant</label>
+                <label><input type="checkbox" name="spil" value="Overwatch"> Overwatch</label>
+            </div>
         </div>
         <div class="form-group">
             <label for="resume">Hold Resume:</label>
