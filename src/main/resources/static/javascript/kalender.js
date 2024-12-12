@@ -16,7 +16,30 @@ function openModal(date) {
     const eventForDay = events.find(e => e.date === clicked || (e.repeat && isRepeatedEvent(e, clicked)));
 
     if (eventForDay) {
-        document.getElementById('eventText').innerText = eventForDay.title;
+        // Vis event-titel og tid
+        document.getElementById('eventText').innerHTML = `
+            <strong>Event:</strong> ${eventForDay.title} ${
+            eventForDay.time ? `kl. ${eventForDay.time}` : ''
+        }<br>
+            ${eventForDay.træning ? "(Træning)" : ""}
+            ${eventForDay.turnering ? "(Turnering)" : ""}
+            ${eventForDay.kamp ? "(Kamp)" : ""}
+        `;
+
+        // Vis modstander hvis den findes
+        if (eventForDay.modstander) {
+            document.getElementById('eventText').innerHTML += `
+                <br><strong>Modstander:</strong> ${eventForDay.modstander}
+            `;
+        }
+
+        // Forudfyld data, hvis event skal redigeres
+        document.getElementById('Træning').checked = eventForDay.træning || false;
+        document.querySelector('.Turnering').checked = eventForDay.turnering || false;
+        document.getElementById('Kamp').checked = eventForDay.kamp || false;
+        document.getElementById('eventTimeInput').value = eventForDay.time || '';
+        document.getElementById('modstanderBox').value = eventForDay.modstander || '';
+
         deleteEventModal.style.display = 'block';
     } else {
         newEventModal.style.display = 'block';
@@ -25,13 +48,16 @@ function openModal(date) {
     backDrop.style.display = 'block';
 }
 
+
+
+
 function isRepeatedEvent(event, date) {
     const eventDate = new Date(event.date);
     const checkDate = new Date(date);
     const diffDays = Math.floor((checkDate - eventDate) / (1000 * 60 * 60 * 24));
+    // Kontroller, om datoen ligger præcis et multiplum af 7 dage fra startdatoen
     return event.repeat && diffDays % 7 === 0 && diffDays >= 0;
 }
-
 function load() {
     const dt = new Date();
 
@@ -67,7 +93,6 @@ function load() {
 
         if (i > paddingDays) {
             daySquare.innerText = i - paddingDays;
-            daySquare.dataset.date = dayString;
 
             const eventForDay = events.find(e => e.date === dayString || (e.repeat && isRepeatedEvent(e, dayString)));
 
@@ -78,19 +103,15 @@ function load() {
             if (eventForDay) {
                 const eventDiv = document.createElement('div');
                 eventDiv.classList.add('event');
-                eventDiv.innerText = eventForDay.title;
+
+                // Visning af Event-Information
+                eventDiv.innerText = `${eventForDay.title} ${eventForDay.time ? `kl. ${eventForDay.time}` : ''}`;
+
+                if (eventForDay.træning) eventDiv.innerText += " (Træning)";
+                if (eventForDay.turnering) eventDiv.innerText += " (Turnering)";
+                if (eventForDay.kamp) eventDiv.innerText += " (Kamp)";
+
                 daySquare.appendChild(eventDiv);
-
-                // Add background color changes for booked days
-                if (eventForDay.isTournament) {
-                    daySquare.classList.add('green-day');
-                }
-                if (eventForDay.isTraining) {
-                    daySquare.classList.add('blue-day');
-                }
-
-                // Indicate a fully booked day by changing background color
-                daySquare.classList.add('booked-day');
             }
 
             daySquare.addEventListener('click', () => openModal(dayString));
@@ -101,6 +122,8 @@ function load() {
         calendar.appendChild(daySquare);
     }
 }
+
+
 
 function closeModal() {
     eventTitleInput.classList.remove('error');
@@ -117,20 +140,32 @@ function saveEvent() {
     if (eventTitleInput.value) {
         eventTitleInput.classList.remove('error');
 
+        // Hent værdier fra inputfelter
+        const isTræning = document.getElementById('Træning').checked;
+        const isTurnering = document.querySelector('.Turnering').checked;
+        const isKamp = document.getElementById('Kamp').checked;
+        const eventTime = document.getElementById('eventTimeInput').value;
+        const modstander = document.getElementById('modstanderBox').value; // Ny værdi for modstander
+
+        // Opret event-objekt med tid og modstander
         const newEvent = {
             date: clicked,
             title: eventTitleInput.value,
+            træning: isTræning,
+            turnering: isTurnering,
+            kamp: isKamp,
+            time: eventTime,
+            modstander: modstander, // Tilføj modstander
             repeat: repeatCheckbox.checked,
-            isTournament: document.querySelector('.Turnering').checked, // Tjek om turnering er valgt
-            isTraining: document.querySelector('#Træning').checked, // Tjek om træning er valgt
         };
 
+        // Gem eventet i listen
         events.push(newEvent);
 
-        // Repeat weekly events if checked
+        // Hvis gentagelse, tilføj events hver 7. dag
         if (repeatCheckbox.checked) {
             let startDate = new Date(clicked);
-            const endDate = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0);
+            const endDate = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0); // Slut på måneden
             while (startDate <= endDate) {
                 startDate.setDate(startDate.getDate() + 7);
                 const repeatDate = startDate.toLocaleDateString('en-us');
@@ -141,22 +176,23 @@ function saveEvent() {
             }
         }
 
-        // Opdater kalenderen med eventet
-        load();
-
         // Gem events i localStorage
         localStorage.setItem('events', JSON.stringify(events));
-
         closeModal();
     } else {
         eventTitleInput.classList.add('error');
     }
 }
 
+
+
+
 function deleteEvent() {
+    // Find eventet for den aktuelle dato
     const eventForDay = events.find(e => e.date === clicked || (e.repeat && isRepeatedEvent(e, clicked)));
 
     if (eventForDay) {
+        // Filtrer events baseret på titel og slet alle med samme titel
         const eventTitleToDelete = eventForDay.title;
         events = events.filter(e => e.title !== eventTitleToDelete);
         localStorage.setItem('events', JSON.stringify(events));
@@ -164,6 +200,7 @@ function deleteEvent() {
 
     closeModal();
 }
+
 
 function initButtons() {
     document.getElementById('nextButton').addEventListener('click', () => {
