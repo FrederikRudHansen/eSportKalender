@@ -29,7 +29,6 @@ function isRepeatedEvent(event, date) {
     const eventDate = new Date(event.date);
     const checkDate = new Date(date);
     const diffDays = Math.floor((checkDate - eventDate) / (1000 * 60 * 60 * 24));
-    // Kontroller, om datoen ligger præcis et multiplum af 7 dage fra startdatoen
     return event.repeat && diffDays % 7 === 0 && diffDays >= 0;
 }
 
@@ -68,6 +67,7 @@ function load() {
 
         if (i > paddingDays) {
             daySquare.innerText = i - paddingDays;
+            daySquare.dataset.date = dayString;
 
             const eventForDay = events.find(e => e.date === dayString || (e.repeat && isRepeatedEvent(e, dayString)));
 
@@ -80,6 +80,17 @@ function load() {
                 eventDiv.classList.add('event');
                 eventDiv.innerText = eventForDay.title;
                 daySquare.appendChild(eventDiv);
+
+                // Add background color changes for booked days
+                if (eventForDay.isTournament) {
+                    daySquare.classList.add('green-day');
+                }
+                if (eventForDay.isTraining) {
+                    daySquare.classList.add('blue-day');
+                }
+
+                // Indicate a fully booked day by changing background color
+                daySquare.classList.add('booked-day');
             }
 
             daySquare.addEventListener('click', () => openModal(dayString));
@@ -106,19 +117,20 @@ function saveEvent() {
     if (eventTitleInput.value) {
         eventTitleInput.classList.remove('error');
 
-        // Tilføj event og håndter gentagelse
         const newEvent = {
             date: clicked,
             title: eventTitleInput.value,
             repeat: repeatCheckbox.checked,
+            isTournament: document.querySelector('.Turnering').checked, // Tjek om turnering er valgt
+            isTraining: document.querySelector('#Træning').checked, // Tjek om træning er valgt
         };
 
         events.push(newEvent);
 
-        // Hvis gentagelse, tilføj events hver 7. dag
+        // Repeat weekly events if checked
         if (repeatCheckbox.checked) {
             let startDate = new Date(clicked);
-            const endDate = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0); // Slut på måneden
+            const endDate = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0);
             while (startDate <= endDate) {
                 startDate.setDate(startDate.getDate() + 7);
                 const repeatDate = startDate.toLocaleDateString('en-us');
@@ -129,7 +141,12 @@ function saveEvent() {
             }
         }
 
+        // Opdater kalenderen med eventet
+        load();
+
+        // Gem events i localStorage
         localStorage.setItem('events', JSON.stringify(events));
+
         closeModal();
     } else {
         eventTitleInput.classList.add('error');
@@ -137,11 +154,9 @@ function saveEvent() {
 }
 
 function deleteEvent() {
-    // Find eventet for den aktuelle dato
     const eventForDay = events.find(e => e.date === clicked || (e.repeat && isRepeatedEvent(e, clicked)));
 
     if (eventForDay) {
-        // Filtrer events baseret på titel og slet alle med samme titel
         const eventTitleToDelete = eventForDay.title;
         events = events.filter(e => e.title !== eventTitleToDelete);
         localStorage.setItem('events', JSON.stringify(events));
@@ -149,7 +164,6 @@ function deleteEvent() {
 
     closeModal();
 }
-
 
 function initButtons() {
     document.getElementById('nextButton').addEventListener('click', () => {

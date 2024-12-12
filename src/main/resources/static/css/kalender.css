@@ -118,6 +118,7 @@
     color: white;
 }
 
+
 /* Backdrop styling */
 #modalBackDrop {
     position: fixed;
@@ -129,3 +130,7 @@
     z-index: 999; /* Bag modalet */
     display: none; /* Skjult som standard */
 }
+
+
+
+
