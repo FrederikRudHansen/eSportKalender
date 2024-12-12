@@ -16,7 +16,15 @@ function openModal(date) {
     const eventForDay = events.find(e => e.date === clicked || (e.repeat && isRepeatedEvent(e, clicked)));
 
     if (eventForDay) {
-        document.getElementById('eventText').innerText = eventForDay.title;
+        document.getElementById('eventText').innerText = `${eventForDay.title} ${
+            eventForDay.time ? `kl. ${eventForDay.time}` : ''
+        }`;
+
+        document.getElementById('Træning').checked = eventForDay.træning || false;
+        document.querySelector('.Turnering').checked = eventForDay.turnering || false;
+        document.getElementById('Kamp').checked = eventForDay.kamp || false;
+        document.getElementById('eventTimeInput').value = eventForDay.time || ''; // Forudfyld tidspunkt
+
         deleteEventModal.style.display = 'block';
     } else {
         newEventModal.style.display = 'block';
@@ -25,6 +33,8 @@ function openModal(date) {
     backDrop.style.display = 'block';
 }
 
+
+
 function isRepeatedEvent(event, date) {
     const eventDate = new Date(event.date);
     const checkDate = new Date(date);
@@ -32,7 +42,6 @@ function isRepeatedEvent(event, date) {
     // Kontroller, om datoen ligger præcis et multiplum af 7 dage fra startdatoen
     return event.repeat && diffDays % 7 === 0 && diffDays >= 0;
 }
-
 function load() {
     const dt = new Date();
 
@@ -78,7 +87,14 @@ function load() {
             if (eventForDay) {
                 const eventDiv = document.createElement('div');
                 eventDiv.classList.add('event');
-                eventDiv.innerText = eventForDay.title;
+
+                // Visning af Event-Information
+                eventDiv.innerText = `${eventForDay.title} ${eventForDay.time ? `kl. ${eventForDay.time}` : ''}`;
+
+                if (eventForDay.træning) eventDiv.innerText += " (Træning)";
+                if (eventForDay.turnering) eventDiv.innerText += " (Turnering)";
+                if (eventForDay.kamp) eventDiv.innerText += " (Kamp)";
+
                 daySquare.appendChild(eventDiv);
             }
 
@@ -90,6 +106,8 @@ function load() {
         calendar.appendChild(daySquare);
     }
 }
+
+
 
 function closeModal() {
     eventTitleInput.classList.remove('error');
@@ -106,13 +124,24 @@ function saveEvent() {
     if (eventTitleInput.value) {
         eventTitleInput.classList.remove('error');
 
-        // Tilføj event og håndter gentagelse
+        // Hent værdier fra inputfelter
+        const isTræning = document.getElementById('Træning').checked;
+        const isTurnering = document.querySelector('.Turnering').checked;
+        const isKamp = document.getElementById('Kamp').checked;
+        const eventTime = document.getElementById('eventTimeInput').value; // Nyt tidspunkt
+
+        // Opret event-objekt med tid
         const newEvent = {
             date: clicked,
             title: eventTitleInput.value,
+            træning: isTræning,
+            turnering: isTurnering,
+            kamp: isKamp,
+            time: eventTime, // Tilføj tidspunktet
             repeat: repeatCheckbox.checked,
         };
 
+        // Gem eventet i listen
         events.push(newEvent);
 
         // Hvis gentagelse, tilføj events hver 7. dag
@@ -129,12 +158,15 @@ function saveEvent() {
             }
         }
 
+        // Gem events i localStorage
         localStorage.setItem('events', JSON.stringify(events));
         closeModal();
     } else {
         eventTitleInput.classList.add('error');
     }
 }
+
+
 
 function deleteEvent() {
     // Find eventet for den aktuelle dato
