@@ -16,14 +16,29 @@ function openModal(date) {
     const eventForDay = events.find(e => e.date === clicked || (e.repeat && isRepeatedEvent(e, clicked)));
 
     if (eventForDay) {
-        document.getElementById('eventText').innerText = `${eventForDay.title} ${
+        // Vis event-titel og tid
+        document.getElementById('eventText').innerHTML = `
+            <strong>Event:</strong> ${eventForDay.title} ${
             eventForDay.time ? `kl. ${eventForDay.time}` : ''
-        }`;
+        }<br>
+            ${eventForDay.træning ? "(Træning)" : ""}
+            ${eventForDay.turnering ? "(Turnering)" : ""}
+            ${eventForDay.kamp ? "(Kamp)" : ""}
+        `;
 
+        // Vis modstander hvis den findes
+        if (eventForDay.modstander) {
+            document.getElementById('eventText').innerHTML += `
+                <br><strong>Modstander:</strong> ${eventForDay.modstander}
+            `;
+        }
+
+        // Forudfyld data, hvis event skal redigeres
         document.getElementById('Træning').checked = eventForDay.træning || false;
         document.querySelector('.Turnering').checked = eventForDay.turnering || false;
         document.getElementById('Kamp').checked = eventForDay.kamp || false;
-        document.getElementById('eventTimeInput').value = eventForDay.time || ''; // Forudfyld tidspunkt
+        document.getElementById('eventTimeInput').value = eventForDay.time || '';
+        document.getElementById('modstanderBox').value = eventForDay.modstander || '';
 
         deleteEventModal.style.display = 'block';
     } else {
@@ -32,6 +47,7 @@ function openModal(date) {
 
     backDrop.style.display = 'block';
 }
+
 
 
 
@@ -128,16 +144,18 @@ function saveEvent() {
         const isTræning = document.getElementById('Træning').checked;
         const isTurnering = document.querySelector('.Turnering').checked;
         const isKamp = document.getElementById('Kamp').checked;
-        const eventTime = document.getElementById('eventTimeInput').value; // Nyt tidspunkt
+        const eventTime = document.getElementById('eventTimeInput').value;
+        const modstander = document.getElementById('modstanderBox').value; // Ny værdi for modstander
 
-        // Opret event-objekt med tid
+        // Opret event-objekt med tid og modstander
         const newEvent = {
             date: clicked,
             title: eventTitleInput.value,
             træning: isTræning,
             turnering: isTurnering,
             kamp: isKamp,
-            time: eventTime, // Tilføj tidspunktet
+            time: eventTime,
+            modstander: modstander, // Tilføj modstander
             repeat: repeatCheckbox.checked,
         };
 
@@ -165,6 +183,7 @@ function saveEvent() {
         eventTitleInput.classList.add('error');
     }
 }
+
 
 
 
