@@ -1,5 +1,5 @@
 body {
-    background-color: #010623 !important;
+    background-color: #050505 !important;
     margin: 0;
     height: 100vh;
     font-size: 1.8rem;
@@ -12,14 +12,19 @@ body::-webkit-scrollbar {
     display: none;
 }
 
+header, footer {
+    background-color: #1C2230;
+    color: #ffffff;
+}
+
 .header {
     height: 5rem;
     display: flex;
-    justify-content: space-between; /* Sikrer korrekt afstand mellem elementer */
-    align-items: center; /* Centrerer elementerne vertikalt */
+    justify-content: space-between; /* Sikrer afstand mellem elementer */
+    align-items: center; /* Centrerer elementer vertikalt */
     background-color: #282828;
     box-shadow: 0 .3rem .5rem #fd5d56;
-    padding: 0 2rem; /* Tilføjer afstand til venstre og højre */
+    padding: 0 2rem; /* Tilføjer indrykning til venstre og højre */
 }
 
 .logocontainer {
@@ -47,7 +52,7 @@ body::-webkit-scrollbar {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-grow: 1; /* Fylder midten af headeren */
+    flex-grow: 1; /* Fylder mellemområdet */
 }
 
 .hlist ul {
@@ -58,7 +63,7 @@ body::-webkit-scrollbar {
 }
 
 .hlist ul li {
-    margin-right: 2rem; /* Justerer afstand mellem links */
+    margin-right: 2rem;
 }
 
 .hlist ul a {
