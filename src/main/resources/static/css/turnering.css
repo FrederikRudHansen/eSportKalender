@@ -74,31 +74,31 @@
 }
 
 .grid-item1 {
-    /* background-image: url("../turneringspics/powerligaen.jpg"); /* Til Power Ligaen */
+    background-image: url("../ligapics/powerliga.jpg");
     filter: grayscale(100%);
     transition: filter .5s ease;
 }
 
 .grid-item2 {
-    /* background-image: url("../turneringspics/elgigantenligaen.jpg"); /* Til Elgiganten Ligaen */
+    background-image: url("../ligapics/Elgigantenliga.jpg");
     filter: grayscale(100%);
     transition: filter .5s ease;
 }
 
 .grid-item3 {
-   /* background-image: url("../turneringspics/miamalkovaligaen.jpg"); /* Til Mia Malkova Ligaen */
+   background-image: url("../ligapics/mialiga.png");
     filter: grayscale(100%);
     transition: filter .5s ease;
 }
 
 .grid-item4 {
-  /*  background-image: url("../turneringspics/leagueoflegendsligaen.jpg"); /* Til League of Legends Ligaen */
+    background-image: url("../ligapics/lolliga.jpg");
     filter: grayscale(100%);
     transition: filter .5s ease;
 }
 
 .grid-item5 {
-  /*  background-image: url("../turneringspics/csgoligaen.jpg"); /* Til CS:GO Ligaen */
+    background-image: url("../ligapics/blastliga.jpg");
     filter: grayscale(100%);
     transition: filter .5s ease;
 }
