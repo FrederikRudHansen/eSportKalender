@@ -1,4 +1,4 @@
-name: Maven Build and Test
+name: Build, Test, and Security Scan
 
 on:
   push:
@@ -9,12 +9,12 @@ on:
       - main
 
 jobs:
-  build-and-test:
-    name: Compile and Test Code
+  build-test-scan:
+    name: Build, Test, and Security Scan
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v4
 
       - name: Set up JDK 21
@@ -23,11 +23,16 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Run OWASP Dependency Check
-        uses: owasp/dependency-check-action@v3
+      - name: Cache Maven Dependencies
+        uses: actions/cache@v3
         with:
-          format: 'ALL' # Sender dataen ud i alle formater
-          failOnCVSS: '7' #Fejler hvis den har en score på >=7
+          path: ~/.m2/repository
+          key: runner-os-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            runner-os-maven-
+
+      - name: Run Dependency Check
+        run: mvn dependency-check:check
 
       - name: Compile and Test
         run: mvn clean verify
