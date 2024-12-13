@@ -19,27 +19,12 @@
                 <img id="logo" src="../../static/billeder/logo.png" th:src="@{/billeder/logo.png}" alt="Logo">
             </a>
         </div>
-        <div class="hejmsg">
-            Gamernes Platform!
-        </div>
         <div class="hlist">
             <ul>
                 <li><a th:href="@{/forside}">Forside</a></li>
                 <li><a th:href="@{/tipsntricks}"><span id="toverskrift">Tips n' Tricks</span></a></li>
                 <li><a th:href="@{/PLACEHOLDER}">Min Profil</a></li>
             </ul>
-        </div>
-        <div class="dropdown">
-            <button class="dropbtn">Vælg Spil</button>
-            <div class="dropdown-content">
-                <a th:href="@{/leaguetips}">League of Legends</a>
-                <a th:href="@{/csgotips}">CSGO</a>
-                <a th:href="@{/baldurstips}">Baldur's Gate III</a>
-                <a href="#">Valorant</a>
-                <a href="#">Smite</a>
-                <a href="#">TFT</a>
-                <a href="#">Warhammer 40k Tacticus</a>
-            </div>
         </div>
         <div class="login-signup">
             <ul>
@@ -65,7 +50,7 @@
     <section class="stilling-container">
         <h2>Stillinger</h2>
         <div class="stilling-box">
-            <img src="../../static/billeder/powerligaen.png" alt="Stillinger" class="stilling-image">
+            <img src="../../static/billeder/powerligaen.png" th:src="@{/billeder/powerligaen.png}" alt="Stillinger" class="stilling-image">
         </div>
     </section>
 </main>
