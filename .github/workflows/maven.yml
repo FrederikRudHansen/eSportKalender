@@ -31,6 +31,9 @@ jobs:
           restore-keys: |
             runner-os-maven-
 
+      - name: Clean and Install Maven Dependencies
+        run: mvn clean install -U
+
       - name: Run Dependency Check
         run: mvn dependency-check:check
 
