@@ -118,6 +118,7 @@
     color: white;
 }
 
+
 /* Backdrop styling */
 #modalBackDrop {
     position: fixed;
@@ -129,3 +130,21 @@
     z-index: 999; /* Bag modalet */
     display: none; /* Skjult som standard */
 }
+
+/* Background color for fully booked days */
+.booked-day {
+    background-color: #5175d0; /* Example: Orange color for booked days */
+    z-index: 1000;
+}
+
+/* Optional: You can have specific styles for tournament or training days */
+.green-day {
+    background-color: #27ae60; /* Green for tournament */
+}
+
+.blue-day {
+    background-color: #2980b9; /* Blue for training */
+}
+
+
+
