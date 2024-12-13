@@ -82,6 +82,7 @@
         <p><strong>Fødselsdato:</strong> <span id="profile-birthday">Indlæser...</span></p>
         <p><strong>Nationalitet:</strong> <span id="profile-nationality">Indlæser...</span></p>
         <p><strong>Sprog:</strong> <span id="profile-language">Indlæser...</span></p>
+        <p><strong>Valgt Hold:</strong> <span id="profile-team">Indlæser...</span></p>
         <p><strong>Steam:</strong> <a id="profile-steam" href="#" target="_blank">Indlæser...</a></p>
         <p><strong>Faceit:</strong> <a id="profile-faceit" href="#" target="_blank">Indlæser...</a></p>
         <p><strong>Rolle:</strong> <span id="profile-role">Indlæser...</span></p>
@@ -131,6 +132,17 @@
         document.getElementById('profile-resume').textContent = latestProfile.resume || "Ikke oplyst";
     } else {
         alert('Ingen profil fundet. Gå til profilindstillinger for at oprette en profil.');
+    }
+</script>
+<script>
+    // Hent det valgte hold fra localStorage
+    const selectedHold = localStorage.getItem('selectedHold') ? JSON.parse(localStorage.getItem('selectedHold')) : null;
+
+    // Hvis der er et hold valgt, vis holdet, ellers vis "Ingen hold valgt"
+    if (selectedHold) {
+        document.getElementById('profile-team').textContent = selectedHold.navn || "Ingen hold valgt";
+    } else {
+        document.getElementById('profile-team').textContent = "Ingen hold valgt";
     }
 </script>
 <script src="../static/javascript/search.js"></script>

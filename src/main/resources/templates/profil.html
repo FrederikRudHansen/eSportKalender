@@ -76,6 +76,15 @@
             <label for="language">Sprog:</label>
             <input type="text" id="language" placeholder="Indtast sprog" />
 
+            <label for="hold">Vælg Hold:</label>
+            <select id="hold" name="hold">
+                <option value="">Vælg et hold</option>
+                <!-- Gør holdene tilgængelige i dropdown -->
+                <th:block th:each="hold : ${holdListe}">
+                    <option th:value="${hold.holdID}" th:text="${hold.navn}"></option>
+                </th:block>
+            </select>
+
             <label for="steam-account">Steam Account:</label>
             <input type="text" id="steam-account" placeholder="Indtast Steam URL" />
 
@@ -117,5 +126,19 @@
 
 <script src="../static/javascript/profil.js"></script>
 <script th:src="@{/javascript/profil.js}" async defer></script>
+<script>
+    // Hent holdet fra dropdown og gem det i localStorage
+    document.getElementById('hold').addEventListener('change', function() {
+        const selectedHoldId = this.value;
+        const selectedHoldName = this.options[this.selectedIndex].text;
+
+        // Gem det valgte hold i localStorage
+        const selectedHold = {
+            holdID: selectedHoldId,
+            navn: selectedHoldName
+        };
+        localStorage.setItem('selectedHold', JSON.stringify(selectedHold));
+    });
+</script>
 </body>
 </html>
