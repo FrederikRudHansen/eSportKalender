@@ -10,4 +10,12 @@ public class TurneringController {
     public String elgiganten(HttpSession session) {
         return "elgiganten";
     }
+    @GetMapping("/turnering")
+    public String turnering(HttpSession session) {
+        return "turnering";
+    }
+    @GetMapping("/powerligaen")
+    public String powerligaen(HttpSession session) {
+        return "powerligaen";
+    }
 }
