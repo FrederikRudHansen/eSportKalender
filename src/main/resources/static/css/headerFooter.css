@@ -4,7 +4,8 @@
     justify-content: left;
 
     background-color: #282828;
-    box-shadow: 0 .3rem .5rem #fd5d56 /*#FBA074*/
+    box-shadow: 0 .3rem .5rem #fd5d56; /*#FBA074*/
+    font-family: "Ubuntu", sans-serif;
 }
 
 .logocontainer{
@@ -16,17 +17,6 @@
 
 #logo{
     max-width: 115%;
-}
-
-.hejmsg{
-    display: flex;
-    align-items: center;
-    width: 10rem;
-    margin-left: 3rem;
-    background: linear-gradient(to bottom, #FDD446, #FE7996);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    cursor: default;
 }
 
 .hlist{
@@ -50,7 +40,7 @@
 }
 
 .hlist ul li:first-child{
-    margin-left: 0rem;
+    margin-left: -3rem;
 }
 
 .hlist ul a, .login-signup a, .container1 a{
@@ -62,64 +52,12 @@
 
 .hlist ul a:hover, .login-signup ul a:hover, .container1 ul a:hover{
     text-decoration: underline;
-    color: #FFA16E;
-}
-
-.dropdown {
-    display: inline-block;
-    position: absolute;
-    left: 78%;
-    top: 2.5%;
-}
-
-.dropbtn {
-    background-color: #fd5d56;
-    color: white;
-    padding: .7rem 1.4rem;
-    font-size: 1.2rem;
-    border-radius: 10rem;
-    border-style: outset;
-    border-width: .25rem;
-}
-
-.dropbtn:hover {
-    background-color: #f6342a;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    left: 50%;
-    top: 100%;
-    transform: translateX(-50%);
-    background-color: #282828;
-    width: max-content;
-    z-index: 2;
-    overflow: hidden;
-    border-radius: 1rem;
-    text-align: center;
-}
-
-.dropdown-content a {
-    color: white;
-    padding: 1rem 1rem;
-    text-decoration: none;
-    display: block;
-    font-size: medium;
-}
-
-.dropdown-content a:hover {
-    background-color: #212121;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-    align-items: center;
+    color: #fd5d56;
 }
 
 .login-signup {
     position: absolute;
-    top: 5%;
+    top: 7%;
     right: 1rem;
     transform: translateY(-50%);
     display: flex;
@@ -139,12 +77,12 @@
     margin: 0;
     padding: 0;
     text-align: center;
+    justify-content: center;
 }
 
 .login-signup ul li {
     margin: 0;
 }
-
 
 .footercontainer{
     width: 100%;
@@ -172,87 +110,3 @@
     list-style: none;
     color: white;
 }
-
-/* Søgefelt Start */
-.input-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    position: relative;
-    margin-right: 380px;
-}
-
-.input {
-    border-style: none;
-    height: 40px;
-    width: 60px;
-    padding: 10px;
-    outline: none;
-    border-radius: 50%;
-    transition: 0.5s ease-in-out;
-    background-color: #660001;
-    box-shadow: 0px 0px 3px #ce000d;
-    padding-right: 40px;
-    color: #fff;
-}
-
-.input::placeholder,
-.input {
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-    font-size: 17px;
-}
-
-.input::placeholder {
-    color: #8f8f8f;
-}
-
-.icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    right: 0px;
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-    outline: none;
-    border-style: none;
-    border-radius: 50%;
-    pointer-events: painted;
-    background-color: transparent;
-    transition: 0.2s linear;
-}
-
-.icon:focus ~ .input,
-.input:focus {
-    box-shadow: none;
-    width: 250px;
-    border-radius: 0px;
-    background-color: transparent;
-    border-bottom: 3px solid #660001;
-    transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
-}
-
-.search-results {
-    margin-top: 10px;
-    background-color: #282828;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    max-width: 300px;
-    overflow: auto;
-}
-
-.search-result {
-    padding: 5px;
-    border-bottom: 1px solid #444;
-}
-
-.search-result:last-child {
-    border-bottom: none;
-}
-
-/* Søgefelt slut css*/
-
