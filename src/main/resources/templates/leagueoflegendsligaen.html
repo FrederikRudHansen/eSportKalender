@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700&family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <meta charset="UTF-8">
+  <title>League of Legends World Cup</title>
+  <link href="../static/css/turnering.css" th:href="@{/css/turnering.css}" rel="stylesheet">
+  <link href="../static/css/leagueoflegendsligaen.css" th:href="@{/css/leagueoflegendsligaen.css}" rel="stylesheet">
+</head>
+<body>
+<header>
+  <div class="header">
+    <div class="logocontainer">
+      <a href="/forside">
+        <img id="logo" src="../../static/billeder/logo.png" th:src="@{/billeder/logo.png}" alt="Logo">
+      </a>
+    </div>
+    <div class="hejmsg">
+      Gamernes Platform!
+    </div>
+    <div class="hlist">
+      <ul>
+        <li><a th:href="@{/forside}">Forside</a></li>
+        <li><a th:href="@{/tipsntricks}"><span id="toverskrift">Tips n' Tricks</span></a></li>
+        <li><a th:href="@{/PLACEHOLDER}">Min Profil</a></li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">Vælg Spil</button>
+      <div class="dropdown-content">
+        <a th:href="@{/leaguetips}">League of Legends</a>
+        <a th:href="@{/csgotips}">CSGO</a>
+        <a th:href="@{/baldurstips}">Baldur's Gate III</a>
+        <a href="#">Valorant</a>
+        <a href="#">Smite</a>
+        <a href="#">TFT</a>
+        <a href="#">Warhammer 40k Tacticus</a>
+      </div>
+    </div>
+    <div class="login-signup">
+      <ul>
+        <li><a th:href="@{/login}">Login</a></li>
+        <li><a th:href="@{/signup}">Signup</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main class="turnering-main">
+  <section class="description">
+    <h1>League of Legends World Cup</h1>
+    <p>
+      Deltag i den største turnering for League of Legends-enthusiaster! World Cup bringer de bedste hold fra hele verden sammen for at konkurrere om æren, prisen og verdensmesterskabstitlen.
+    </p>
+    <p>
+      Tilmeld dit hold nu og vær en del af denne episke kamp. Uanset om du er en erfaren spiller eller ny til spillet, er der plads til alle, der ønsker at tage udfordringen op.
+    </p>
+    <div class="tilmeld-knap-container">
+      <a href="/tilmeld" class="tilmeld-knap">Tilmeld</a>
+    </div>
+  </section>
+
+  <section class="stilling-container">
+    <h2>Stillinger</h2>
+    <div class="stilling-box">
+      <img src="../../static/billeder/league.png" alt="Stillinger" class="stilling-image">
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footercontainer">
+    <div class="container1">
+      <ul>
+        <li><a th:href="@{/support}">Support</a></li>
+        <li><a th:href="@{/privatlivspolitik}">Privatlivspolitik</a></li>
+      </ul>
+    </div>
+    <div class="container2">
+      GameHive™
+    </div>
+  </div>
+</footer>
+</body>
+</html>
