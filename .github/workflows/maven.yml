@@ -1,4 +1,4 @@
-name: Build, Test, and Security Scan
+name: Build, Compile, Test, and Security Scan
 
 on:
   push:
@@ -31,14 +31,11 @@ jobs:
           restore-keys: |
             runner-os-maven-
 
-      - name: Make Maven Wrapper Executable
-        run: chmod +x ./mvnw
-
       - name: Clean and Install Maven Dependencies
-        run: ./mvnw clean install -U
+        run: mvn clean install -U
 
       - name: Run Dependency Check
-        run: ./mvnw dependency-check:check
+        run: mvn dependency-check:check
 
-      - name: Compile and Test
-        run: ./mvnw clean verify
+      - name: Compile and Run Tests
+        run: mvn clean test
