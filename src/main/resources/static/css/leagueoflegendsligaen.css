@@ -20,12 +20,11 @@ header, footer {
 .header {
     height: 5rem;
     display: flex;
-    justify-content: space-between; /* Sikrer afstand mellem elementer */
-    align-items: center; /* Centrerer elementer vertikalt */
+    justify-content: left; /* Venstrejusterer alle elementer */
+    align-items: center; /* Centrerer elementer lodret */
     background-color: #282828;
-    box-shadow: 0 .3rem .5rem #fd5d56;
-    padding: 0 2rem; /* Tilføjer indrykning til venstre og højre */
 }
+
 
 .logocontainer {
     width: 20rem;
@@ -47,35 +46,30 @@ header, footer {
     cursor: default;
     font-size: 1.2rem;
 }
-
 .hlist {
     display: flex;
-    justify-content: center;
     align-items: center;
-    flex-grow: 1; /* Fylder mellemområdet */
+    justify-content: center; /* Centrerer navigationselementerne horisontalt */
+    width: 100%;
 }
 
 .hlist ul {
     list-style: none;
     display: flex;
-    margin: 0;
-    padding: 0;
 }
 
 .hlist ul li {
-    margin-right: 2rem;
+    margin-right: 3.5rem;
 }
 
-.hlist ul a {
-    text-decoration: none;
-    color: white;
-    transition: color 0.3s ease;
+.hlist ul li:last-child {
+    margin-right: 3rem;
 }
 
-.hlist ul a:hover {
-    text-decoration: underline;
-    color: #FFA16E;
+.hlist ul li:first-child {
+    margin-left: 0rem;
 }
+
 
 .dropdown {
     position: relative;
