@@ -8,7 +8,7 @@ const deleteEventModal = document.getElementById('deleteEventModal');
 const backDrop = document.getElementById('modalBackDrop');
 const eventTitleInput = document.getElementById('eventTitleInput');
 const repeatCheckbox = document.getElementById('repeatCheckbox'); // Checkbox for gentagelser
-const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 function openModal(date) {
     clicked = date;
@@ -78,7 +78,7 @@ function load() {
         month: 'numeric',
         day: 'numeric',
     });
-    const paddingDays = weekdays.indexOf(dateString.split(', ')[0]);
+    const paddingDays = (firstDayOfMonth.getDay() + 6) % 7;
 
     document.getElementById('monthDisplay').innerText =
         `${dt.toLocaleDateString('en-us', { month: 'long' })} ${year}`;
