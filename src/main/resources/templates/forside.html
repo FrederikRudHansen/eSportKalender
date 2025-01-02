@@ -17,8 +17,8 @@
 <header>
     <div class="header">
         <div class="logocontainer">
-            <a href="forside.html">
-                <img id="logo" src="../static/billeder/logo.png" th:src="@{/billeder/logo.png}" alt="logo">
+            <a href="forside">
+                <img id="logo" th:href="@{/forside}" th:src="@{/billeder/logo.png}" alt="logo">
             </a>
         </div>
         <div class="hlist">
@@ -26,7 +26,7 @@
                 <li><a th:href="@{/forside}">Forside</a></li>
                 <li><a th:href="@{/tipsntricks}">Tips n' Tricks</a></li>
                 <li><a th:href="@{/turnering}">Turneringer</a></li>
-                <li><a th:href="@{/PLACEHOLDER}">Min Profil</a></li>
+                <li><a th:href="@{/profil}">Min Profil</a></li>
             </ul>
         </div>
     </div>

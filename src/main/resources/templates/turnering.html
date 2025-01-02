@@ -6,45 +6,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
     <meta charset="UTF-8">
-    <title>Turneringer!</title>
-    <link href="../static/css/body.css" th:href="@{/css/body.css}" rel="stylesheet">
-    <link href="../static/css/headerFooter.css" th:href="@{/css/headerFooter.css}" rel="stylesheet">
-    <link href="../static/css/turnering.css" th:href="@{/css/turnering.css}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squadronix Teamkeeper</title>
+    <link th:href="@{/css/forside.css}" href="../static/css/forside.css" rel="stylesheet">
+    <link th:href="@{/css/body.css}" href="../static/css/body.css" rel="stylesheet">
+    <link th:href="@{/css/headerFooter.css}" href="../static/css/headerFooter.css" rel="stylesheet">
+    <link th:href="@{/css/turnering.css}" href="../static/css/kalender.css" rel="stylesheet">
 </head>
 <body>
 <header>
     <div class="header">
         <div class="logocontainer">
-            <a href="/forside">
-                <img id="logo" src="../../static/billeder/logo.png" th:src="@{/billeder/logo.png}" alt="Logo">
+            <a href="forside">
+                <img id="logo" th:href="@{/forside}" th:src="@{/billeder/logo.png}" alt="logo">
             </a>
-        </div>
-        <div class="hejmsg">
-            Gamernes Platform!
         </div>
         <div class="hlist">
             <ul>
                 <li><a th:href="@{/forside}">Forside</a></li>
-                <li><a th:href="@{/tipsntricks}"><span id="toverskrift">Tips n' Tricks</span></a></li>
-                <li><a th:href="@{/PLACEHOLDER}">Min Profil</a></li>
-            </ul>
-        </div>
-        <div class="dropdown">
-            <button class="dropbtn">Vælg Spil</button>
-            <div class="dropdown-content">
-                <a th:href="@{/leaguetips}">League of Legends</a>
-                <a th:href="@{/csgotips}">CSGO</a>
-                <a th:href="@{/baldurstips}">Baldur's Gate III</a>
-                <a href="#">Valorant</a>
-                <a href="#">Smite</a>
-                <a href="#">TFT</a>
-                <a href="#">Warhammer 40k Tacticus</a>
-            </div>
-        </div>
-        <div class="login-signup">
-            <ul>
-                <li><a th:href="@{/login}">Login</a></li>
-                <li><a th:href="@{/signup}">Signup</a></li>
+                <li><a th:href="@{/tipsntricks}">Tips n' Tricks</a></li>
+                <li><a th:href="@{/turnering}">Turneringer</a></li>
+                <li><a th:href="@{/profil}">Min Profil</a></li>
             </ul>
         </div>
     </div>

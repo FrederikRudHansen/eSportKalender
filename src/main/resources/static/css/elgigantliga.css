@@ -261,13 +261,10 @@ body::-webkit-scrollbar {
     border-bottom: none;
 }
 
-/* Søgefelt slut css*/
-
-
 #elliga{
     position: absolute;
-    top: 11svh;
-    left: 10svh;
+    top: 22svh;
+    left: 25svh;
     margin-top: 4svh;
     height: 35svh;
     box-shadow: 5px 5px 30px rgba(53,102,59,0.68);
@@ -276,10 +273,12 @@ body::-webkit-scrollbar {
 
 .resumeEL{
     height: 60svh;
-    width: 80svh;
+    width: 100svh;
+    padding-left: 5svh;
+    padding-right: 5svh;
     position: absolute;
-    top: 14svh;
-    left: 90svh;
+    top: 25svh;
+    left: 100svh;
     box-shadow: 5px 5px 39px rgba(53,102,59,0.68);
     background: rgba(67,83,54,0.47);
     border:solid black;
@@ -302,8 +301,8 @@ body::-webkit-scrollbar {
     background-position: left;
     color: #e2ff77;
     position: relative;
-    top: 43svh;
-    left: 27svh;
+    top: 55svh;
+    left: 39vh;
     display: flex;
     align-items: center;
     justify-content: center;

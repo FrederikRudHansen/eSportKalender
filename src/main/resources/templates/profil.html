@@ -7,45 +7,26 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil</title>
-    <link th:href="@{/css/headerFooter.css}" href="../static/css/headerFooter.css" rel="stylesheet">
+    <title>Squadronix Teamkeeper</title>
+    <link th:href="@{/css/forside.css}" href="../static/css/forside.css" rel="stylesheet">
     <link th:href="@{/css/body.css}" href="../static/css/body.css" rel="stylesheet">
-    <link th:href="@{/css/profil.css}" href="../static/css/profil.css" rel="stylesheet">
+    <link th:href="@{/css/headerFooter.css}" href="../static/css/headerFooter.css" rel="stylesheet">
+    <link th:href="@{/css/kalender.css}" href="../static/css/kalender.css" rel="stylesheet">
 </head>
 <body>
 <header>
     <div class="header">
         <div class="logocontainer">
-            <a href="forside.html">
-                <img id="logo" src="../billeder/logo.png" alt="Logo">
+            <a href="forside">
+                <img id="logo" th:href="@{/forside}" th:src="@{/billeder/logo.png}" alt="logo">
             </a>
-        </div>
-        <div class="hejmsg">
-            Gamernes Platform!
         </div>
         <div class="hlist">
             <ul>
                 <li><a th:href="@{/forside}">Forside</a></li>
-                <li><a th:href="@{/PLACEHOLDER}">Samme</a></li>
-                <li><a th:href="@{/PLACEHOLDER}">Min Profil</a></li>
-            </ul>
-        </div>
-        <div class="dropdown">
-            <button class="dropbtn">Tips n' Tricks</button>
-            <div class="dropdown-content">
-                <a th:href="@{/leaguetips}">League of Legends</a>
-                <a th:href="@{/csgotips}">CSGO</a>
-                <a th:href="@{/baldurstips}">Baldur's Gate III</a>
-                <a href="#">Valorant</a>
-                <a href="#">Smite</a>
-                <a href="#">TFT</a>
-                <a href="#">Warhammer 40k Tacticus</a>
-            </div>
-        </div>
-        <div class="login-signup">
-            <ul>
-                <li><a th:href="@{/login}">Login</a></li>
-                <li><a th:href="@{/register}">Signup</a></li>
+                <li><a th:href="@{/tipsntricks}">Tips n' Tricks</a></li>
+                <li><a th:href="@{/turnering}">Turneringer</a></li>
+                <li><a th:href="@{/profil}">Min Profil</a></li>
             </ul>
         </div>
     </div>
@@ -54,12 +35,12 @@
 <main>
 
     <section class="profile-settings">
-        <h1>Profiloplysninger</h1>
+        <h1 id="profiloverskrift">Profiloplysninger</h1>
         <form id="profile-form">
-            <label for="name">Navn:</label>
+            <label for="name" id="navnoverskrift">Navn:</label>
             <input type="text" id="name" placeholder="Indtast navn" />
 
-            <label for="gender">Køn:</label>
+            <label for="gender" id="kønoverskrift">Køn:</label>
             <select id="gender">
                 <option value="">Vælg køn</option>
                 <option value="Mand">Mand</option>
@@ -67,16 +48,16 @@
                 <option value="Andet">Andet</option>
             </select>
 
-            <label for="birthday">Fødselsdato:</label>
+            <label for="birthday" id="fødsoverskrift">Fødselsdato:</label>
             <input type="date" id="birthday" />
 
-            <label for="nationality">Nationalitet:</label>
+            <label for="nationality" id="natoverskrift">Nationalitet:</label>
             <input type="text" id="nationality" placeholder="Indtast nationalitet" />
 
-            <label for="language">Sprog:</label>
+            <label for="language" id="sproverskrift">Sprog:</label>
             <input type="text" id="language" placeholder="Indtast sprog" />
 
-            <label for="hold">Vælg Hold:</label>
+            <label for="hold" id="holdoverskrift">Vælg Hold:</label>
             <select id="hold" name="hold">
                 <option value="">Vælg et hold</option>
                 <!-- Gør holdene tilgængelige i dropdown -->
@@ -85,13 +66,13 @@
                 </th:block>
             </select>
 
-            <label for="steam-account">Steam Account:</label>
+            <label for="steam-account" id="steoverskrift">Steam Account:</label>
             <input type="text" id="steam-account" placeholder="Indtast Steam URL" />
 
-            <label for="faceit-account">Faceit Account:</label>
+            <label for="faceit-account" id="faceoverskrift">Faceit Account:</label>
             <input type="text" id="faceit-account" placeholder="Indtast Faceit URL" />
 
-            <label for="role">Rolle:</label>
+            <label for="role" id="roloverskrift">Rolle:</label>
             <select id="role">
                 <option value="">Vælg rolle</option>
                 <option value="AWPer">AWPer</option>
@@ -103,7 +84,7 @@
                 <option value="Coach">Coach</option>
             </select>
 
-            <label for="resume">Resume:</label>
+            <label for="resume" id="resoverskrift">Resume:</label>
             <textarea id="resume" placeholder="Skriv dit resume her..."></textarea>
 
             <button type="button" id="save-profile" th:onclick="'window.location.href=\'' + @{/minProfil} + '\''">Gem Profil</button>

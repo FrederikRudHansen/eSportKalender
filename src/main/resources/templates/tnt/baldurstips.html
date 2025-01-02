@@ -6,37 +6,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
     <meta charset="UTF-8">
-    <title>GameHive - Hele Danmarks Gaming Platform!</title>
-    <link rel="stylesheet" href="../../static/css/body.css" th:href="@{/css/body.css}">
-    <link rel="stylesheet" href="../../static/css/headerFooter.css" th:href="@{/css/headerFooter.css}">
-    <link rel="stylesheet" href="../../static/css/baldurstips.css" th:href="@{/css/baldurstips.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squadronix Teamkeeper</title>
+    <link th:href="@{/css/forside.css}" href="../static/css/forside.css" rel="stylesheet">
+    <link th:href="@{/css/body.css}" href="../static/css/body.css" rel="stylesheet">
+    <link th:href="@{/css/headerFooter.css}" href="../static/css/headerFooter.css" rel="stylesheet">
+    <link th:href="@{/css/baldurstips.css}" href="../static/css/kalender.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="header">
-            <div class="logocontainer">
-                <a href="forside">
-                    <img id="logo" src="../billeder/logo.png" th:src="@{/billeder/logo.png}" alt="Logo">
-                </a>
-            </div>
-
-            <div class="hlist">
-                <ul>
-                    <li><a th:href="@{/forside}">Forside</a></li>
-                    <li><a th:href="@{/PLACEHOLDER}">placeholder</a></li>
-                    <li><a th:href="@{/PLACEHOLDER}">Min Profil</a></li>
-                </ul>
-            </div>
-
-            </div>
-            <div class="login-signup">
-                <ul>
-                    <li><a th:href="@{/login}">Login</a></li>
-                    <li><a th:href="@{/register}">Signup</a></li>
-                </ul>
-            </div>
+<header>
+    <div class="header">
+        <div class="logocontainer">
+            <a href="forside">
+                <img id="logo" th:href="@{/forside}" th:src="@{/billeder/logo.png}" alt="logo">
+            </a>
         </div>
-    </header>
+        <div class="hlist">
+            <ul>
+                <li><a th:href="@{/forside}">Forside</a></li>
+                <li><a th:href="@{/tipsntricks}">Tips n' Tricks</a></li>
+                <li><a th:href="@{/turnering}">Turneringer</a></li>
+                <li><a th:href="@{/profil}">Min Profil</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
     <div class="piccontainer">
         <img id="bg3pic" src="../../static/billeder/bg3pic.png" th:src="@{/billeder/bg3pic.png}" alt="bg3pic">
     </div>

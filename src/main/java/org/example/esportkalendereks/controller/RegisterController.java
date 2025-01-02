@@ -35,6 +35,6 @@ public class RegisterController {
         newPlayer.setPassword(password);
         playerService.savePlayer(newPlayer);  // Gem den nye spiller
 
-        return "redirect:/forside";  // Redirect til forsiden
+        return "redirect:/login";  // Redirect til forsiden
     }
 }

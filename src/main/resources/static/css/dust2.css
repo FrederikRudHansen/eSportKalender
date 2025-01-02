@@ -20,7 +20,6 @@
 .beskrivelse{
     margin-left: 10%;
     height: 10%;
-    background-color: green;
     color: white;
 }
 
@@ -58,12 +57,6 @@
 }
 .cirkelt1{
     background-image: url("../tipspics/cirkelt.png");
-    /*margin-left: 23%;*/
-    /*margin-top: 13%;*/
-
-    /*top: 10%;*/
-    /*left: 23%;*/
-
     top: 3.8rem;
     left: 9.4rem;
 }
@@ -71,32 +64,32 @@
 
 .cirkelt2{
     background-image: url("../tipspics/cirkelt.png");
-    top: 19%;
+    top: 21%;
     left: 47%;
 }
 
 .cirkelt3{
     background-image: url("../tipspics/cirkelt.png");
-    top: 28%;
+    top: 37%;
     left: 46%;
 }
 
 .cirkelct1{
     background-image: url("../tipspics/cirkelct.png");
-    top: 37%;
+    top: 52%;
     left: 66.5%;
 }
 
 .cirkelct2{
     background-image: url("../tipspics/cirkelct.png");
-    top: 18%;
-    left: 8.5%;
+    top: 38%;
+    left: 9%;
 }
 
 .cirkelct3{
     background-image: url("../tipspics/cirkelct.png");
-    top: 6%;
-    left:8.5%;
+    top: 30%;
+    left:9%;
 }
 
 .modal {
@@ -125,7 +118,7 @@
 }
 
 .modal-description {
-    color: black;
+    color: white;
     text-align: center;
 }
 
@@ -146,7 +139,7 @@
 
 .close:hover,
 .close:focus {
-    color: #FFA16E;
+    color: #fd5d56;
     text-decoration: none;
     cursor: pointer;
 }

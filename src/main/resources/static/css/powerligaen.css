@@ -109,16 +109,18 @@ body::-webkit-scrollbar {
 .description {
     text-align: center;
     margin-bottom: 5vh;
+    width: 80%;
+    margin-left: 10%;
 }
 
 .description h1 {
-    font-size: 3vh;
+    font-size: 5vh;
     color: #ffffff;
     margin-bottom: 1vh;
 }
 
 .description p {
-    font-size: 2vh;
+    font-size: 3vh;
     color: #bbbbbb;
     line-height: 1.5;
 }
@@ -129,7 +131,7 @@ body::-webkit-scrollbar {
 }
 
 .stilling-container h2 {
-    font-size: 2.5vh;
+    font-size: 5vh;
     color: #ffffff;
     margin-bottom: 2vh;
 }
